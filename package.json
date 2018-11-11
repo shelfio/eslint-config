@@ -15,7 +15,7 @@
   "files": [
     "src"
   ],
-  "main": "src/index.js",
+  "main": "src/base.js",
   "keywords": [
     "eslint",
     "eslintconfig"
