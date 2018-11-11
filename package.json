@@ -13,9 +13,11 @@
     "node": ">=8.10"
   },
   "files": [
-    "src"
+    "rules",
+    "base.js",
+    "meteor.js"
   ],
-  "main": "src/base.js",
+  "main": "base.js",
   "keywords": [
     "eslint",
     "eslintconfig"
