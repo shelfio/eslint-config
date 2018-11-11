@@ -16,6 +16,7 @@
     "rules",
     "backend.js",
     "base.js",
+    "frontend.js",
     "meteor.js"
   ],
   "main": "base.js",
