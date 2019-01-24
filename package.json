@@ -12,6 +12,9 @@
   "engines": {
     "node": ">=8.10"
   },
+  "scripts": {
+    "test": "echo ok"
+  },
   "files": [
     "rules",
     "backend.js",
