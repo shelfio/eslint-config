@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'padding-line-between-statements': paddingLineBetweenStatements,
-    '@typescript-eslint/no-use-before-define': 0
+    '@typescript-eslint/no-use-before-define': 0,
+    '@typescript-eslint/camelcase': 0
   }
 };
