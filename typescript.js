@@ -22,5 +22,14 @@ module.exports = {
     'padding-line-between-statements': paddingLineBetweenStatements,
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/camelcase': 0
-  }
+  },
+  overrides: [
+    {
+      files: ['**/*.test.ts'],
+      // it's a bit annoying, there is no need to specify return types for test case function body it('...', fn)
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 0
+      }
+    }
+  ]
 };
