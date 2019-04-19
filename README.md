@@ -10,7 +10,7 @@ $ yarn add @shelf/eslint-config --dev
 
 ### Backend
 
-#### `.eslintrc`
+#### JavaScript `.eslintrc`
 
 ```json
 {
@@ -18,13 +18,37 @@ $ yarn add @shelf/eslint-config --dev
 }
 ```
 
+#### TypeScript `.eslintrc`
+
+```json
+{
+  "extends": ["@shelf/eslint-config/typescript"]
+}
+```
+
 ### Frontend
 
-#### `.eslintrc`
+#### JavaScript `.eslintrc`
 
 ```json
 {
   "extends": ["@shelf/eslint-config/frontend"],
+  "settings": {
+    "react": {
+      "version": "16.7.0"
+    }
+  },
+  "rules": {
+    "react/prop-types": "warn"
+  }
+}
+```
+
+#### TypeScript `.eslintrc`
+
+```json
+{
+  "extends": ["@shelf/eslint-config/frontend-typescript"],
   "settings": {
     "react": {
       "version": "16.7.0"
