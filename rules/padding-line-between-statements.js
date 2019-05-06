@@ -21,6 +21,11 @@ module.exports = [
     next: '*'
   },
   {
+    blankLine: 'always',
+    prev: ['interface'],
+    next: '*'
+  },
+  {
     blankLine: 'never',
     prev: 'import',
     next: 'import'
