@@ -30,15 +30,15 @@
     "eslintconfig"
   ],
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "1.10.2",
+    "@typescript-eslint/eslint-plugin": "1.11.0",
     "babel-eslint": "10.0.2",
-    "eslint-config-prettier": "5.0.0",
+    "eslint-config-prettier": "5.1.0",
     "eslint-plugin-babel": "5.3.0",
     "eslint-plugin-prettier": "3.1.0",
-    "eslint-plugin-react": "7.13.0"
+    "eslint-plugin-react": "7.14.2"
   },
   "devDependencies": {
-    "husky": "2.4.1",
+    "husky": "2.5.0",
     "lint-staged": "8.2.1",
     "prettier": "1.18.2"
   },
