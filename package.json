@@ -43,7 +43,7 @@
     "prettier": "1.18.2"
   },
   "peerDependencies": {
-    "eslint": "5.x.x"
+    "eslint": "6.x.x"
   },
   "husky": {
     "hooks": {
