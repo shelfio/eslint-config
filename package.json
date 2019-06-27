@@ -39,7 +39,7 @@
     "eslint-plugin-react": "7.14.2"
   },
   "devDependencies": {
-    "husky": "2.5.0",
+    "husky": "2.7.0",
     "lint-staged": "8.2.1",
     "prettier": "1.18.2"
   },
