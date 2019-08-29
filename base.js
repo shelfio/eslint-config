@@ -1,12 +1,19 @@
 const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
 
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:jest-formatting/strict', 'prettier'],
-  plugins: ['jest-formatting"', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:jest-formatting/strict',
+    'plugin:jest/style',
+    'plugin:jest/recommended',
+    'prettier'
+  ],
+  plugins: ['jest-formatting', 'jest', 'prettier'],
   env: {
     node: true,
     jest: true,
-    es6: true
+    es6: true,
+    'jest/globals': true
   },
   parserOptions: {
     ecmaVersion: 2018,

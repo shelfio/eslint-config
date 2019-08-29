@@ -5,14 +5,17 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
     'plugin:jest-formatting/strict',
+    'plugin:jest/style',
+    'plugin:jest/recommended',
     'prettier',
     'prettier/@typescript-eslint'
   ],
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'jest-formatting', 'jest', 'prettier'],
   env: {
     node: true,
     jest: true,
-    es6: true
+    es6: true,
+    'jest/globals': true
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
