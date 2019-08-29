@@ -1,4 +1,5 @@
 const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
+const jestRules = require('./rules/jest');
 
 module.exports = {
   extends: [
@@ -21,6 +22,7 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
-    'padding-line-between-statements': paddingLineBetweenStatements
+    'padding-line-between-statements': paddingLineBetweenStatements,
+    ...jestRules
   }
 };
