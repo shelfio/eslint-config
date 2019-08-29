@@ -4,6 +4,7 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
+    'plugin:jest-formatting/strict',
     'prettier',
     'prettier/@typescript-eslint'
   ],
