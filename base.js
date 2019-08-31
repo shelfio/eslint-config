@@ -37,6 +37,7 @@ module.exports = {
         ignoreMemberSort: false,
         memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
       }
-    ]
+    ],
+    'prefer-template': 'error'
   }
 };
