@@ -28,7 +28,12 @@ module.exports = {
     'padding-line-between-statements': paddingLineBetweenStatements,
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/camelcase': 0,
-    ...jestRules
+    ...jestRules,
+    'prefer-destructuring': [
+      'error',
+      {array: false, object: true},
+      {enforceForRenamedProperties: false}
+    ]
   },
   overrides: [
     {

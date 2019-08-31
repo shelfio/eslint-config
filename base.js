@@ -23,6 +23,11 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'padding-line-between-statements': paddingLineBetweenStatements,
-    ...jestRules
+    ...jestRules,
+    'prefer-destructuring': [
+      'error',
+      {array: false, object: true},
+      {enforceForRenamedProperties: false}
+    ]
   }
 };
