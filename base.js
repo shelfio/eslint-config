@@ -38,6 +38,7 @@ module.exports = {
         memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
       }
     ],
-    'prefer-template': 'error'
+    'prefer-template': 'error',
+    'prefer-object-spread': 'error'
   }
 };
