@@ -11,7 +11,7 @@ module.exports = {
     'prettier',
     'prettier/@typescript-eslint'
   ],
-  plugins: ['@typescript-eslint', 'jest-formatting', 'jest', 'prettier'],
+  plugins: ['@typescript-eslint', 'jest-formatting', 'jest', 'json-format', 'prettier'],
   env: {
     node: true,
     jest: true,

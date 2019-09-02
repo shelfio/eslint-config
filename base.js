@@ -9,7 +9,7 @@ module.exports = {
     'plugin:jest/recommended',
     'prettier'
   ],
-  plugins: ['jest-formatting', 'jest', 'prettier'],
+  plugins: ['jest-formatting', 'jest', 'json-format', 'prettier'],
   env: {
     node: true,
     jest: true,
