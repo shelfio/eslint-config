@@ -1,5 +1,6 @@
 const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
 const jestRules = require('./rules/jest');
+const importOrder = require('./rules/import-order');
 
 module.exports = {
   extends: [
@@ -12,7 +13,7 @@ module.exports = {
     'prettier',
     'prettier/@typescript-eslint'
   ],
-  plugins: ['@typescript-eslint', 'jest-formatting', 'jest', 'json-format', 'prettier'],
+  plugins: ['@typescript-eslint', 'jest-formatting', 'jest', 'json-format', 'prettier', 'import'],
   env: {
     node: true,
     jest: true,
@@ -45,7 +46,8 @@ module.exports = {
       }
     ],
     'prefer-template': 'error',
-    'prefer-object-spread': 'error'
+    'prefer-object-spread': 'error',
+    'import/order': importOrder
   },
   overrides: [
     {
