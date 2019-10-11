@@ -1,17 +1,23 @@
 const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
+const jestRules = require('./rules/jest');
 
 module.exports = {
   extends: [
-    'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:jest-formatting/strict',
+    'plugin:jest/style',
+    'plugin:jest/recommended',
     'prettier',
     'prettier/@typescript-eslint'
   ],
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'jest-formatting', 'jest', 'json-format', 'prettier'],
   env: {
     node: true,
     jest: true,
-    es6: true
+    es6: true,
+    'jest/globals': true
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -22,7 +28,24 @@ module.exports = {
     'prettier/prettier': 'error',
     'padding-line-between-statements': paddingLineBetweenStatements,
     '@typescript-eslint/no-use-before-define': 0,
-    '@typescript-eslint/camelcase': 0
+    '@typescript-eslint/camelcase': 0,
+    ...jestRules,
+    'prefer-destructuring': [
+      'error',
+      {array: false, object: true},
+      {enforceForRenamedProperties: false}
+    ],
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: false,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
+      }
+    ],
+    'prefer-template': 'error',
+    'prefer-object-spread': 'error'
   },
   overrides: [
     {

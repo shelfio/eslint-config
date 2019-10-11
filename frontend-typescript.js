@@ -2,8 +2,9 @@ const importOrder = require('./rules/import-order');
 
 module.exports = {
   extends: [
-    'plugin:@typescript-eslint/recommended',
     '@shelf/eslint-config',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'prettier/react',
     'prettier/@typescript-eslint'
@@ -23,6 +24,8 @@ module.exports = {
     '@typescript-eslint/camelcase': 0,
     // it fail to compile TS on react static class properties (displayName | defaultProps | etc..)
     '@typescript-eslint/explicit-member-accessibility': 0,
+    // Often test name starts with component name which are always capitalized
+    'jest/lowercase-name': 'off',
     'import/order': importOrder
   },
   overrides: [
