@@ -20,5 +20,6 @@ module.exports = {
   'jest/prefer-spy-on': 'warn',
   'jest/prefer-strict-equal': 'off',
   'jest/prefer-todo': 'warn',
-  'jest/require-tothrow-message': 'warn'
+  'jest/require-tothrow-message': 'warn',
+  'jest/valid-title': 'error'
 };
