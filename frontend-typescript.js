@@ -9,6 +9,9 @@ module.exports = {
     'prettier/react',
     'prettier/@typescript-eslint'
   ],
+  globals: {
+    DD_LOGS: true
+  },
   plugins: ['@typescript-eslint', 'react', 'import'],
   env: {
     browser: true
