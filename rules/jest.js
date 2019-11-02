@@ -4,7 +4,6 @@ module.exports = {
   'jest/lowercase-name': 'error',
   'jest/no-commented-out-tests': 'error',
   'jest/no-duplicate-hooks': 'error',
-  'jest/no-empty-title': 'error',
   'jest/no-expect-resolves': 'warn',
   'jest/no-export': 'error',
   'jest/no-large-snapshots': 'warn',
@@ -20,6 +19,6 @@ module.exports = {
   'jest/prefer-spy-on': 'warn',
   'jest/prefer-strict-equal': 'off',
   'jest/prefer-todo': 'warn',
-  'jest/require-tothrow-message': 'warn',
+  'jest/require-to-throw-message': 'warn',
   'jest/valid-title': 'error'
 };
