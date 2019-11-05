@@ -60,6 +60,17 @@ $ yarn add @shelf/eslint-config --dev
 }
 ```
 
+#### Vue `.eslintrc`
+
+```json
+{
+  "extends": ["@shelf/eslint-config/frontend-vue"],
+  "rules": {
+     "no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
+  }
+}
+```
+
 ## License
 
 MIT © [Shelf](https://shelf.io)
