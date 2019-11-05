@@ -20,9 +20,10 @@
     "backend.js",
     "base.js",
     "frontend.js",
+    "frontend-vue.js",
     "frontend-typescript.js",
     "meteor.js",
-    "typescript.js"
+    "typescript.js",
   ],
   "main": "base.js",
   "keywords": [
