@@ -22,6 +22,7 @@
     "frontend.js",
     "frontend-vue.js",
     "frontend-typescript.js",
+    "frontend-typescript-vue.js",
     "meteor.js",
     "typescript.js"
   ],

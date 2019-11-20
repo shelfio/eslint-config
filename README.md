@@ -28,7 +28,7 @@ $ yarn add @shelf/eslint-config --dev
 
 ### Frontend
 
-#### JavaScript `.eslintrc`
+#### JavaScript with React `.eslintrc`
 
 ```json
 {
@@ -67,6 +67,17 @@ $ yarn add @shelf/eslint-config --dev
   "extends": ["@shelf/eslint-config/frontend-vue"],
   "rules": {
      "no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
+  }
+}
+```
+
+#### Typescript with Vue `.eslintrc`
+
+```json
+{
+  "extends": ["@shelf/eslint-config/frontend-typescript-vue"],
+  "rules": {
+     "@typescript-eslint/no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
   }
 }
 ```
