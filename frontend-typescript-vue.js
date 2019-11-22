@@ -9,12 +9,12 @@ module.exports = {
     'plugin:vue/essential',
     'prettier/@typescript-eslint'
   ],
-  plugins: ['vue', 'babel', 'jsx', 'import'],
+  plugins: ['@typescript-eslint', 'vue', 'babel', 'jsx', 'import'],
   env: {
     browser: true
   },
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: '@typescript-eslint/parser',
     ecmaFeatures: {
       jsx: true
     }
