@@ -1,4 +1,5 @@
 const importOrder = require('./rules/import-order');
+const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
   extends: [
@@ -26,20 +27,5 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': 0,
     'jest/lowercase-name': 'off'
   },
-  overrides: [
-    {
-      files: ['**/*.test.ts'],
-      // it's a bit annoying, there is no need to specify return types for test case function body it('...', fn)
-      rules: {
-        '@typescript-eslint/explicit-function-return-type': 0
-      }
-    },
-    {
-      // webpack config is written in js not typescript
-      files: ['webpack.config.js'],
-      rules: {
-        '@typescript-eslint/no-var-requires': 0
-      }
-    }
-  ]
+  overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests]
 };
