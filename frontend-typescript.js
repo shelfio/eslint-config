@@ -30,6 +30,8 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': 0,
     // Often test name starts with component name which are always capitalized
     'jest/lowercase-name': 'off',
+    // Don`t needed for typescript files
+    'react/prop-types': 'off',
     'import/order': importOrder
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests]
