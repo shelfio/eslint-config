@@ -31,6 +31,7 @@ module.exports = {
     // Often test name starts with component name which are always capitalized
     'jest/lowercase-name': 'off',
     // Don`t needed for typescript files
+    '@typescript-eslint/no-empty-function': 'off',
     'react/prop-types': 'off',
     'import/order': importOrder
   },
