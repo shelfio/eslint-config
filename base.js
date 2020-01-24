@@ -29,6 +29,7 @@ module.exports = {
       {array: false, object: true},
       {enforceForRenamedProperties: false}
     ],
+    'no-empty': ['error', {allowEmptyCatch: true}],
     'sort-imports': [
       'error',
       {
