@@ -49,10 +49,10 @@
   "devDependencies": {
     "husky": "4.2.5",
     "lint-staged": "10.1.6",
-    "prettier": "1.19.1"
+    "prettier": "2.0.5"
   },
   "peerDependencies": {
-    "eslint": "6.x.x"
+    "eslint": "6.x.x || 7.x"
   },
   "husky": {
     "hooks": {
