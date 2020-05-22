@@ -66,7 +66,7 @@ $ yarn add @shelf/eslint-config --dev
 {
   "extends": ["@shelf/eslint-config/frontend-vue"],
   "rules": {
-     "no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
+    "no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
   }
 }
 ```
@@ -77,9 +77,18 @@ $ yarn add @shelf/eslint-config --dev
 {
   "extends": ["@shelf/eslint-config/frontend-typescript-vue"],
   "rules": {
-     "@typescript-eslint/no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
+    "@typescript-eslint/no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
   }
 }
+```
+
+## Publish
+
+```sh
+$ git checkout master
+$ yarn version
+$ yarn publish
+$ git push origin master --tags
 ```
 
 ## License
