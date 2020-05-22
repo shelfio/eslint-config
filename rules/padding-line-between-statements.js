@@ -7,11 +7,6 @@ module.exports = [
   },
   {
     blankLine: 'always',
-    prev: ['function'],
-    next: 'export',
-  },
-  {
-    blankLine: 'always',
     prev: ['if', 'const', 'let', 'var'],
     next: 'if',
   },
