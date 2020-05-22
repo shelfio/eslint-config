@@ -7,7 +7,7 @@ module.exports = [
   },
   {
     blankLine: 'always',
-    prev: '*',
+    prev: ['function'],
     next: 'export',
   },
   {
