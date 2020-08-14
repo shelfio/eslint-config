@@ -12,19 +12,19 @@ module.exports = {
     'plugin:jest/style',
     'plugin:jest/recommended',
     'prettier',
-    'prettier/@typescript-eslint'
+    'prettier/@typescript-eslint',
   ],
   plugins: ['@typescript-eslint', 'jest-formatting', 'jest', 'json-format', 'prettier', 'import'],
   env: {
     node: true,
     jest: true,
     es6: true,
-    'jest/globals': true
+    'jest/globals': true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   rules: {
     'prettier/prettier': 'error',
@@ -35,7 +35,7 @@ module.exports = {
     'prefer-destructuring': [
       'error',
       {array: false, object: true},
-      {enforceForRenamedProperties: false}
+      {enforceForRenamedProperties: false},
     ],
     'sort-imports': [
       'error',
@@ -43,12 +43,13 @@ module.exports = {
         ignoreCase: false,
         ignoreDeclarationSort: true,
         ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
-      }
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+      },
     ],
     'prefer-template': 'error',
     'prefer-object-spread': 'error',
-    'import/order': importOrder
+    'import/order': importOrder,
+    '@typescript-eslint/no-unused-vars': 'error',
   },
-  overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests]
+  overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
