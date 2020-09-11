@@ -21,4 +21,5 @@ module.exports = {
   'jest/prefer-todo': 'warn',
   'jest/require-to-throw-message': 'warn',
   'jest/valid-title': 'error',
+  'jest/no-conditional-expect': 'off',
 };
