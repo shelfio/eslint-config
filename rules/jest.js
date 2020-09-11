@@ -10,7 +10,7 @@ module.exports = {
   'jest/no-if': 'warn',
   'jest/no-mocks-import': 'warn',
   'jest/no-standalone-expect': 'warn',
-  'jest/no-test-callback': 'error',
+  'jest/no-done-callback': 'error',
   'jest/no-test-return-statement': 'warn',
   'jest/no-truthy-falsy': 'off',
   'jest/no-try-expect': 'off',
@@ -20,5 +20,5 @@ module.exports = {
   'jest/prefer-strict-equal': 'off',
   'jest/prefer-todo': 'warn',
   'jest/require-to-throw-message': 'warn',
-  'jest/valid-title': 'error'
+  'jest/valid-title': 'error',
 };
