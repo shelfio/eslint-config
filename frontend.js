@@ -4,15 +4,16 @@ module.exports = {
   extends: ['@shelf/eslint-config', 'plugin:react/recommended', 'prettier/react'],
   plugins: ['react', 'import'],
   env: {
-    browser: true
+    browser: true,
   },
   parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   rules: {
-    'import/order': importOrder
-  }
+    'import/order': importOrder,
+    'comma-dangle': 'error',
+  },
 };

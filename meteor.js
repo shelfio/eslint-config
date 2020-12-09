@@ -8,21 +8,22 @@ module.exports = {
     node: true,
     es6: true,
     browser: true,
-    meteor: true
+    meteor: true,
   },
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     allowImportExportEverywhere: false,
-    codeFrame: false
+    codeFrame: false,
   },
   rules: {
     'prettier/prettier': 'error',
     'import/order': importOrder,
-    'padding-line-between-statements': paddingLineBetweenStatements
-  }
+    'padding-line-between-statements': paddingLineBetweenStatements,
+    'comma-dangle': 'error',
+  },
 };
