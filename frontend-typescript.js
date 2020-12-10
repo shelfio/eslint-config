@@ -34,7 +34,8 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'react/prop-types': 'off',
     'react/display-name': 'warn',
-    'import/order': importOrder
+    'import/order': importOrder,
+    "comma-dangle": [2, "always-multiline"]
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests]
 };
