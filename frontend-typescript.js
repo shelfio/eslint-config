@@ -8,20 +8,20 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'prettier/react',
-    'prettier/@typescript-eslint'
+    'prettier/@typescript-eslint',
   ],
   globals: {
-    DD_LOGS: true
+    DD_LOGS: true,
   },
   plugins: ['@typescript-eslint', 'react', 'import'],
   env: {
-    browser: true
+    browser: true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   rules: {
     '@typescript-eslint/no-use-before-define': 0,
@@ -35,7 +35,6 @@ module.exports = {
     'react/prop-types': 'off',
     'react/display-name': 'warn',
     'import/order': importOrder,
-    "comma-dangle": [2, "always-multiline"]
   },
-  overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests]
+  overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
