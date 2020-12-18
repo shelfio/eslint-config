@@ -3,9 +3,14 @@ const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/ov
 
 module.exports = {
   extends: [
-    '@shelf/eslint-config',
+    'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:jest-formatting/strict',
+    'plugin:jest/style',
+    'plugin:jest/recommended',
+    'prettier',
+    'prettier/@typescript-eslint',
     'plugin:react/recommended',
     'prettier/react',
     'prettier/@typescript-eslint',
