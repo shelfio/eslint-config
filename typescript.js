@@ -50,6 +50,7 @@ module.exports = {
     'prefer-object-spread': 'error',
     'import/order': importOrder,
     '@typescript-eslint/no-unused-vars': 'error',
+    'comma-dangle': 'off',
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };

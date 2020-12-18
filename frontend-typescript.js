@@ -40,6 +40,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react/display-name': 'warn',
     'import/order': importOrder,
+    'comma-dangle': 'off',
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };

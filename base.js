@@ -7,18 +7,18 @@ module.exports = {
     'plugin:jest-formatting/strict',
     'plugin:jest/style',
     'plugin:jest/recommended',
-    'prettier'
+    'prettier',
   ],
   plugins: ['jest-formatting', 'jest', 'json-format', 'prettier'],
   env: {
     node: true,
     jest: true,
     es6: true,
-    'jest/globals': true
+    'jest/globals': true,
   },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
   rules: {
     'prettier/prettier': 'error',
@@ -27,7 +27,7 @@ module.exports = {
     'prefer-destructuring': [
       'error',
       {array: false, object: true},
-      {enforceForRenamedProperties: false}
+      {enforceForRenamedProperties: false},
     ],
     'no-empty': ['error', {allowEmptyCatch: true}],
     'sort-imports': [
@@ -36,10 +36,11 @@ module.exports = {
         ignoreCase: false,
         ignoreDeclarationSort: true,
         ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
-      }
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+      },
     ],
     'prefer-template': 'error',
-    'prefer-object-spread': 'error'
-  }
+    'prefer-object-spread': 'error',
+    'comma-dangle': 'off',
+  },
 };

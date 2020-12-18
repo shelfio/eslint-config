@@ -4,15 +4,16 @@ module.exports = {
   extends: ['@shelf/eslint-config', 'plugin:prettier/recommended', 'plugin:vue/essential'],
   plugins: ['vue', 'babel', 'jsx', 'import'],
   env: {
-    browser: true
+    browser: true,
   },
   parserOptions: {
     parser: 'babel-eslint',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   rules: {
-    'import/order': importOrder
-  }
+    'import/order': importOrder,
+    'comma-dangle': 'off',
+  },
 };
