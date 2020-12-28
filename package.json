@@ -46,7 +46,7 @@
     "eslint-plugin-jsx": "0.1.0",
     "eslint-plugin-prettier": "3.3.0",
     "eslint-plugin-react": "7.21.5",
-    "eslint-plugin-vue": "7.3.0"
+    "eslint-plugin-vue": "7.4.0"
   },
   "devDependencies": {
     "husky": "4.3.6",
