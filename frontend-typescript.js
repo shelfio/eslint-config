@@ -38,7 +38,7 @@ module.exports = {
     'sort-imports': sortImports,
     'prefer-template': 'error',
     'prefer-object-spread': 'error',
-    'import/order': importOrder,
+    ...importOrder,
     '@typescript-eslint/no-unused-vars': 'error',
     'comma-dangle': 'off',
   },

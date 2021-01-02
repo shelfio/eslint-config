@@ -15,7 +15,7 @@ module.exports = {
     },
   },
   rules: {
-    'import/order': importOrder,
+    ...importOrder,
     'comma-dangle': 'off',
   },
 };

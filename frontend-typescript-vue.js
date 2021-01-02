@@ -23,7 +23,7 @@ module.exports = {
   },
   rules: {
     'sort-imports': sortImports,
-    'import/order': importOrder,
+    ...importOrder,
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/camelcase': 0,
     '@typescript-eslint/explicit-member-accessibility': 0,

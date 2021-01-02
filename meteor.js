@@ -22,7 +22,7 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
-    'import/order': importOrder,
+    ...importOrder,
     'padding-line-between-statements': paddingLineBetweenStatements,
     'comma-dangle': 'off',
   },
