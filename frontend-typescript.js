@@ -4,6 +4,7 @@ const jestRules = require('./rules/jest');
 const commonPlugins = require('./rules/plugins-common');
 const sortImports = require('./rules/sort-imports');
 const commonExtends = require('./rules/extends-common');
+const preferDestructuring = require('./rules/prefer-destructuring');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
@@ -38,11 +39,7 @@ module.exports = {
     'react/display-name': 'warn',
     'padding-line-between-statements': paddingLineBetweenStatements,
     ...jestRules,
-    'prefer-destructuring': [
-      'error',
-      {array: false, object: true},
-      {enforceForRenamedProperties: false},
-    ],
+    ...preferDestructuring,
     'sort-imports': sortImports,
     'prefer-template': 'error',
     'prefer-object-spread': 'error',

@@ -4,6 +4,7 @@ const importOrder = require('./rules/import-order');
 const sortImports = require('./rules/sort-imports');
 const commonPlugins = require('./rules/plugins-common');
 const commonExtends = require('./rules/extends-common');
+const preferDestructuring = require('./rules/prefer-destructuring');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
@@ -26,11 +27,7 @@ module.exports = {
     '@typescript-eslint/camelcase': 0,
     'padding-line-between-statements': paddingLineBetweenStatements,
     ...jestRules,
-    'prefer-destructuring': [
-      'error',
-      {array: false, object: true},
-      {enforceForRenamedProperties: false},
-    ],
+    ...preferDestructuring,
     'sort-imports': sortImports,
     'prefer-template': 'error',
     'prefer-object-spread': 'error',
