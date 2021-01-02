@@ -1,21 +1,13 @@
 const importOrder = require('./rules/import-order');
+const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
+const jestRules = require('./rules/jest');
 const commonPlugins = require('./rules/plugins-common');
 const sortImports = require('./rules/sort-imports');
+const commonExtends = require('./rules/extends-common');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:jest-formatting/strict',
-    'plugin:jest/style',
-    'plugin:jest/recommended',
-    'prettier',
-    'prettier/@typescript-eslint',
-    'plugin:react/recommended',
-    'prettier/react',
-  ],
+  extends: [...commonExtends, 'plugin:react/recommended', 'prettier/react'],
   globals: {
     DD_LOGS: true,
   },
@@ -43,9 +35,19 @@ module.exports = {
     // Don`t needed for typescript files
     '@typescript-eslint/no-empty-function': 'off',
     'react/prop-types': 'off',
-    'sort-imports': sortImports,
     'react/display-name': 'warn',
+    'padding-line-between-statements': paddingLineBetweenStatements,
+    ...jestRules,
+    'prefer-destructuring': [
+      'error',
+      {array: false, object: true},
+      {enforceForRenamedProperties: false},
+    ],
+    'sort-imports': sortImports,
+    'prefer-template': 'error',
+    'prefer-object-spread': 'error',
     'import/order': importOrder,
+    '@typescript-eslint/no-unused-vars': 'error',
     'comma-dangle': 'off',
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],

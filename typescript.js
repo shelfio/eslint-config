@@ -3,19 +3,11 @@ const jestRules = require('./rules/jest');
 const importOrder = require('./rules/import-order');
 const sortImports = require('./rules/sort-imports');
 const commonPlugins = require('./rules/plugins-common');
+const commonExtends = require('./rules/extends-common');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:jest-formatting/strict',
-    'plugin:jest/style',
-    'plugin:jest/recommended',
-    'prettier',
-    'prettier/@typescript-eslint',
-  ],
+  extends: commonExtends,
   plugins: commonPlugins,
   env: {
     node: true,
@@ -30,9 +22,9 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
-    'padding-line-between-statements': paddingLineBetweenStatements,
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/camelcase': 0,
+    'padding-line-between-statements': paddingLineBetweenStatements,
     ...jestRules,
     'prefer-destructuring': [
       'error',
