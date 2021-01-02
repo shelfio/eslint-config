@@ -1,4 +1,4 @@
-const importOrder = require('./rules/import-order');
+const importOrder = require('./rules/import-order.json');
 const env = require('./common/env');
 
 module.exports = {

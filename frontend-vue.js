@@ -1,4 +1,4 @@
-const importOrder = require('./rules/import-order');
+const importOrder = require('./rules/import-order.json');
 
 module.exports = {
   extends: ['@shelf/eslint-config', 'plugin:prettier/recommended', 'plugin:vue/essential'],

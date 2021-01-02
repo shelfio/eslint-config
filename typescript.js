@@ -1,12 +1,12 @@
-const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
-const jestRules = require('./rules/jest');
-const importOrder = require('./rules/import-order');
-const sortImports = require('./rules/sort-imports');
+const commonExtends = require('./rules/extends-common.json');
 const commonPlugins = require('./common/plugins');
-const commonExtends = require('./rules/extends-common');
-const preferDestructuring = require('./rules/prefer-destructuring');
-const tsParser = require('./common/ts-parser');
 const env = require('./common/env');
+const importOrder = require('./rules/import-order.json');
+const jestRules = require('./rules/jest.json');
+const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
+const preferDestructuring = require('./rules/prefer-destructuring');
+const sortImports = require('./rules/sort-imports.json');
+const tsParser = require('./common/ts-parser');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
@@ -21,10 +21,10 @@ module.exports = {
     'padding-line-between-statements': paddingLineBetweenStatements,
     ...jestRules,
     ...preferDestructuring,
-    'sort-imports': sortImports,
     'prefer-template': 'error',
     'prefer-object-spread': 'error',
     ...importOrder,
+    ...sortImports,
     '@typescript-eslint/no-unused-vars': 'error',
     'comma-dangle': 'off',
   },
