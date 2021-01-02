@@ -1,4 +1,5 @@
 const importOrder = require('./rules/import-order');
+const sortImports = require('./rules/sort-imports');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
@@ -21,6 +22,7 @@ module.exports = {
     },
   },
   rules: {
+    'sort-imports': sortImports,
     'import/order': importOrder,
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/camelcase': 0,

@@ -1,6 +1,7 @@
 const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
 const jestRules = require('./rules/jest');
 const importOrder = require('./rules/import-order');
+const sortImports = require('./rules/sort-imports');
 const commonPlugins = require('./rules/plugins-common');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
@@ -38,15 +39,7 @@ module.exports = {
       {array: false, object: true},
       {enforceForRenamedProperties: false},
     ],
-    'sort-imports': [
-      'error',
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: true,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-      },
-    ],
+    'sort-imports': sortImports,
     'prefer-template': 'error',
     'prefer-object-spread': 'error',
     'import/order': importOrder,

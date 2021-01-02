@@ -1,5 +1,6 @@
 const importOrder = require('./rules/import-order');
 const commonPlugins = require('./rules/plugins-common');
+const sortImports = require('./rules/sort-imports');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
@@ -42,6 +43,7 @@ module.exports = {
     // Don`t needed for typescript files
     '@typescript-eslint/no-empty-function': 'off',
     'react/prop-types': 'off',
+    'sort-imports': sortImports,
     'react/display-name': 'warn',
     'import/order': importOrder,
     'comma-dangle': 'off',
