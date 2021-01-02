@@ -5,6 +5,8 @@ const commonPlugins = require('./rules/plugins-common');
 const sortImports = require('./rules/sort-imports');
 const commonExtends = require('./rules/extends-common');
 const preferDestructuring = require('./rules/prefer-destructuring');
+const tsParser = require('./common/ts-parser');
+const env = require('./common/env');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
@@ -14,18 +16,10 @@ module.exports = {
   },
   plugins: [...commonPlugins, 'react'],
   env: {
+    ...env,
     browser: true,
-    node: true,
-    jest: true,
-    es6: true,
-    'jest/globals': true,
   },
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
+  ...tsParser,
   rules: {
     'prettier/prettier': 'error',
     '@typescript-eslint/no-use-before-define': 0,

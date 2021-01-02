@@ -16,6 +16,7 @@
     "test": "echo ok"
   },
   "files": [
+    "common",
     "rules",
     "backend.js",
     "base.js",

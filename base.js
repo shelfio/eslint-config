@@ -2,6 +2,7 @@ const paddingLineBetweenStatements = require('./rules/padding-line-between-state
 const preferDestructuring = require('./rules/prefer-destructuring');
 const sortImports = require('./rules/sort-imports');
 const jestRules = require('./rules/jest');
+const env = require('./common/env');
 
 module.exports = {
   extends: [
@@ -12,12 +13,7 @@ module.exports = {
     'prettier',
   ],
   plugins: ['jest-formatting', 'jest', 'json-format', 'prettier'],
-  env: {
-    node: true,
-    jest: true,
-    es6: true,
-    'jest/globals': true,
-  },
+  env,
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
