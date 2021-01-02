@@ -1,4 +1,5 @@
 const importOrder = require('./rules/import-order');
+const commonPlugins = require('./rules/plugins-common');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
@@ -17,9 +18,13 @@ module.exports = {
   globals: {
     DD_LOGS: true,
   },
-  plugins: ['@typescript-eslint', 'react', 'import'],
+  plugins: [...commonPlugins, 'react'],
   env: {
     browser: true,
+    node: true,
+    jest: true,
+    es6: true,
+    'jest/globals': true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {

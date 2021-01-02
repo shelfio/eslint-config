@@ -1,6 +1,7 @@
 const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
 const jestRules = require('./rules/jest');
 const importOrder = require('./rules/import-order');
+const commonPlugins = require('./rules/plugins-common');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
@@ -14,7 +15,7 @@ module.exports = {
     'prettier',
     'prettier/@typescript-eslint',
   ],
-  plugins: ['@typescript-eslint', 'jest-formatting', 'jest', 'json-format', 'prettier', 'import'],
+  plugins: commonPlugins,
   env: {
     node: true,
     jest: true,
