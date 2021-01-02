@@ -13,7 +13,6 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:react/recommended',
     'prettier/react',
-    'prettier/@typescript-eslint',
   ],
   globals: {
     DD_LOGS: true,
