@@ -27,6 +27,7 @@ module.exports = {
     ...sortImports,
     '@typescript-eslint/no-unused-vars': 'error',
     'comma-dangle': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
