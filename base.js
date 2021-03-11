@@ -11,7 +11,7 @@ module.exports = {
     'plugin:jest-formatting/strict',
     'plugin:jest/style',
     'plugin:jest/recommended',
-    'prettier',
+    'plugin:prettier/recommended',
   ],
   plugins: ['jest-formatting', 'jest', 'json-format', 'prettier'],
   env,

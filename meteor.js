@@ -2,7 +2,12 @@ const paddingLineBetweenStatements = require('./rules/padding-line-between-state
 const importOrder = require('./rules/import-order.json');
 
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'prettier', 'prettier/react'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+    'prettier/react',
+  ],
   plugins: ['babel', 'react', 'prettier', 'import'],
   env: {
     node: true,
