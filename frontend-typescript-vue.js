@@ -9,7 +9,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:vue/essential',
-    'prettier/@typescript-eslint',
   ],
   plugins: ['@typescript-eslint', 'vue', 'babel', 'jsx', 'import'],
   env: {
