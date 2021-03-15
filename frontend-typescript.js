@@ -10,7 +10,7 @@ const tsParser = require('./common/ts-parser');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 
 module.exports = {
-  extends: [...commonExtends, 'plugin:react/recommended', 'prettier'],
+  extends: [...commonExtends, 'plugin:react/recommended'],
   globals: {
     DD_LOGS: true,
   },
