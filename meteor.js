@@ -6,7 +6,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
-    'prettier/react',
+    'prettier',
   ],
   plugins: ['babel', 'react', 'prettier', 'import'],
   env: {

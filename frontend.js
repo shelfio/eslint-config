@@ -2,7 +2,7 @@ const importOrder = require('./rules/import-order.json');
 const env = require('./common/env');
 
 module.exports = {
-  extends: ['@shelf/eslint-config', 'plugin:react/recommended', 'prettier/react'],
+  extends: ['@shelf/eslint-config', 'plugin:react/recommended', 'prettier'],
   plugins: ['react', 'import'],
   env: {
     browser: true,
