@@ -24,7 +24,6 @@
     "frontend-vue.js",
     "frontend-typescript.js",
     "frontend-typescript-vue.js",
-    "frontend-typescript-vue.js",
     "frontend-testing-library.js",
     "meteor.js",
     "typescript.js"
@@ -35,25 +34,25 @@
     "eslintconfig"
   ],
   "dependencies": {
-    "@babel/eslint-parser": "7.13.14",
+    "@babel/eslint-parser": "7.14.5",
     "@typescript-eslint/eslint-plugin": "4.27.0",
     "@typescript-eslint/parser": "4.27.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-babel": "5.3.1",
-    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-import": "2.23.4",
     "eslint-plugin-jest": "24.3.6",
-    "eslint-plugin-jest-formatting": "2.0.1",
+    "eslint-plugin-jest-formatting": "3.0.0",
     "eslint-plugin-json-format": "2.0.1",
     "eslint-plugin-jsx": "0.1.0",
     "eslint-plugin-prettier": "3.4.0",
-    "eslint-plugin-react": "7.23.2",
+    "eslint-plugin-react": "7.24.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "eslint-plugin-vue": "7.11.1"
   },
   "devDependencies": {
     "husky": "4.3.8",
-    "lint-staged": "10.5.4",
-    "prettier": "2.2.1"
+    "lint-staged": "11.0.0",
+    "prettier": "2.3.1"
   },
   "peerDependencies": {
     "eslint": "7.x",
