@@ -41,6 +41,7 @@ module.exports = {
     ...sortImports,
     '@typescript-eslint/no-unused-vars': 'error',
     'comma-dangle': 'off',
+    'no-console': 'error',
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };

@@ -22,5 +22,6 @@ module.exports = {
   rules: {
     ...importOrder,
     'comma-dangle': 'off',
+    'no-console': 'error',
   },
 };
