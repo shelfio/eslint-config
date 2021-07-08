@@ -94,6 +94,22 @@ $ yarn add @shelf/eslint-config --dev
 }
 ```
 
+#### React with Typescript and Next `.eslintrc`
+
+```json
+{
+  "extends": ["@shelf/eslint-config/frontend-next"],
+  "settings": {
+    "react": {
+      "version": "17.0.2"
+    }
+  },
+  "rules": {
+    "react/prop-types": "warn"
+  }
+}
+```
+
 ## Publish
 
 ```sh
