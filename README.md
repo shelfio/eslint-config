@@ -98,7 +98,7 @@ $ yarn add @shelf/eslint-config --dev
 
 ```json
 {
-  "extends": ["@shelf/eslint-config/frontend-typescript", "@shelf/eslint-config/frontend-next"],
+  "extends": ["@shelf/eslint-config/frontend-next"],
   "settings": {
     "react": {
       "version": "17.0.2"
