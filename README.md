@@ -44,7 +44,7 @@ $ yarn add @shelf/eslint-config --dev
 }
 ```
 
-#### TypeScript `.eslintrc`
+#### TypeScript or TypeScript + Next `.eslintrc`
 
 ```json
 {
@@ -90,22 +90,6 @@ $ yarn add @shelf/eslint-config --dev
   "rules": {
     "testing-library/no-wait-for-empty-callback": "error",
     "testing-library/no-await-sync-query": "error"
-  }
-}
-```
-
-#### React with Typescript and Next `.eslintrc`
-
-```json
-{
-  "extends": ["@shelf/eslint-config/frontend-next"],
-  "settings": {
-    "react": {
-      "version": "17.0.2"
-    }
-  },
-  "rules": {
-    "react/prop-types": "warn"
   }
 }
 ```
