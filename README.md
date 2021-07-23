@@ -10,11 +10,9 @@ $ yarn add @shelf/eslint-config --dev
 
 ### Backend
 
-#### JavaScript `.eslintrc`
-
 ```json
 {
-  "extends": ["@shelf/eslint-config/backend"]
+  "extends": ["@shelf/eslint-config/typescript"]
 }
 ```
 
