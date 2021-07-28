@@ -15,7 +15,7 @@ module.exports = {
   env,
   ...tsParser,
   rules: {
-    complexity: ['error', {max: 4}],
+    complexity: ['warn', {max: 6}],
     'prettier/prettier': 'error',
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/camelcase': 0,
