@@ -8,6 +8,7 @@ const preferDestructuring = require('./rules/prefer-destructuring');
 const sortImports = require('./rules/sort-imports.json');
 const tsParser = require('./common/ts-parser');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
+const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
 
 module.exports = {
   extends: commonExtends,
@@ -29,6 +30,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     'comma-dangle': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
+    ...consistentTypeAssertions,
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
