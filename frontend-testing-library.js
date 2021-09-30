@@ -1,5 +1,4 @@
 module.exports = {
-  extends: ['plugin:testing-library/react'],
   plugins: ['testing-library'],
   rules: {
     'testing-library/await-async-query': 'error',
@@ -12,4 +11,10 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react'],
+    },
+  ],
 };
