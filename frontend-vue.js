@@ -1,5 +1,3 @@
-const baseConfig = require('./base');
-
 module.exports = {
   extends: ['./base.js', 'plugin:vue/essential'],
   plugins: ['vue', 'babel', 'jsx', 'import'],

@@ -1,5 +1,3 @@
-const importOrder = require('./rules/import-order.json');
-const sortImports = require('./rules/sort-imports.json');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
 const vueConfig = require('./frontend-vue');
