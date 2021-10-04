@@ -1,13 +1,8 @@
-const importOrder = require('./rules/import-order.json');
 const env = require('./common/env');
+const baseConfig = require('./base');
 
 module.exports = {
-  extends: [
-    '@shelf/eslint-config',
-    'plugin:react/recommended',
-    'prettier',
-    'plugin:react-hooks/recommended',
-  ],
+  extends: ['./base.js', 'plugin:react/recommended', 'prettier', 'plugin:react-hooks/recommended'],
   plugins: ['react', 'import'],
   env: {
     browser: true,
@@ -20,8 +15,7 @@ module.exports = {
     },
   },
   rules: {
-    ...importOrder,
-    'comma-dangle': 'off',
+    ...baseConfig.rules,
     'no-console': 'error',
   },
 };

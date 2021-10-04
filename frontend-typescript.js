@@ -1,28 +1,19 @@
 const commonExtends = require('./rules/extends-common.json');
 const commonPlugins = require('./common/plugins');
-const env = require('./common/env');
-const importOrder = require('./rules/import-order.json');
-const jestRules = require('./rules/jest.json');
-const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
-const preferDestructuring = require('./rules/prefer-destructuring');
-const sortImports = require('./rules/sort-imports.json');
 const tsParser = require('./common/ts-parser');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
+const frontendConfig = require('./frontend');
 
 module.exports = {
-  extends: [...commonExtends, 'plugin:react/recommended', 'plugin:react-hooks/recommended'],
+  extends: ['./frontend.js', ...commonExtends],
   globals: {
     DD_LOGS: true,
   },
-  plugins: [...commonPlugins, 'react'],
-  env: {
-    ...env,
-    browser: true,
-  },
+  plugins: [...commonPlugins, ...frontendConfig.plugins, 'testing-library'],
   ...tsParser,
   rules: {
-    'prettier/prettier': 'error',
+    ...frontendConfig.rules,
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/camelcase': 0,
     // it fail to compile TS on react static class properties (displayName | defaultProps | etc..)
@@ -33,17 +24,24 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'react/prop-types': 'off',
     'react/display-name': 'warn',
-    'padding-line-between-statements': paddingLineBetweenStatements,
-    ...jestRules,
-    ...preferDestructuring,
-    'prefer-template': 'error',
-    'prefer-object-spread': 'error',
-    ...importOrder,
-    ...sortImports,
     '@typescript-eslint/no-unused-vars': 'error',
-    'comma-dangle': 'off',
-    'no-console': 'error',
     ...consistentTypeAssertions,
+    'testing-library/await-async-query': 'error',
+    'testing-library/no-await-sync-query': 'error',
+    'testing-library/no-debug': 'warn',
+    'testing-library/consistent-data-testid': [
+      2,
+      {
+        testIdPattern: '^(([a-z])+(-)*)+$',
+      },
+    ],
   },
-  overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
+  overrides: [
+    allowRequireInConfigs,
+    noExplicitReturnTypeInTests,
+    {
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react'],
+    },
+  ],
 };
