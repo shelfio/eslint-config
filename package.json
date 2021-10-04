@@ -23,7 +23,6 @@
     "frontend-vue.js",
     "frontend-typescript.js",
     "frontend-typescript-vue.js",
-    "frontend-testing-library.js",
     "meteor.js",
     "typescript.js"
   ],
