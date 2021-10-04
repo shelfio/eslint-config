@@ -1,7 +1,7 @@
-const importOrder = require('./rules/import-order.json');
+const baseConfig = require('./base');
 
 module.exports = {
-  extends: ['@shelf/eslint-config', 'plugin:prettier/recommended', 'plugin:vue/essential'],
+  extends: [baseConfig, 'plugin:vue/essential'],
   plugins: ['vue', 'babel', 'jsx', 'import'],
   env: {
     browser: true,
@@ -11,9 +11,5 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-  },
-  rules: {
-    ...importOrder,
-    'comma-dangle': 'off',
   },
 };
