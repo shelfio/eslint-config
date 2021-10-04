@@ -6,7 +6,7 @@ const vueConfig = require('./frontend-vue');
 
 module.exports = {
   extends: [
-    vueConfig,
+    './frontend-vue',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
   ],
