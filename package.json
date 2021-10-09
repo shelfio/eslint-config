@@ -55,7 +55,7 @@
     "prettier": "2.4.0"
   },
   "peerDependencies": {
-    "eslint": "7.x",
+    "eslint": "7.x || 8.x",
     "prettier": "2.x"
   },
   "husky": {
