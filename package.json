@@ -32,36 +32,31 @@
     "eslintconfig"
   ],
   "dependencies": {
-    "@babel/eslint-parser": "7.15.0",
+    "@babel/eslint-parser": "7.15.8",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
     "eslint-config-next": "11.1.2",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-babel": "5.3.1",
-    "eslint-plugin-import": "2.24.2",
+    "eslint-plugin-import": "2.25.2",
     "eslint-plugin-jest": "24.4.3",
     "eslint-plugin-jest-formatting": "3.0.0",
     "eslint-plugin-json-format": "2.0.1",
     "eslint-plugin-jsx": "0.1.0",
     "eslint-plugin-prettier": "3.4.1",
-    "eslint-plugin-react": "7.24.0",
+    "eslint-plugin-react": "7.26.1",
     "eslint-plugin-react-hooks": "4.2.0",
-    "eslint-plugin-testing-library": "4.12.0",
-    "eslint-plugin-vue": "7.14.0"
+    "eslint-plugin-testing-library": "4.12.4",
+    "eslint-plugin-vue": "7.19.1"
   },
   "devDependencies": {
-    "husky": "4.3.8",
-    "lint-staged": "11.1.2",
-    "prettier": "2.4.0"
+    "husky": "7.0.2",
+    "lint-staged": "11.2.3",
+    "prettier": "2.4.1"
   },
   "peerDependencies": {
     "eslint": "7.x",
     "prettier": "2.x"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.{js,json,css,md,yml}": [
