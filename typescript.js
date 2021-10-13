@@ -17,6 +17,7 @@ module.exports = {
   ...tsParser,
   rules: {
     complexity: ['warn', {max: 5}],
+    'multiline-ternary': ['error', 'never'],
     curly: 'error',
     'no-nested-ternary': 'error',
     'prettier/prettier': 'error',
