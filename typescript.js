@@ -18,6 +18,7 @@ module.exports = {
   rules: {
     complexity: ['warn', {max: 5}],
     curly: 'error',
+    'no-nested-ternary': 'error',
     'prettier/prettier': 'error',
     '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/camelcase': 0,
