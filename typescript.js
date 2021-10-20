@@ -34,6 +34,7 @@ module.exports = {
     'comma-dangle': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     ...consistentTypeAssertions,
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };

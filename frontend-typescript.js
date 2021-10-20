@@ -35,6 +35,7 @@ module.exports = {
         testIdPattern: '^(([a-z])+(-)*)+$',
       },
     ],
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
   },
   overrides: [
     allowRequireInConfigs,

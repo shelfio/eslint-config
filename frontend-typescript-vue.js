@@ -20,6 +20,7 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': 0,
     'jest/lowercase-name': 'off',
     ...consistentTypeAssertions,
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
