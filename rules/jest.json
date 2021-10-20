@@ -12,10 +12,9 @@
       "assertFunctionNames": ["expect"]
     }
   ],
-  "jest/lowercase-name": "error",
+  "jest/prefer-lowercase-title": "error",
   "jest/no-commented-out-tests": "error",
   "jest/no-duplicate-hooks": "error",
-  "jest/no-expect-resolves": "warn",
   "jest/no-export": "error",
   "jest/no-large-snapshots": "warn",
   "jest/no-if": "warn",
