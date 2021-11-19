@@ -44,7 +44,7 @@
     "eslint-plugin-json-format": "2.0.1",
     "eslint-plugin-jsx": "0.1.0",
     "eslint-plugin-prettier": "4.0.0",
-    "eslint-plugin-react": "7.26.1",
+    "eslint-plugin-react": "7.27.1",
     "eslint-plugin-react-hooks": "4.2.0",
     "eslint-plugin-testing-library": "5.0.0",
     "eslint-plugin-vue": "7.20.0"
