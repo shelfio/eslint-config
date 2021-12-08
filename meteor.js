@@ -33,5 +33,6 @@ module.exports = {
     camelcase: 'error',
     eqeqeq: 'error',
     'new-cap': 'error',
+    'no-extend-native': 'error',
   },
 };
