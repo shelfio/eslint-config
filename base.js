@@ -32,5 +32,6 @@ module.exports = {
     'comma-dangle': 'off',
     camelcase: 'error',
     eqeqeq: 'error',
+    'new-cap': 'error',
   },
 };

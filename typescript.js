@@ -38,6 +38,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off', // we want to allow using the "!" operator
     camelcase: 'error',
     eqeqeq: 'error',
+    'new-cap': 'error',
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
