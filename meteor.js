@@ -31,5 +31,6 @@ module.exports = {
     'padding-line-between-statements': paddingLineBetweenStatements,
     'comma-dangle': 'off',
     camelcase: 'error',
+    eqeqeq: 'error',
   },
 };

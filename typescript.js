@@ -37,6 +37,7 @@ module.exports = {
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/no-non-null-assertion': 'off', // we want to allow using the "!" operator
     camelcase: 'error',
+    eqeqeq: 'error',
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
