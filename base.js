@@ -30,5 +30,6 @@ module.exports = {
     'prefer-template': 'error',
     'prefer-object-spread': 'error',
     'comma-dangle': 'off',
+    camelcase: 'error',
   },
 };
