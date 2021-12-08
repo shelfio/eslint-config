@@ -40,6 +40,7 @@ module.exports = {
     eqeqeq: 'error',
     'new-cap': 'error',
     'no-extend-native': 'error',
+    'no-use-before-define': ['error', 'nofunc'],
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
