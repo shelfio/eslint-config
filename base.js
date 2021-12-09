@@ -31,7 +31,7 @@ module.exports = {
     'prefer-object-spread': 'error',
     'comma-dangle': 'off',
     camelcase: 'error',
-    eqeqeq: 'error',
+    eqeqeq: ['error', 'smart'],
     'new-cap': 'error',
     'no-extend-native': 'error',
     'no-use-before-define': ['error', 'nofunc'],

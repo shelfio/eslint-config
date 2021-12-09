@@ -31,7 +31,7 @@ module.exports = {
     'padding-line-between-statements': paddingLineBetweenStatements,
     'comma-dangle': 'off',
     camelcase: 'error',
-    eqeqeq: 'error',
+    eqeqeq: ['error', 'smart'],
     'new-cap': 'error',
     'no-extend-native': 'error',
     'no-use-before-define': ['error', 'nofunc'],
