@@ -9,6 +9,7 @@ const sortImports = require('./rules/sort-imports.json');
 const tsParser = require('./common/ts-parser');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
+const consistentTypeImports = require('./rules/consistent-type-imports.json');
 
 module.exports = {
   extends: commonExtends,
@@ -36,6 +37,7 @@ module.exports = {
     ...consistentTypeAssertions,
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/no-non-null-assertion': 'off', // we want to allow using the "!" operator
+    ...consistentTypeImports,
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
