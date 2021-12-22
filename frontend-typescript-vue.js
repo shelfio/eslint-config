@@ -1,5 +1,6 @@
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
+const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const vueConfig = require('./frontend-vue');
 
 module.exports = {
@@ -21,6 +22,7 @@ module.exports = {
     'jest/lowercase-name': 'off',
     ...consistentTypeAssertions,
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+    ...consistentTypeImports,
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };

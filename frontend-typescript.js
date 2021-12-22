@@ -3,6 +3,7 @@ const commonPlugins = require('./common/plugins');
 const tsParser = require('./common/ts-parser');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
+const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const frontendConfig = require('./frontend');
 
 module.exports = {
@@ -28,7 +29,7 @@ module.exports = {
     ...consistentTypeAssertions,
     'testing-library/await-async-query': 'error',
     'testing-library/no-await-sync-query': 'error',
-    'testing-library/no-debug': 'warn',
+    'testing-library/no-debugging-utils': 'warn',
     'testing-library/consistent-data-testid': [
       2,
       {
@@ -36,6 +37,7 @@ module.exports = {
       },
     ],
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+    ...consistentTypeImports,
   },
   overrides: [
     allowRequireInConfigs,
