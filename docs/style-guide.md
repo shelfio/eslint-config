@@ -18,6 +18,7 @@ This style guide is based on https://github.com/felixge/node-style-guide and ada
 * [Use lowerCamelCase for variables, properties and function names](#use-lowercamelcase-for-variables-properties-and-function-names)
 * [Use UpperCamelCase for class names](#use-uppercamelcase-for-class-names)
 * [Use UPPERCASE for Constants](#use-uppercase-for-constants)
+* [Other notes for naming conventions](#other-notes-for-naming-conventions)
 
 ### Variables
 * [Object / Array creation](#object--array-creation)
@@ -214,6 +215,10 @@ File.fullPermissions = 0777;
 ```
 
 [const]: https://developer.mozilla.org/en/JavaScript/Reference/Statements/const
+
+### Other notes for naming conventions
+
+Read ['Naming convention'](https://gemshelf.atlassian.net/wiki/spaces/PD/pages/3304521737/Naming+convention) page on Confluence
 
 ## Variables
 
