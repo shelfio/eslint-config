@@ -27,7 +27,6 @@ This style guide is based on https://github.com/felixge/node-style-guide and ada
 * [Use descriptive conditions](#use-descriptive-conditions)
 
 ### Functions
-* [Write small functions](#write-small-functions)
 * [Return early from functions](#return-early-from-functions)
 * [Name your closures](#name-your-closures)
 * [No nested closures](#no-nested-closures)
@@ -295,12 +294,6 @@ if (password.length >= 4 && /^(?=.*\d).{4,}$/.test(password)) {
 ```
 
 ## Functions
-
-### Write small functions
-
-Keep your functions short. A good function fits on a slide that the people in
-the last row of a big room can comfortably read. So don't count on them having
-perfect vision and limit yourself to ~15 lines of code per function.
 
 ### Return early from functions
 
