@@ -12,7 +12,7 @@ This style guide is based on https://github.com/felixge/node-style-guide and ada
 * [100 characters per line](#100-characters-per-line)
 * [Use single quotes](#use-single-quotes)
 * [Opening braces go on the same line](#opening-braces-go-on-the-same-line)
-* [Declare one variable per var statement](#declare-one-variable-per-var-statement)
+* [Declare one variable per declaration and initialization](#declare-one-variable-per-declaration-and-initialization)
 
 ### Naming Conventions
 * [Use lowerCamelCase for variables, properties and function names](#use-lowercamelcase-for-variables-properties-and-function-names)
@@ -83,13 +83,13 @@ Use single quotes, unless you are writing JSON.
 *Right:*
 
 ```js
-var foo = 'bar';
+const foo = 'bar';
 ```
 
 *Wrong:*
 
 ```js
-var foo = "bar";
+const foo = "bar";
 ```
 
 ### Opening braces go on the same line
@@ -115,9 +115,9 @@ if (true)
 
 Also, notice the use of whitespace before and after the condition statement.
 
-### Declare one variable per var statement
+### Declare one variable per declaration and initialization
 
-Declare one variable per var statement, it makes it easier to re-order the
+Declare one variable per declaration and initialization, it makes it easier to re-order the
 lines. However, ignore [Crockford][crockfordconvention] when it comes to
 declaring variables deeper inside a function, just put the declarations wherever
 they make sense.
@@ -125,12 +125,12 @@ they make sense.
 *Right:*
 
 ```js
-var keys   = ['foo', 'bar'];
-var values = [23, 42];
+const keys   = ['foo', 'bar'];
+const values = [23, 42];
 
-var object = {};
+const object = {};
 while (keys.length) {
-  var key = keys.pop();
+  const key = keys.pop();
   object[key] = values.pop();
 }
 ```
@@ -138,10 +138,10 @@ while (keys.length) {
 *Wrong:*
 
 ```js
-var keys = ['foo', 'bar'],
-    values = [23, 42],
-    object = {},
-    key;
+const keys = ['foo', 'bar'],
+  values = [23, 42],
+  object = {},
+  key;
 
 while (keys.length) {
   key = keys.pop();
@@ -162,13 +162,13 @@ abbreviations should generally be avoided.
 *Right:*
 
 ```js
-var adminUser = db.query('SELECT * FROM users ...');
+const adminUser = db.query('SELECT * FROM users ...');
 ```
 
 *Wrong:*
 
 ```js
-var admin_user = db.query('SELECT * FROM users ...');
+const admin_user = db.query('SELECT * FROM users ...');
 ```
 
 ### Use UpperCamelCase for class names
@@ -197,7 +197,7 @@ using all uppercase letters.
 *Right:*
 
 ```js
-var SECOND = 1 * 1000;
+let SECOND = 1 * 1000;
 
 function File() {
 }
@@ -226,8 +226,8 @@ keys when your interpreter complains:
 *Right:*
 
 ```js
-var a = ['hello', 'world'];
-var b = {
+const a = ['hello', 'world'];
+const b = {
   good: 'code',
   'is generally': 'pretty',
 };
@@ -236,12 +236,12 @@ var b = {
 *Wrong:*
 
 ```js
-var a = [
+const a = [
   'hello', 'world'
 ];
-var b = {"good": 'code'
-        , is generally: 'pretty'
-        };
+const b = {"good": 'code'
+  , 'is generally': 'pretty'
+};
 ```
 
 ## Conditionals
@@ -254,7 +254,7 @@ the triple equality operator as it will work just as expected.
 *Right:*
 
 ```js
-var a = 0;
+const a = 0;
 if (a !== '') {
   console.log('winning');
 }
@@ -264,7 +264,7 @@ if (a !== '') {
 *Wrong:*
 
 ```js
-var a = 0;
+const a = 0;
 if (a == '') {
   console.log('losing');
 }
@@ -279,7 +279,7 @@ Any non-trivial conditions should be assigned to a descriptively named variable 
 *Right:*
 
 ```js
-var isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
+const isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
 
 if (isValidPassword) {
   console.log('winning');
@@ -344,7 +344,7 @@ further:
 
 ```js
 function isPercentage(val) {
-  var isInRange = (val >= 0 && val <= 100);
+  const isInRange = (val >= 0 && val <= 100);
   return isInRange;
 }
 ```
@@ -453,7 +453,7 @@ segments of your code. Don't use comments to restate trivial things.
 
 ```js
 // 'ID_SOMETHING=VALUE' -> ['ID_SOMETHING=VALUE', 'SOMETHING', 'VALUE']
-var matches = item.match(/ID_([^\n]+)=([^\n]+)/));
+const matches = item.match(/ID_([^\n]+)=([^\n]+)/));
 
 // This function has a nasty side effect where a failure to increment a
 // redis counter used for statistics will cause an exception. This needs
@@ -462,7 +462,7 @@ function loadUser(id, cb) {
   // ...
 }
 
-var isSessionValid = (session.expires < Date.now());
+const isSessionValid = (session.expires < Date.now());
 if (isSessionValid) {
   // ...
 }
@@ -472,7 +472,7 @@ if (isSessionValid) {
 
 ```js
 // Execute a regex
-var matches = item.match(/ID_([^\n]+)=([^\n]+)/);
+const matches = item.match(/ID_([^\n]+)=([^\n]+)/);
 
 // Usage: loadUser(5, function() { ... })
 function loadUser(id, cb) {
@@ -480,7 +480,7 @@ function loadUser(id, cb) {
 }
 
 // Check if the session is valid
-var isSessionValid = (session.expires < Date.now());
+const isSessionValid = (session.expires < Date.now());
 // If the session is valid
 if (isSessionValid) {
   // ...
@@ -546,7 +546,7 @@ be forever grateful.
 *Right:*
 
 ```js
-var a = [];
+const a = [];
 if (!a.length) {
   console.log('winning');
 }
@@ -559,7 +559,7 @@ Array.prototype.empty = function() {
   return !this.length;
 }
 
-var a = [];
+const a = [];
 if (a.empty()) {
   console.log('losing');
 }
