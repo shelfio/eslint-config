@@ -29,7 +29,7 @@ module.exports = {
     ...consistentTypeAssertions,
     'testing-library/await-async-query': 'error',
     'testing-library/no-await-sync-query': 'error',
-    'testing-library/no-debug': 'warn',
+    'testing-library/no-debugging-utils': 'warn',
     'testing-library/consistent-data-testid': [
       2,
       {
