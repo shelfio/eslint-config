@@ -38,7 +38,7 @@ This style guide is based on https://github.com/felixge/node-style-guide and ada
 
 ### Miscellaneous
 * [Object.freeze, Object.preventExtensions, Object.seal, with, eval](#objectfreeze-objectpreventextensions-objectseal-with-eval)
-* [Requires At Top](#requires-at-top)
+* [Modules imports at top](#modules-imports-at-top)
 * [Getters and setters](#getters-and-setters)
 * [Do not extend built-in prototypes](#do-not-extend-built-in-prototypes)
 
@@ -493,9 +493,40 @@ if (isSessionValid) {
 
 Crazy shit that you will probably never need. Stay away from it.
 
-### Requires At Top
+### Modules imports at top
 
-Always put requires at top of file to clearly illustrate a file's dependencies. Besides giving an overview for others at a quick glance of dependencies and possible memory impact, it allows one to determine if they need a package.json file should they choose to use the file elsewhere.
+Always put modules imports at top of file to clearly illustrate a file's dependencies. Besides giving an overview for others at a quick glance of dependencies and possible memory impact, it allows one to determine if they need a package.json file should they choose to use the file elsewhere.
+
+*Right:*
+
+```js
+import firstModule from './firstModule.js';
+import secondModule from './secondModule.js';
+
+const SOME_CONSTANT = 'some-constant';
+
+function main() {
+  //
+  // ...
+  //
+}
+```
+
+*Wrong:*
+
+```js
+const SOME_CONSTANT = 'some-constant';
+
+import firstModule from './firstModule.js';
+
+function main() {
+  //
+  // ...
+  //
+}
+
+import secondModule from './secondModule.js';
+```
 
 ### Getters and setters
 
