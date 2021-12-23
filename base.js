@@ -35,5 +35,6 @@ module.exports = {
     'new-cap': 'error',
     'no-extend-native': 'error',
     'no-use-before-define': ['error', 'nofunc'],
+    'multiline-comment-style': ['error', 'separate-lines'],
   },
 };

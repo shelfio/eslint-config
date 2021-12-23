@@ -43,6 +43,7 @@ module.exports = {
     'no-extend-native': 'error',
     'no-use-before-define': ['error', 'nofunc'],
     ...consistentTypeImports,
+    'multiline-comment-style': ['error', 'separate-lines'],
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
