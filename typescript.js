@@ -44,7 +44,7 @@ module.exports = {
     'no-use-before-define': ['error', 'nofunc'],
     ...consistentTypeImports,
     'multiline-comment-style': ['error', 'separate-lines'],
-    'arrow-body-style': ['error', {'as-needed': true, requireReturnForObjectLiteral: true}],
+    'arrow-body-style': ['error', 'as-needed', {requireReturnForObjectLiteral: true }],
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
