@@ -37,13 +37,14 @@ module.exports = {
     ...consistentTypeAssertions,
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/no-non-null-assertion': 'off', // we want to allow using the "!" operator
-    camelcase: 'error',
+    camelcase: ['error', {properties: 'never', ignoreGlobals: true}],
     eqeqeq: ['error', 'smart'],
     'new-cap': 'error',
     'no-extend-native': 'error',
     'no-use-before-define': ['error', 'nofunc'],
     ...consistentTypeImports,
     'multiline-comment-style': ['error', 'separate-lines'],
+    'arrow-body-style': ['error', {'as-needed': true, requireReturnForObjectLiteral: true}],
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
