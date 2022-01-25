@@ -36,7 +36,7 @@ module.exports = {
     ...consistentTypeAssertions,
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/no-non-null-assertion': 'off', // we want to allow using the "!" operator
-    camelcase: ['error', {properties: 'never', ignoreGlobals: true}],
+    camelcase: ['error', {properties: 'never', ignoreGlobals: true, allow: ['hash_key', 'range_key']}],
     eqeqeq: ['error', 'smart'],
     'new-cap': 'error',
     'no-extend-native': 'error',
