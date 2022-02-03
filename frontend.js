@@ -24,5 +24,6 @@ module.exports = {
     ...baseConfig.rules,
     'no-console': 'error',
     'sonarjs/cognitive-complexity': ['error', 18],
+    'multiline-comment-style': 'off'
   },
 };
