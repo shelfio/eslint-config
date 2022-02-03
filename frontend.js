@@ -2,8 +2,14 @@ const env = require('./common/env');
 const baseConfig = require('./base');
 
 module.exports = {
-  extends: ['./base.js', 'plugin:react/recommended', 'prettier', 'plugin:react-hooks/recommended'],
-  plugins: ['react', 'import'],
+  extends: [
+    './base.js',
+    'plugin:react/recommended',
+    'prettier',
+    'plugin:react-hooks/recommended',
+    'plugin:sonarjs/recommended',
+  ],
+  plugins: ['react', 'import', 'sonarjs'],
   env: {
     browser: true,
     ...env,
