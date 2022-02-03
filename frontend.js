@@ -23,5 +23,6 @@ module.exports = {
   rules: {
     ...baseConfig.rules,
     'no-console': 'error',
+    'sonarjs/cognitive-complexity': ['error', 18],
   },
 };
