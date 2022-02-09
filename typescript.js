@@ -22,7 +22,6 @@ module.exports = {
     curly: 'error',
     'no-nested-ternary': 'error',
     'prettier/prettier': 'error',
-    '@typescript-eslint/camelcase': 0,
     'padding-line-between-statements': paddingLineBetweenStatements,
     ...jestRules,
     ...preferDestructuring,
@@ -45,6 +44,7 @@ module.exports = {
     ...consistentTypeImports,
     'multiline-comment-style': ['error', 'separate-lines'],
     'arrow-body-style': ['error', 'as-needed', {requireReturnForObjectLiteral: true }],
+    'no-unreachable': 'error'
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
