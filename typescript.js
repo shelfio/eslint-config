@@ -22,6 +22,7 @@ module.exports = {
     curly: 'error',
     'no-nested-ternary': 'error',
     'prettier/prettier': 'error',
+    '@typescript-eslint/camelcase': 0,
     'padding-line-between-statements': paddingLineBetweenStatements,
     ...jestRules,
     ...preferDestructuring,
