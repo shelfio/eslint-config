@@ -45,6 +45,7 @@ module.exports = {
     ...consistentTypeImports,
     'multiline-comment-style': ['error', 'separate-lines'],
     'arrow-body-style': ['error', 'as-needed', {requireReturnForObjectLiteral: true }],
+    'no-unreachable': 'error'
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
