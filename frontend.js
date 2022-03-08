@@ -20,11 +20,19 @@ module.exports = {
       jsx: true,
     },
   },
+  overrides: [
+    {
+      files: ['*.test.{ts,tsx}'],
+      rules: {
+        'sonarjs/no-duplicate-string': 'off',
+      },
+    },
+  ],
   rules: {
     ...baseConfig.rules,
     'no-console': 'error',
     'sonarjs/cognitive-complexity': ['error', 18],
     'multiline-comment-style': 'off',
-    'no-unreachable': 'error'
+    'no-unreachable': 'error',
   },
 };
