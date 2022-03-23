@@ -46,5 +46,18 @@ module.exports = {
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
       extends: ['plugin:testing-library/react'],
     },
+    {
+      files: ['*.test.{ts,tsx,js}', 'mocks.ts', 'mock.js'],
+      rules: {
+        camelcase: 'off',
+        'sonarjs/no-duplicate-string': 'off',
+      },
+    },
+    {
+      files: ['*.styled.{ts,tsx}'],
+      rules: {
+        'sonarjs/no-nested-template-literals': 'off',
+      },
+    },
   ],
 };
