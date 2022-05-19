@@ -41,7 +41,7 @@ module.exports = {
     'new-cap': 'error',
     'no-extend-native': 'error',
     'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error', {functions: false, classes: true, variables: true, typedefs: false, ignoreTypeReferences: true}],
+    '@typescript-eslint/no-use-before-define': 'off',
     ...consistentTypeImports,
     'multiline-comment-style': ['error', 'separate-lines'],
     'arrow-body-style': ['error', 'as-needed', {requireReturnForObjectLiteral: true }],
