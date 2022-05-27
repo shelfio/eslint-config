@@ -36,5 +36,6 @@ module.exports = {
     'no-extend-native': 'error',
     'no-use-before-define': ['error', 'nofunc'],
     'multiline-comment-style': ['error', 'separate-lines'],
+    'require-await': 'error',
   },
 };
