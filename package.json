@@ -18,6 +18,7 @@
   "files": [
     "common",
     "rules",
+    "base.js",
     "frontend.js",
     "frontend-vue.js",
     "frontend-typescript.js",
@@ -25,7 +26,7 @@
     "meteor.js",
     "typescript.js"
   ],
-  "main": "typescript.js",
+  "main": "base.js",
   "keywords": [
     "eslint",
     "eslintconfig"
