@@ -6,6 +6,7 @@ const consistentTypeAssertions = require('./rules/consistent-type-assertions.jso
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const frontendConfig = require('./frontend');
 const youDontNeedLodashRules = require('./rules/you-dont-need-lodash.json');
+const typescriptRules = require('./rules/typescript');
 
 module.exports = {
   extends: ['./frontend.js', ...commonExtends, 'plugin:you-dont-need-lodash-underscore/compatible'],
@@ -37,7 +38,7 @@ module.exports = {
         testIdPattern: '^(([a-z])+(-)*)+$',
       },
     ],
-    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+    ...typescriptRules,
     ...consistentTypeImports,
     ...youDontNeedLodashRules,
   },

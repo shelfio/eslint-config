@@ -11,6 +11,7 @@ const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./common/o
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const youDontNeedLodashRules = require('./rules/you-dont-need-lodash.json');
+const typescriptRules = require('./rules/typescript');
 
 module.exports = {
   extends: [...commonExtends, 'plugin:you-dont-need-lodash-underscore/compatible'],
@@ -35,7 +36,7 @@ module.exports = {
     'comma-dangle': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     ...consistentTypeAssertions,
-    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+    ...typescriptRules,
     '@typescript-eslint/no-non-null-assertion': 'off', // we want to allow using the "!" operator
     camelcase: [
       'error',
