@@ -1,5 +1,5 @@
-const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
-const preferDestructuring = require('./rules/prefer-destructuring');
+const paddingLineBetweenStatements = require('./rules/padding-line-between-statements.json');
+const preferDestructuring = require('./rules/prefer-destructuring.json');
 const sortImports = require('./rules/sort-imports.json');
 const importOrder = require('./rules/import-order.json');
 const jestRules = require('./rules/jest.json');
@@ -21,7 +21,7 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
-    'padding-line-between-statements': paddingLineBetweenStatements,
+    ...paddingLineBetweenStatements,
     ...jestRules,
     ...preferDestructuring,
     'no-empty': ['error', {allowEmptyCatch: true}],

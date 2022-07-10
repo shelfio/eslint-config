@@ -3,8 +3,8 @@ const commonPlugins = require('./common/plugins');
 const env = require('./common/env');
 const importOrder = require('./rules/import-order.json');
 const jestRules = require('./rules/jest.json');
-const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
-const preferDestructuring = require('./rules/prefer-destructuring');
+const paddingLineBetweenStatements = require('./rules/padding-line-between-statements.json');
+const preferDestructuring = require('./rules/prefer-destructuring.json');
 const sortImports = require('./rules/sort-imports.json');
 const tsParser = require('./common/ts-parser');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./common/overrides');
@@ -24,7 +24,7 @@ module.exports = {
     'no-nested-ternary': 'error',
     'prettier/prettier': 'error',
     '@typescript-eslint/camelcase': 0,
-    'padding-line-between-statements': paddingLineBetweenStatements,
+    ...paddingLineBetweenStatements,
     ...jestRules,
     ...preferDestructuring,
     'prefer-template': 'error',

@@ -1,4 +1,4 @@
-const paddingLineBetweenStatements = require('./rules/padding-line-between-statements');
+const paddingLineBetweenStatements = require('./rules/padding-line-between-statements.json');
 const importOrder = require('./rules/import-order.json');
 
 module.exports = {
@@ -28,7 +28,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     ...importOrder,
-    'padding-line-between-statements': paddingLineBetweenStatements,
+    ...paddingLineBetweenStatements,
     'comma-dangle': 'off',
     camelcase: 'error',
     eqeqeq: ['error', 'smart'],
