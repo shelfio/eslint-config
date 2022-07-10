@@ -1,4 +1,4 @@
-const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
+const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./common/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const vueConfig = require('./frontend-vue');

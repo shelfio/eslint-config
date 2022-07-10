@@ -1,4 +1,4 @@
-const commonExtends = require('./rules/extends-common.json');
+const commonExtends = require('./common/extends.json');
 const commonPlugins = require('./common/plugins');
 const env = require('./common/env');
 const importOrder = require('./rules/import-order.json');
@@ -7,7 +7,7 @@ const paddingLineBetweenStatements = require('./rules/padding-line-between-state
 const preferDestructuring = require('./rules/prefer-destructuring');
 const sortImports = require('./rules/sort-imports.json');
 const tsParser = require('./common/ts-parser');
-const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
+const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./common/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const youDontNeedLodashRules = require('./rules/you-dont-need-lodash.json');

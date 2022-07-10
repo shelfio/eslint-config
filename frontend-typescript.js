@@ -1,7 +1,7 @@
-const commonExtends = require('./rules/extends-common.json');
+const commonExtends = require('./common/extends.json');
 const commonPlugins = require('./common/plugins');
 const tsParser = require('./common/ts-parser');
-const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
+const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./common/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const frontendConfig = require('./frontend');
