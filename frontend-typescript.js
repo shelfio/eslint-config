@@ -5,9 +5,10 @@ const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/ov
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const frontendConfig = require('./frontend');
+const youDontNeedLodashRules = require('./rules/you-dont-need-lodash.json');
 
 module.exports = {
-  extends: ['./frontend.js', ...commonExtends],
+  extends: ['./frontend.js', ...commonExtends, 'plugin:you-dont-need-lodash-underscore/compatible'],
   globals: {
     DD_LOGS: true,
   },
@@ -38,6 +39,7 @@ module.exports = {
     ],
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     ...consistentTypeImports,
+    ...youDontNeedLodashRules,
   },
   overrides: [
     allowRequireInConfigs,

@@ -10,9 +10,10 @@ const tsParser = require('./common/ts-parser');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./rules/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
+const youDontNeedLodashRules = require('./rules/you-dont-need-lodash.json');
 
 module.exports = {
-  extends: commonExtends,
+  extends: [...commonExtends, 'plugin:you-dont-need-lodash-underscore/compatible'],
   plugins: commonPlugins,
   env,
   ...tsParser,
@@ -50,6 +51,7 @@ module.exports = {
     'arrow-body-style': ['error', 'as-needed', {requireReturnForObjectLiteral: true}],
     'no-unreachable': 'error',
     'require-await': 'error',
+    ...youDontNeedLodashRules,
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };

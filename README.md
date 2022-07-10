@@ -20,14 +20,6 @@ $ yarn add @shelf/eslint-config --dev
 }
 ```
 
-#### TypeScript `.eslintrc`
-
-```json
-{
-  "extends": ["@shelf/eslint-config/typescript"]
-}
-```
-
 ### Frontend
 
 #### JavaScript with React `.eslintrc`
