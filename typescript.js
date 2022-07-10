@@ -32,7 +32,6 @@ module.exports = {
     'prefer-object-spread': 'error',
     ...importOrder,
     ...sortImports,
-    '@typescript-eslint/no-unused-vars': 'error',
     'comma-dangle': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     ...consistentTypeAssertions,

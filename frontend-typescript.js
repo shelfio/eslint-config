@@ -26,7 +26,6 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     'react/prop-types': 'off',
     'react/display-name': 'warn',
-    '@typescript-eslint/no-unused-vars': 'error',
     ...consistentTypeAssertions,
     'testing-library/await-async-query': 'error',
     'testing-library/no-await-sync-query': 'error',
