@@ -24,7 +24,6 @@ module.exports = {
     curly: 'error',
     'no-nested-ternary': 'error',
     'prettier/prettier': 'error',
-    '@typescript-eslint/camelcase': 0,
     ...paddingLineBetweenStatements,
     ...jestRules,
     ...preferDestructuring,
@@ -33,10 +32,7 @@ module.exports = {
     ...importOrder,
     ...sortImports,
     'comma-dangle': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off',
     ...consistentTypeAssertions,
-    ...typescriptRules,
-    '@typescript-eslint/no-non-null-assertion': 'off', // we want to allow using the "!" operator
     camelcase: [
       'error',
       {properties: 'never', ignoreGlobals: true, allow: ['hash_key', 'range_key']},
@@ -51,6 +47,9 @@ module.exports = {
     'no-unreachable': 'error',
     'require-await': 'error',
     ...youDontNeedLodashRules,
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off', // we want to allow using the "!" operator
+    ...typescriptRules,
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };

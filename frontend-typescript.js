@@ -17,13 +17,8 @@ module.exports = {
   ...tsParser,
   rules: {
     ...frontendConfig.rules,
-    '@typescript-eslint/camelcase': 0,
-    // it fail to compile TS on react static class properties (displayName | defaultProps | etc..)
-    '@typescript-eslint/explicit-member-accessibility': 0,
     // Often test name starts with component name which are always capitalized
     'jest/lowercase-name': 'off',
-    // Don`t needed for typescript files
-    '@typescript-eslint/no-empty-function': 'off',
     'react/prop-types': 'off',
     'react/display-name': 'warn',
     ...consistentTypeAssertions,
@@ -36,9 +31,13 @@ module.exports = {
         testIdPattern: '^(([a-z])+(-)*)+$',
       },
     ],
-    ...typescriptRules,
     ...consistentTypeImports,
     ...youDontNeedLodashRules,
+    // it fail to compile TS on react static class properties (displayName | defaultProps | etc..)
+    '@typescript-eslint/explicit-member-accessibility': 0,
+    // Don`t need for typescript files
+    '@typescript-eslint/no-empty-function': 'off',
+    ...typescriptRules,
   },
   overrides: [
     allowRequireInConfigs,

@@ -17,12 +17,11 @@ module.exports = {
   },
   rules: {
     ...vueConfig.rules,
-    '@typescript-eslint/camelcase': 0,
-    '@typescript-eslint/explicit-member-accessibility': 0,
     'jest/lowercase-name': 'off',
     ...consistentTypeAssertions,
-    ...typescriptRules,
     ...consistentTypeImports,
+    '@typescript-eslint/explicit-member-accessibility': 0,
+    ...typescriptRules,
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
