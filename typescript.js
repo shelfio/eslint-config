@@ -4,7 +4,7 @@ const env = require('./common/env');
 const importOrder = require('./rules/import-order.json');
 const jestRules = require('./rules/jest.json');
 const paddingLineBetweenStatements = require('./rules/padding-line-between-statements.json');
-const preferDestructuring = require('./rules/prefer-destructuring.json');
+const preferES6Features = require('./rules/prefer-es6.json');
 const sortImports = require('./rules/sort-imports.json');
 const tsParser = require('./common/ts-parser');
 const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./common/overrides');
@@ -26,9 +26,7 @@ module.exports = {
     'prettier/prettier': 'error',
     ...paddingLineBetweenStatements,
     ...jestRules,
-    ...preferDestructuring,
-    'prefer-template': 'error',
-    'prefer-object-spread': 'error',
+    ...preferES6Features,
     ...importOrder,
     ...sortImports,
     'comma-dangle': 'off',

@@ -1,5 +1,5 @@
 const paddingLineBetweenStatements = require('./rules/padding-line-between-statements.json');
-const preferDestructuring = require('./rules/prefer-destructuring.json');
+const preferES6Features = require('./rules/prefer-es6.json');
 const sortImports = require('./rules/sort-imports.json');
 const importOrder = require('./rules/import-order.json');
 const jestRules = require('./rules/jest.json');
@@ -23,12 +23,10 @@ module.exports = {
     'prettier/prettier': 'error',
     ...paddingLineBetweenStatements,
     ...jestRules,
-    ...preferDestructuring,
+    ...preferES6Features,
     'no-empty': ['error', {allowEmptyCatch: true}],
     ...importOrder,
     ...sortImports,
-    'prefer-template': 'error',
-    'prefer-object-spread': 'error',
     'comma-dangle': 'off',
     camelcase: 'error',
     eqeqeq: ['error', 'smart'],

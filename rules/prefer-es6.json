@@ -8,5 +8,7 @@
     {
       "enforceForRenamedProperties": false
     }
-  ]
+  ],
+  "prefer-template": "error",
+  "prefer-object-spread": "error"
 }
