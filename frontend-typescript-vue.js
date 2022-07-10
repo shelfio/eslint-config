@@ -17,7 +17,6 @@ module.exports = {
   },
   rules: {
     ...vueConfig.rules,
-    '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/camelcase': 0,
     '@typescript-eslint/explicit-member-accessibility': 0,
     'jest/lowercase-name': 'off',

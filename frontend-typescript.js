@@ -17,7 +17,6 @@ module.exports = {
   ...tsParser,
   rules: {
     ...frontendConfig.rules,
-    '@typescript-eslint/no-use-before-define': 0,
     '@typescript-eslint/camelcase': 0,
     // it fail to compile TS on react static class properties (displayName | defaultProps | etc..)
     '@typescript-eslint/explicit-member-accessibility': 0,
