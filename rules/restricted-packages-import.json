@@ -1,0 +1,27 @@
+{
+  "node/no-restricted-import": [
+    "error",
+    [
+      {
+        "name": "normalize-space-x",
+        "message": "Please use @shelf/fast-normalize-spaces instead!"
+      },
+      {
+        "name": "javascript-natural-sort",
+        "message": "Please use @shelf/fast-natural-order-by instead!"
+      },
+      {
+        "name": "natural-orderby",
+        "message": "Please use @shelf/fast-natural-order-by instead!"
+      },
+      {
+        "name": "uslug",
+        "message": "Please use @shelf/fast-uslug instead!"
+      },
+      {
+        "name": "fast-chunk-string",
+        "message": "Please use @shelf/fast-chunk-string instead!"
+      }
+    ]
+  ]
+}

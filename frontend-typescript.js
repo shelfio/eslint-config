@@ -7,6 +7,7 @@ const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const frontendConfig = require('./frontend');
 const youDontNeedLodashRules = require('./rules/you-dont-need-lodash.json');
 const typescriptRules = require('./rules/typescript');
+const restrictedPackagesImportRules = require('./rules/restricted-packages-import.json');
 
 module.exports = {
   extends: ['./frontend.js', ...commonExtends, 'plugin:you-dont-need-lodash-underscore/compatible'],
@@ -38,6 +39,7 @@ module.exports = {
     // Don`t need for typescript files
     '@typescript-eslint/no-empty-function': 'off',
     ...typescriptRules,
+    ...restrictedPackagesImportRules,
   },
   overrides: [
     allowRequireInConfigs,
