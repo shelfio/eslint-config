@@ -5,4 +5,5 @@ module.exports = [
   'json-format',
   'prettier',
   'import',
+  'node',
 ];
