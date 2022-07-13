@@ -21,6 +21,10 @@
       {
         "name": "fast-chunk-string",
         "message": "Please use @shelf/fast-chunk-string instead!"
+      },
+      {
+        "name": "toc",
+        "message": "Please use @shelf/table-of-contents instead!"
       }
     ]
   ]
