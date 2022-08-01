@@ -5,7 +5,6 @@ const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./common/o
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const frontendConfig = require('./frontend');
-const youDontNeedLodashRules = require('./rules/you-dont-need-lodash.json');
 const typescriptRules = require('./rules/typescript');
 const restrictedPackagesImportRules = require('./rules/restricted-packages-import.json');
 
@@ -33,7 +32,7 @@ module.exports = {
       },
     ],
     ...consistentTypeImports,
-    ...youDontNeedLodashRules,
+    "you-dont-need-lodash-underscore/get": "error",
     // it fail to compile TS on react static class properties (displayName | defaultProps | etc..)
     '@typescript-eslint/explicit-member-accessibility': 0,
     // Don`t need for typescript files
