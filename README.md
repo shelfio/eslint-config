@@ -76,18 +76,6 @@ $ yarn add @shelf/eslint-config --dev
 }
 ```
 
-#### React with testing-library `.eslintrc`
-
-```json
-{
-  "extends": ["@shelf/eslint-config/frontend-testing-library"],
-  "rules": {
-    "testing-library/no-wait-for-empty-callback": "error",
-    "testing-library/no-await-sync-query": "error"
-  }
-}
-```
-
 ## Publish
 
 ```sh

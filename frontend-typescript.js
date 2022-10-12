@@ -24,7 +24,9 @@ module.exports = {
     ...consistentTypeAssertions,
     'testing-library/await-async-query': 'error',
     'testing-library/no-await-sync-query': 'error',
-    'testing-library/no-debugging-utils': 'warn',
+    'testing-library/no-wait-for-empty-callback': 'error',
+    // It's enabled in overrides
+    'testing-library/no-debugging-utils': 'off',
     'testing-library/consistent-data-testid': [
       2,
       {
@@ -52,6 +54,7 @@ module.exports = {
       rules: {
         camelcase: 'off',
         'sonarjs/no-duplicate-string': 'off',
+        'testing-library/no-debugging-utils': 'error'
       },
     },
     {
