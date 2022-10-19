@@ -38,9 +38,9 @@ module.exports = {
     '@typescript-eslint/consistent-type-assertions': 'warn',
     // Don`t need for typescript files
     '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/no-unused-vars': ['error', {ignoreRestSiblings: true}],
-    ...typescriptRules,
     ...restrictedPackagesImportRules,
+    ...typescriptRules,
+    '@typescript-eslint/no-unused-vars': ['error', {ignoreRestSiblings: true}],
   },
   overrides: [
     allowRequireInConfigs,
