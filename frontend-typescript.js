@@ -34,11 +34,12 @@ module.exports = {
       },
     ],
     ...consistentTypeImports,
-    "you-dont-need-lodash-underscore/get": "error",
+    'you-dont-need-lodash-underscore/get': 'error',
     // it fail to compile TS on react static class properties (displayName | defaultProps | etc..)
     '@typescript-eslint/explicit-member-accessibility': 0,
     // Don`t need for typescript files
     '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', {ignoreRestSiblings: true}],
     ...typescriptRules,
     ...restrictedPackagesImportRules,
   },
@@ -54,7 +55,7 @@ module.exports = {
       rules: {
         camelcase: 'off',
         'sonarjs/no-duplicate-string': 'off',
-        'testing-library/no-debugging-utils': 'error'
+        'testing-library/no-debugging-utils': 'error',
       },
     },
     {
