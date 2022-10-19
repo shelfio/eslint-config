@@ -35,7 +35,7 @@ module.exports = {
     'you-dont-need-lodash-underscore/get': 'error',
     // it fail to compile TS on react static class properties (displayName | defaultProps | etc..)
     '@typescript-eslint/explicit-member-accessibility': 0,
-    '@typescript-eslint/consistent-type-assertions': 'off',
+    '@typescript-eslint/consistent-type-assertions': 'warn',
     // Don`t need for typescript files
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-unused-vars': ['error', {ignoreRestSiblings: true}],
