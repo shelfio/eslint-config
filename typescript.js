@@ -7,7 +7,11 @@ const paddingLineBetweenStatements = require('./rules/padding-line-between-state
 const preferES6Features = require('./rules/prefer-es6.json');
 const sortImports = require('./rules/sort-imports.json');
 const tsParser = require('./common/ts-parser');
-const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./common/overrides');
+const {
+  allowRequireInConfigs,
+  noExplicitReturnTypeInTests,
+  noCastWithJestMock,
+} = require('./common/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const youDontNeedLodashRules = require('./rules/you-dont-need-lodash.json');
@@ -53,5 +57,5 @@ module.exports = {
     ...restrictedPackagesImportRules,
     ...noRestrictedSyntaxRules,
   },
-  overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
+  overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests, noCastWithJestMock],
 };

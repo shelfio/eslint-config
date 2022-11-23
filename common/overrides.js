@@ -18,4 +18,18 @@ module.exports = {
       '@typescript-eslint/no-var-requires': 'off',
     },
   },
+  noCastWithJestMock: {
+    files: ['*.test.{ts,tsx}'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector:
+            "TSAsExpression[typeAnnotation.typeName.left.name='jest'][typeAnnotation.typeName.right.name='Mock']",
+          message:
+            "Don't cast to mock type with jest.Mock, use jest.mocked instead: https://jestjs.io/docs/mock-function-api/#jestmockedsource-options",
+        },
+      ],
+    },
+  },
 };
