@@ -13,6 +13,7 @@ const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const youDontNeedLodashRules = require('./rules/you-dont-need-lodash.json');
 const typescriptRules = require('./rules/typescript');
 const restrictedPackagesImportRules = require('./rules/restricted-packages-import.json');
+const noRestrictedSyntaxRules = require('./rules/no-restricted-syntax.json');
 
 module.exports = {
   extends: [...commonExtends, 'plugin:you-dont-need-lodash-underscore/compatible'],
@@ -50,6 +51,7 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off', // we want to allow using the "!" operator
     ...typescriptRules,
     ...restrictedPackagesImportRules,
+    ...noRestrictedSyntaxRules,
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
