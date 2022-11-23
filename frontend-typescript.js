@@ -1,7 +1,11 @@
 const commonExtends = require('./common/extends.json');
 const commonPlugins = require('./common/plugins');
 const tsParser = require('./common/ts-parser');
-const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./common/overrides');
+const {
+  allowRequireInConfigs,
+  noExplicitReturnTypeInTests,
+  noCastWithJestMock,
+} = require('./common/overrides');
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const frontendConfig = require('./frontend');
 const typescriptRules = require('./rules/typescript');
@@ -45,6 +49,7 @@ module.exports = {
   overrides: [
     allowRequireInConfigs,
     noExplicitReturnTypeInTests,
+    noCastWithJestMock,
     {
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
       extends: ['plugin:testing-library/react'],
