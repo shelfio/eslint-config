@@ -19,7 +19,7 @@ module.exports = {
     },
   },
   noCastWithJestMock: {
-    files: ['*.test.{ts,tsx}'],
+    files: ['**/*.test.{ts,tsx}', '**/*mock?(s).{ts,tsx}'],
     rules: {
       'no-restricted-syntax': [
         'error',
