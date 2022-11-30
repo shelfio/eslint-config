@@ -23,6 +23,9 @@ module.exports = {
   plugins: commonPlugins,
   env,
   ...tsParser,
+  settings: {
+    'import/internal-regex': '^@shelf/',
+  },
   rules: {
     complexity: ['warn', {max: 5}],
     'multiline-ternary': ['error', 'never'],
