@@ -12,12 +12,7 @@ const typescriptRules = require('./rules/typescript');
 const restrictedPackagesImportRules = require('./rules/restricted-packages-import.json');
 
 module.exports = {
-  extends: [
-    './frontend.js', 
-    ...commonExtends, 
-    'plugin:you-dont-need-lodash-underscore/compatible', 
-    'plugin:react-hooks/exhaustive-deps',
-  ],
+  extends: ['./frontend.js', ...commonExtends, 'plugin:you-dont-need-lodash-underscore/compatible'],
   globals: {
     DD_LOGS: true,
   },
