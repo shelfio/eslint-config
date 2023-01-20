@@ -7,6 +7,7 @@ module.exports = {
     'plugin:react/recommended',
     'prettier',
     'plugin:react-hooks/recommended',
+    'plugin:react-hooks/exhaustive-deps',
     'plugin:sonarjs/recommended',
   ],
   plugins: ['react', 'import', 'sonarjs'],
