@@ -9,7 +9,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:sonarjs/recommended',
   ],
-  plugins: ['react', 'import', 'sonarjs', 'react-hooks'],
+  plugins: ['react', 'import', 'sonarjs'],
   env: {
     browser: true,
     ...env,
