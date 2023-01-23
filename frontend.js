@@ -7,10 +7,9 @@ module.exports = {
     'plugin:react/recommended',
     'prettier',
     'plugin:react-hooks/recommended',
-    'plugin:react-hooks/exhaustive-deps',
     'plugin:sonarjs/recommended',
   ],
-  plugins: ['react', 'import', 'sonarjs'],
+  plugins: ['react', 'import', 'sonarjs', 'react-hooks'],
   env: {
     browser: true,
     ...env,
@@ -32,6 +31,7 @@ module.exports = {
   rules: {
     ...baseConfig.rules,
     'no-console': 'error',
+    'react-hooks/exhaustive-deps': 'error',
     'sonarjs/cognitive-complexity': ['error', 18],
     'multiline-comment-style': 'off',
     'no-unreachable': 'error',
