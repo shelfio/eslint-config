@@ -25,6 +25,10 @@
       {
         "name": "toc",
         "message": "Please use @shelf/table-of-contents instead!"
+      },
+      {
+        "name": "uuid",
+        "message": "Please use import {randomUUID} from 'crypto' instead!"
       }
     ]
   ]
