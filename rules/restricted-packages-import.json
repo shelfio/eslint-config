@@ -1,35 +1,46 @@
 {
-  "node/no-restricted-import": [
+  "no-restricted-imports": [
     "error",
-    [
-      {
-        "name": "normalize-space-x",
-        "message": "Please use @shelf/fast-normalize-spaces instead!"
-      },
-      {
-        "name": "javascript-natural-sort",
-        "message": "Please use @shelf/fast-natural-order-by instead!"
-      },
-      {
-        "name": "natural-orderby",
-        "message": "Please use @shelf/fast-natural-order-by instead!"
-      },
-      {
-        "name": "uslug",
-        "message": "Please use @shelf/fast-uslug instead!"
-      },
-      {
-        "name": "fast-chunk-string",
-        "message": "Please use @shelf/fast-chunk-string instead!"
-      },
-      {
-        "name": "toc",
-        "message": "Please use @shelf/table-of-contents instead!"
-      },
-      {
-        "name": "uuid",
-        "message": "Please use import {randomUUID} from 'crypto' instead!"
-      }
-    ]
+    {
+      "patterns": [
+        {
+          "group": [
+            "date-fns",
+            "@shelf/dates"
+          ],
+          "message": "Use @shelf/datetime instead"
+        }
+      ],
+      "paths": [
+        {
+          "name": "normalize-space-x",
+          "message": "Please use @shelf/fast-normalize-spaces instead!"
+        },
+        {
+          "name": "javascript-natural-sort",
+          "message": "Please use @shelf/fast-natural-order-by instead!"
+        },
+        {
+          "name": "natural-orderby",
+          "message": "Please use @shelf/fast-natural-order-by instead!"
+        },
+        {
+          "name": "uslug",
+          "message": "Please use @shelf/fast-uslug instead!"
+        },
+        {
+          "name": "fast-chunk-string",
+          "message": "Please use @shelf/fast-chunk-string instead!"
+        },
+        {
+          "name": "toc",
+          "message": "Please use @shelf/table-of-contents instead!"
+        },
+        {
+          "name": "uuid",
+          "message": "Please use import {randomUUID} from 'crypto' instead!"
+        }
+      ]
+    }
   ]
 }
