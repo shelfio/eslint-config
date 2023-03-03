@@ -13,9 +13,6 @@ const restrictedPackagesImportRules = require('./rules/restricted-packages-impor
 
 module.exports = {
   extends: ['./frontend.js', ...commonExtends, 'plugin:you-dont-need-lodash-underscore/compatible'],
-  globals: {
-    DD_LOGS: true,
-  },
   plugins: [...commonPlugins, ...frontendConfig.plugins, 'testing-library'],
   ...tsParser,
   rules: {
