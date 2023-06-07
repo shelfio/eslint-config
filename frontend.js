@@ -38,7 +38,7 @@ module.exports = {
     'multiline-comment-style': 'off',
     'no-unreachable': 'error',
     'react/react-in-jsx-scope': "off",
-    "no-restricted-imports": ["warning", {
+    "no-restricted-imports": [1, {
       "patterns": ["@shelf/*/lib/*"]
     }]
   },
