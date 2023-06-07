@@ -34,5 +34,8 @@ module.exports = {
     'sonarjs/cognitive-complexity': ['error', 18],
     'multiline-comment-style': 'off',
     'no-unreachable': 'error',
+    "no-restricted-imports": ["warning", {
+      "patterns": ["@shelf/*/lib/*"]
+    }]
   },
 };
