@@ -1,5 +1,6 @@
 const env = require('./common/env');
 const baseConfig = require('./base');
+const restrictedPackagesImportRules = require('./rules/restricted-packages-import.json');
 
 module.exports = {
   extends: [
@@ -30,10 +31,13 @@ module.exports = {
   ],
   rules: {
     ...baseConfig.rules,
+    ...restrictedPackagesImportRules,
     'no-console': 'error',
+    'react-hooks/exhaustive-deps': 'error',
     'sonarjs/cognitive-complexity': ['error', 18],
     'multiline-comment-style': 'off',
     'no-unreachable': 'error',
+    'react/react-in-jsx-scope': "off"
     "no-restricted-imports": ["warning", {
       "patterns": ["@shelf/*/lib/*"]
     }]
