@@ -39,6 +39,10 @@
         {
           "name": "uuid",
           "message": "Please use import {randomUUID} from 'crypto' instead!"
+        },
+        {
+          "name": "react-outside-click-handler",
+          "message": "Please use [@shelf/react-outside-click](https://www.npmjs.com/package/@shelf/react-outside-click)"
         }
       ]
     }
