@@ -1,9 +1,12 @@
 module.exports = {
-  noExplicitReturnTypeInTests: {
+  noExplicitsInTests: {
     files: ['**/*.test.ts'],
-    // it's a bit annoying, there is no need to specify return types for test case function body it('...', fn)
+    // It's a bit annoying
     rules: {
+      // There is no need to specify return types for test case function body it('...', fn)
       '@typescript-eslint/explicit-function-return-type': 0,
+      // There is no mandatory to specify types in tests
+      '@typescript-eslint/no-explicit-any': 0,
     },
   },
   allowRequireInConfigs: {

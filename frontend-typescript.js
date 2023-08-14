@@ -3,7 +3,7 @@ const commonPlugins = require('./common/plugins');
 const tsParser = require('./common/ts-parser');
 const {
   allowRequireInConfigs,
-  noExplicitReturnTypeInTests,
+  noExplicitsInTests,
   noCastWithJestMock,
 } = require('./common/overrides');
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
@@ -43,7 +43,7 @@ module.exports = {
   },
   overrides: [
     allowRequireInConfigs,
-    noExplicitReturnTypeInTests,
+    noExplicitsInTests,
     noCastWithJestMock,
     {
       files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],

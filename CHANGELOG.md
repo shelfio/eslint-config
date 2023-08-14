@@ -1,3 +1,7 @@
+## 3.0.0
+
+Override recommended no explicit type any in tests
+
 ## 2.0.0
 
 Removed separate file for testing-library, added testing-library rules to `frontend-typescript.js`.
