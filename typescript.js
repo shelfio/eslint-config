@@ -9,7 +9,7 @@ const sortImports = require('./rules/sort-imports.json');
 const tsParser = require('./common/ts-parser');
 const {
   allowRequireInConfigs,
-  noExplicitReturnTypeInTests,
+  noExplicitsInTests,
   noCastWithJestMock,
 } = require('./common/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
@@ -58,5 +58,5 @@ module.exports = {
     ...typescriptRules,
     ...restrictedPackagesImportRules,
   },
-  overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests, noCastWithJestMock],
+  overrides: [allowRequireInConfigs, noExplicitsInTests, noCastWithJestMock],
 };

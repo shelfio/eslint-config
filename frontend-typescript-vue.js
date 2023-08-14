@@ -1,4 +1,4 @@
-const {allowRequireInConfigs, noExplicitReturnTypeInTests} = require('./common/overrides');
+const {allowRequireInConfigs, noExplicitsInTests} = require('./common/overrides');
 const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const vueConfig = require('./frontend-vue');
@@ -23,5 +23,5 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': 0,
     ...typescriptRules,
   },
-  overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
+  overrides: [allowRequireInConfigs, noExplicitsInTests],
 };
