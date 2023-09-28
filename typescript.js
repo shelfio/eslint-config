@@ -22,7 +22,7 @@ module.exports = {
   extends: [
     ...commonExtends,
     'plugin:you-dont-need-lodash-underscore/compatible',
-    'plugin:shelf-lodash-rules/all',
+    'plugin:shelf-no-need-lodash-methods/all',
   ],
   plugins: commonPlugins,
   env,
