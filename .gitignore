@@ -3,4 +3,5 @@ node_modules/
 
 .DS_Store
 *.log
+yarn.lock
 !.husky/_/husky.sh
