@@ -1,0 +1,5 @@
+{
+  "name": "eslint-plugin-shelf-lodash-rules",
+  "version": "0.0.1",
+  "main": "./index.js"
+}

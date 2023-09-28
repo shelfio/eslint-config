@@ -19,7 +19,11 @@ const typescriptRules = require('./rules/typescript');
 const restrictedPackagesImportRules = require('./rules/restricted-packages-import.json');
 
 module.exports = {
-  extends: [...commonExtends, 'plugin:you-dont-need-lodash-underscore/compatible'],
+  extends: [
+    ...commonExtends,
+    'plugin:you-dont-need-lodash-underscore/compatible',
+    'plugin:shelf-lodash-rules/all',
+  ],
   plugins: commonPlugins,
   env,
   ...tsParser,
