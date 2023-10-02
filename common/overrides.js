@@ -1,6 +1,6 @@
 module.exports = {
   noExplicitsInTests: {
-    files: ['**/*.test.ts'],
+    files: ['**/*.test.ts', '**/*mock?(s).ts'],
     // It's a bit annoying
     rules: {
       // There is no need to specify return types for test case function body it('...', fn)
