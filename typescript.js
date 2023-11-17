@@ -68,6 +68,6 @@ module.exports = {
         message: "Danger, this can overwrite 'accountId'. Rearrange the order.",
       },
     ],
+  },
   overrides: [allowRequireInConfigs, noExplicitsInTests, noCastWithJestMock],
-  }
 };
