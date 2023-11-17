@@ -50,6 +50,12 @@ module.exports = {
     '@typescript-eslint/no-non-null-assertion': 'off', // we want to allow using the "!" operator
     ...typescriptRules,
     ...restrictedPackagesImportRules,
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: "ObjectExpression > Property[key.name='accountId'] ~ SpreadElement",
+        message: "Danger, this can overwrite 'accountId'. Rearrange the order.",
+      },
   },
   overrides: [allowRequireInConfigs, noExplicitReturnTypeInTests],
 };
