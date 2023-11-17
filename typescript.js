@@ -67,6 +67,7 @@ module.exports = {
         selector: "ObjectExpression > Property[key.name='accountId'] ~ SpreadElement",
         message: "Danger, this can overwrite 'accountId'. Rearrange the order.",
       },
-  },
+    ],
   overrides: [allowRequireInConfigs, noExplicitsInTests, noCastWithJestMock],
+  }
 };
