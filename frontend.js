@@ -37,9 +37,6 @@ module.exports = {
     'sonarjs/cognitive-complexity': ['error', 18],
     'multiline-comment-style': 'off',
     'no-unreachable': 'error',
-    'react/react-in-jsx-scope': "off",
-    "no-restricted-imports": [1, {
-      "patterns": ["@shelf/*/lib/*"]
-    }]
+    'react/react-in-jsx-scope': "off"
   },
 };
