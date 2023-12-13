@@ -9,6 +9,7 @@ const {
 const consistentTypeImports = require('./rules/consistent-type-imports.json');
 const frontendConfig = require('./frontend');
 const typescriptRules = require('./rules/typescript');
+const youDontNeedLodashRules = require('./rules/you-dont-need-lodash.json');
 
 module.exports = {
   extends: ['./frontend.js', ...commonExtends, 'plugin:you-dont-need-lodash-underscore/compatible'],
@@ -32,7 +33,6 @@ module.exports = {
       },
     ],
     ...consistentTypeImports,
-    'you-dont-need-lodash-underscore/get': 'error',
     // it fail to compile TS on react static class properties (displayName | defaultProps | etc..)
     '@typescript-eslint/explicit-member-accessibility': 0,
     '@typescript-eslint/consistent-type-assertions': 'warn',
@@ -40,6 +40,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     ...typescriptRules,
     '@typescript-eslint/no-unused-vars': ['error', {ignoreRestSiblings: true}],
+    ...youDontNeedLodashRules,
   },
   overrides: [
     allowRequireInConfigs,
