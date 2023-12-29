@@ -936,6 +936,11 @@ eslint-plugin-react@7.33.2, eslint-plugin-react@^7.33.2:
     semver "^6.3.1"
     string.prototype.matchall "^4.0.8"
 
+eslint-plugin-shelf-no-need-lodash-methods@1.0.109:
+  version "1.0.109"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-shelf-no-need-lodash-methods/-/eslint-plugin-shelf-no-need-lodash-methods-1.0.109.tgz#21f97a373bf7015c4ab120071223640fb74e8043"
+  integrity sha512-DEsiXaNT9QNPHNSxh7cGcJWVsk5Wp0+Tuzlr6f5hg89+XqM8gKguiCsxBPF3Px6P9K8UxB/frHEXiLAR+wbzcg==
+
 eslint-plugin-sonarjs@0.23.0:
   version "0.23.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-sonarjs/-/eslint-plugin-sonarjs-0.23.0.tgz#0265bad801ea210951672ee3cafbcf5d456ada96"
