@@ -1,4 +1,4 @@
-{
+export default {
   "you-dont-need-lodash-underscore/uniq": "off",
   "you-dont-need-lodash-underscore/last": "off",
   "you-dont-need-lodash-underscore/omit": "off",

@@ -1,27 +1,36 @@
-const {allowRequireInConfigs, noExplicitsInTests} = require('./common/overrides');
-const consistentTypeAssertions = require('./rules/consistent-type-assertions.json');
-const consistentTypeImports = require('./rules/consistent-type-imports.json');
-const vueConfig = require('./frontend-vue');
-const typescriptRules = require('./rules/typescript');
+import tsEslint from 'typescript-eslint';
+import feVueConfig from './frontend-vue.js';
+import tsParser from "@typescript-eslint/parser";
+import consistentTypeAssertions from './rules/consistent-type-assertions.js';
+import consistentTypeImports from './rules/consistent-type-imports.js';
+import tsConfig from './typescript.js';
+import overrides from './common/overrides.js';
 
-module.exports = {
-  extends: [
-    './frontend-vue',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
-  plugins: ['@typescript-eslint', ...vueConfig.plugins],
-  parserOptions: {
-    ...vueConfig.parserOptions,
-    parser: '@typescript-eslint/parser',
+export default [
+  ...feVueConfig,
+  ...tsEslint.configs.recommended,
+  ...tsConfig,
+  {
+    languageOptions: {
+      ecmaVersion: 5,
+      sourceType: "script",
+
+      parserOptions: {
+        parser: tsParser,
+
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+
+    rules: {
+      "jest/lowercase-name": "off",
+      ...consistentTypeAssertions,
+      ...consistentTypeImports,
+      "@typescript-eslint/explicit-member-accessibility": 0,
+    },
   },
-  rules: {
-    ...vueConfig.rules,
-    'jest/lowercase-name': 'off',
-    ...consistentTypeAssertions,
-    ...consistentTypeImports,
-    '@typescript-eslint/explicit-member-accessibility': 0,
-    ...typescriptRules,
-  },
-  overrides: [allowRequireInConfigs, noExplicitsInTests],
-};
+  overrides.allowRequireInConfigs,
+  overrides.noExplicitsInTests,
+];
