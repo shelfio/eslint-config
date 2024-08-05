@@ -1,4 +1,4 @@
-{
+export default {
   "@typescript-eslint/consistent-type-assertions": [
     "error",
     {

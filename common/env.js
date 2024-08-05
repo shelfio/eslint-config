@@ -1,6 +1,8 @@
-module.exports = {
-  es6: true,
-  jest: true,
-  'jest/globals': true,
-  node: true,
+import globals from 'globals';
+import jest from 'eslint-plugin-jest';
+
+export default {
+  ...globals.jest,
+  ...jest.environments.globals.globals,
+  ...globals.node,
 };

@@ -1,39 +1,57 @@
-const paddingLineBetweenStatements = require('./rules/padding-line-between-statements.json');
-const preferES6Features = require('./rules/prefer-es6.json');
-const sortImports = require('./rules/sort-imports.json');
-const importOrder = require('./rules/import-order.json');
-const jestRules = require('./rules/jest.json');
-const env = require('./common/env');
+import jestFormatting from 'eslint-plugin-jest-formatting';
+import jsonFormat from 'eslint-plugin-json-format';
+import prettier from 'eslint-plugin-prettier';
+import jestPlugin from 'eslint-plugin-jest';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import env from './common/env.js';
+import paddingLineBetweenStatements from './rules/padding-line-between-statements.js';
+import jestRules from './rules/jest.js';
+import preferEs6 from './rules/prefer-es6.js';
+import importOrder from './rules/import-order.js';
+import sortImports from './rules/sort-imports.js';
+import stylisticJs from '@stylistic/eslint-plugin-js'
 
-module.exports = {
-  extends: [
-    'eslint:recommended',
-    'plugin:jest-formatting/strict',
-    'plugin:jest/style',
-    'plugin:jest/recommended',
-    'plugin:prettier/recommended',
-  ],
-  plugins: ['jest-formatting', 'jest', 'json-format', 'prettier'],
-  env,
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
+export default [
+  {
+    files: jestFormatting.configs.strict.overrides[0].files,
+    rules: jestFormatting.configs.strict.overrides[0].rules,
+    plugins: {
+      "jest-formatting": jestFormatting,
+    },
   },
-  rules: {
-    'prettier/prettier': 'error',
-    ...paddingLineBetweenStatements,
-    ...jestRules,
-    ...preferES6Features,
-    'no-empty': ['error', {allowEmptyCatch: true}],
-    ...importOrder,
-    ...sortImports,
-    'comma-dangle': 'off',
-    camelcase: 'error',
-    eqeqeq: ['error', 'smart'],
-    'new-cap': 'error',
-    'no-extend-native': 'error',
-    'no-use-before-define': ['error', 'nofunc'],
-    'multiline-comment-style': ['error', 'separate-lines'],
-    'require-await': 'error',
-  },
-};
+  jestPlugin.configs['flat/recommended'],
+  jestPlugin.configs['flat/style'],
+  eslintPluginPrettierRecommended,
+  {
+    plugins: {
+      "json-format": jsonFormat,
+      prettier,
+      '@stylistic/js': stylisticJs,
+    },
+
+    languageOptions: {
+      globals: {
+        ...env,
+      },
+    },
+
+    rules: {
+      "prettier/prettier": "error",
+      ...paddingLineBetweenStatements,
+      ...jestRules,
+      ...preferEs6,
+      "no-empty": ["error", {
+        allowEmptyCatch: true,
+      }],
+      ...importOrder,
+      ...sortImports,
+      "comma-dangle": "off",
+      camelcase: "error",
+      eqeqeq: ["error", "smart"],
+      "new-cap": "error",
+      "no-extend-native": "error",
+      "no-use-before-define": ["error", "nofunc"],
+      "@stylistic/js/multiline-comment-style": ["error", "separate-lines"],
+      "require-await": "error",
+    },
+  }];
