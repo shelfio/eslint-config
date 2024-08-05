@@ -14,66 +14,82 @@ $ yarn add @shelf/eslint-config --dev
 
 ### Backend
 
-```json
-{
-  "extends": ["@shelf/eslint-config/typescript"]
-}
+```js
+import tsConfig from '@shelf/eslint-config/typescript';
+
+export default [...tsConfig];
 ```
 
 ### Frontend
 
-#### JavaScript with React `.eslintrc`
+#### JavaScript with React `eslint.config.js`
 
-```json
-{
-  "extends": ["@shelf/eslint-config/frontend"],
-  "settings": {
-    "react": {
-      "version": "16.7.0"
+```js
+import feConfig from '@shelf/eslint-config/frontend';
+
+export default [
+  ...feConfig,
+  {
+    settings: {
+      react: {
+        version: '16.7.0',
+      },
+    },
+    rules: {
+      "react/prop-types": "warn"
     }
-  },
-  "rules": {
-    "react/prop-types": "warn"
   }
-}
+];
 ```
 
-#### TypeScript or TypeScript + Next `.eslintrc`
+#### TypeScript or TypeScript + Next `eslint.config.js`
 
-```json
-{
-  "extends": ["@shelf/eslint-config/frontend-typescript"],
-  "settings": {
-    "react": {
-      "version": "16.7.0"
+```js
+import feTsConfig from '@shelf/eslint-config/frontend-typescript';
+
+export default [
+  ...feTsConfig,
+  {
+    settings: {
+      react: {
+        version: '16.7.0',
+      },
+    },
+    rules: {
+      "react/prop-types": "warn"
     }
-  },
-  "rules": {
-    "react/prop-types": "warn"
   }
-}
+];
 ```
 
-#### Vue `.eslintrc`
+#### Vue `eslint.config.js`
 
-```json
-{
-  "extends": ["@shelf/eslint-config/frontend-vue"],
-  "rules": {
-    "no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
+```js
+import feVueConfig from '@shelf/eslint-config/frontend-vue';
+
+export default [
+  ...feVueConfig,
+  {
+    rules: {
+      "no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
+    }
   }
-}
+];
 ```
 
-#### Typescript with Vue `.eslintrc`
+#### Typescript with Vue `eslint.config.js`
 
-```json
-{
-  "extends": ["@shelf/eslint-config/frontend-typescript-vue"],
-  "rules": {
-    "@typescript-eslint/no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
+```js
+import feTsVueConfig from '@shelf/eslint-config/frontend-typescript-vue';
+
+export default [
+  ...feTsVueConfig,
+  {
+    rules: {
+      "@typescript-eslint/no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
+    }
   }
-}
+];
 ```
 
 ## Publish
