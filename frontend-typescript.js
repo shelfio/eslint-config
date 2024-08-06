@@ -25,7 +25,12 @@ export default [...compat.extends(
 ), ...tsEslint.configs.recommended,
   ...frontendConfig,
   ...fixupConfigRules(
-    compat.extends("plugin:testing-library/react"),
+    compat.config({
+      overrides: [{
+        files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+        extends: ['plugin:testing-library/react'],
+      }]
+    }),
   ),
   {
     plugins: {
