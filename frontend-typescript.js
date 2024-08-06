@@ -1,6 +1,6 @@
 import node from "eslint-plugin-node";
 import testingLibrary from "eslint-plugin-testing-library";
-import {fixupConfigRules, fixupPluginRules} from '@eslint/compat';
+import {fixupPluginRules} from '@eslint/compat';
 import tsParser from "@typescript-eslint/parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -20,18 +20,16 @@ const compat = new FlatCompat({
   recommendedConfig: js.configs.recommended,
 });
 
+const testingLibraryReact = {
+  rules: compat.extends("plugin:testing-library/react")[0].rules,
+  files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)']
+};
+
 export default [...compat.extends(
   "plugin:you-dont-need-lodash-underscore/compatible",
 ), ...tsEslint.configs.recommended,
   ...frontendConfig,
-  ...fixupConfigRules(
-    compat.config({
-      overrides: [{
-        files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
-        extends: ['plugin:testing-library/react'],
-      }]
-    }),
-  ),
+  testingLibraryReact,
   {
     plugins: {
       '@typescript-eslint': tsEslint.plugin,
