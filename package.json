@@ -63,7 +63,7 @@
     "eslint-plugin-testing-library": "6.2.2",
     "eslint-plugin-vue": "9.27.0",
     "eslint-plugin-you-dont-need-lodash-underscore": "6.14.0",
-    "globals": "15.8.0",
+    "globals": "15.9.0",
     "typescript-eslint": "7.16.1"
   },
   "devDependencies": {
