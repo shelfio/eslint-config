@@ -1,4 +1,4 @@
-{
+export default {
   "jest/consistent-test-it": [
     "error",
     {
@@ -17,7 +17,7 @@
   "jest/no-duplicate-hooks": "error",
   "jest/no-export": "error",
   "jest/no-large-snapshots": "warn",
-  "jest/no-if": "warn",
+  "jest/no-conditional-in-test": "warn",
   "jest/no-mocks-import": "warn",
   "jest/no-standalone-expect": "warn",
   "jest/no-done-callback": "error",

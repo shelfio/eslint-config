@@ -1,4 +1,4 @@
-{
+export default {
   "sort-imports": [
     "error",
     {

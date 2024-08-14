@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   noExplicitsInTests: {
     files: ['**/*.test.ts', '**/*mock?(s).ts'],
     // It's a bit annoying
