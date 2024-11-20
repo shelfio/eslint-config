@@ -62,36 +62,6 @@ export default [
 ];
 ```
 
-#### Vue `eslint.config.js`
-
-```js
-import feVueConfig from '@shelf/eslint-config/frontend-vue';
-
-export default [
-  ...feVueConfig,
-  {
-    rules: {
-      "no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
-    }
-  }
-];
-```
-
-#### Typescript with Vue `eslint.config.js`
-
-```js
-import feTsVueConfig from '@shelf/eslint-config/frontend-typescript-vue';
-
-export default [
-  ...feTsVueConfig,
-  {
-    rules: {
-      "@typescript-eslint/no-unused-vars": ["error", {"vars": "all", "argsIgnorePattern": "^h$"}]
-    }
-  }
-];
-```
-
 ## Publish
 
 ```sh

@@ -20,9 +20,7 @@
     "rules",
     "base.js",
     "frontend.js",
-    "frontend-vue.js",
     "frontend-typescript.js",
-    "frontend-typescript-vue.js",
     "meteor.js",
     "typescript.js"
   ],
@@ -61,7 +59,6 @@
     "eslint-plugin-shelf-no-need-lodash-methods": "2.0.8",
     "eslint-plugin-sonarjs": "1.0.4",
     "eslint-plugin-testing-library": "6.3.0",
-    "eslint-plugin-vue": "9.29.0",
     "eslint-plugin-you-dont-need-lodash-underscore": "6.14.0",
     "globals": "15.8.0",
     "typescript-eslint": "7.18.0"
