@@ -9,14 +9,16 @@ import jestRules from './rules/jest.js';
 import preferEs6 from './rules/prefer-es6.js';
 import importOrder from './rules/import-order.js';
 import sortImports from './rules/sort-imports.js';
-import stylisticJs from '@stylistic/eslint-plugin-js'
+import stylisticJs from '@stylistic/eslint-plugin-js';
+import comments from './rules/comments.js';
+import overrides from './common/overrides.js';
 
 export default [
   {
     files: jestFormatting.configs.strict.overrides[0].files,
     rules: jestFormatting.configs.strict.overrides[0].rules,
     plugins: {
-      "jest-formatting": jestFormatting,
+      'jest-formatting': jestFormatting,
     },
   },
   jestPlugin.configs['flat/recommended'],
@@ -24,7 +26,7 @@ export default [
   eslintPluginPrettierRecommended,
   {
     plugins: {
-      "json-format": jsonFormat,
+      'json-format': jsonFormat,
       prettier,
       '@stylistic/js': stylisticJs,
     },
@@ -36,22 +38,27 @@ export default [
     },
 
     rules: {
-      "prettier/prettier": "error",
+      'prettier/prettier': 'error',
       ...paddingLineBetweenStatements,
       ...jestRules,
       ...preferEs6,
-      "no-empty": ["error", {
-        allowEmptyCatch: true,
-      }],
+      'no-empty': [
+        'error',
+        {
+          allowEmptyCatch: true,
+        },
+      ],
       ...importOrder,
       ...sortImports,
-      "comma-dangle": "off",
-      camelcase: "error",
-      eqeqeq: ["error", "smart"],
-      "new-cap": "error",
-      "no-extend-native": "error",
-      "no-use-before-define": ["error", "nofunc"],
-      "@stylistic/js/multiline-comment-style": ["error", "separate-lines"],
-      "require-await": "error",
+      ...comments,
+      'comma-dangle': 'off',
+      camelcase: 'error',
+      eqeqeq: ['error', 'smart'],
+      'new-cap': 'error',
+      'no-extend-native': 'error',
+      'no-use-before-define': ['error', 'nofunc'],
+      '@stylistic/js/multiline-comment-style': ['error', 'separate-lines'],
+      'require-await': 'error',
     },
-  }];
+  },
+];
