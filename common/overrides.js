@@ -4,9 +4,9 @@ export default {
     // It's a bit annoying
     rules: {
       // There is no need to specify return types for test case function body it('...', fn)
-      '@typescript-eslint/explicit-function-return-type': "off",
+      '@typescript-eslint/explicit-function-return-type': 'off',
       // There is no mandatory to specify types in tests
-      '@typescript-eslint/no-explicit-any': "off",
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
   allowRequireInConfigs: {
@@ -19,6 +19,13 @@ export default {
     ],
     rules: {
       '@typescript-eslint/no-var-requires': 'off',
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
+  noTSRulesWithJSON: {
+    files: ['*.json'],
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off',
     },
   },
   noCastWithJestMock: {
