@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   publish:
     docker:
-      - image: cimg/node:20.10.0
+      - image: cimg/node:22.14.0
     steps:
       - checkout
       - run:
