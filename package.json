@@ -1,6 +1,6 @@
 {
   "name": "@shelf/eslint-config",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "ESLint Config for Shelf Projects",
   "license": "MIT",
   "repository": "shelfio/eslint-config",
@@ -30,7 +30,8 @@
     "eslintconfig"
   ],
   "resolutions": {
-    "strip-ansi": "6.0.1"
+    "strip-ansi": "6.0.1",
+    "@babel/runtime": "7.26.10"
   },
   "type": "module",
   "dependencies": {
