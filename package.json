@@ -30,7 +30,8 @@
     "eslintconfig"
   ],
   "resolutions": {
-    "strip-ansi": "6.0.1"
+    "strip-ansi": "6.0.1",
+    "@babel/runtime": "7.26.10"
   },
   "type": "module",
   "dependencies": {
