@@ -1,5 +1,4 @@
 import jestFormatting from 'eslint-plugin-jest-formatting';
-import jsonFormat from 'eslint-plugin-json-format';
 import prettier from 'eslint-plugin-prettier';
 import jestPlugin from 'eslint-plugin-jest';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
@@ -26,7 +25,6 @@ export default [
   eslintPluginPrettierRecommended,
   {
     plugins: {
-      'json-format': jsonFormat,
       prettier,
       '@stylistic/js': stylisticJs,
     },
