@@ -2,7 +2,7 @@ import jestFormatting from 'eslint-plugin-jest-formatting';
 import jsonFormat from 'eslint-plugin-json-format';
 import prettier from 'eslint-plugin-prettier';
 import _import from 'eslint-plugin-import';
-import node from 'eslint-plugin-node';
+import node from 'eslint-plugin-n';
 import {fixupPluginRules} from '@eslint/compat';
 import tsParser from '@typescript-eslint/parser';
 import path from 'node:path';

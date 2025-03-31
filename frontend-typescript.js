@@ -1,4 +1,4 @@
-import node from 'eslint-plugin-node';
+import node from 'eslint-plugin-n';
 import testingLibrary from 'eslint-plugin-testing-library';
 import {fixupPluginRules} from '@eslint/compat';
 import tsParser from '@typescript-eslint/parser';
