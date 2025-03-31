@@ -1,5 +1,4 @@
 import jestFormatting from 'eslint-plugin-jest-formatting';
-import jsonFormat from 'eslint-plugin-json-format';
 import prettier from 'eslint-plugin-prettier';
 import _import from 'eslint-plugin-import';
 import node from 'eslint-plugin-n';
@@ -51,7 +50,6 @@ export default [
   {
     plugins: {
       'jest-formatting': jestFormatting,
-      'json-format': jsonFormat,
       prettier,
       import: fixupPluginRules(_import),
       node,
