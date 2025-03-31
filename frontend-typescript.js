@@ -1,24 +1,23 @@
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import node from 'eslint-plugin-n';
 import testingLibrary from 'eslint-plugin-testing-library';
 import {fixupConfigRules, fixupPluginRules} from '@eslint/compat';
 import tsParser from '@typescript-eslint/parser';
-import path from 'node:path';
-import {fileURLToPath} from 'node:url';
 import js from '@eslint/js';
 import {FlatCompat} from '@eslint/eslintrc';
 import tsEslint from 'typescript-eslint';
-import overrides from './common/overrides.js';
-import youDontNeedLodash from './rules/you-dont-need-lodash.js';
-import typescriptRules from './rules/typescript.js';
-import consistentTypeImports from './rules/consistent-type-imports.js';
 import sonarjs from 'eslint-plugin-sonarjs';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import baseConfig from './base.js';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import _import from 'eslint-plugin-import';
 import globals from 'globals';
-import env from './common/env.js';
+import overrides from './common/overrides.js';
+import youDontNeedLodash from './rules/you-dont-need-lodash.js';
+import typescriptRules from './rules/typescript.js';
+import consistentTypeImports from './rules/consistent-type-imports.js';
+import baseConfig from './base.js';
 import restrictedPackagesImport from './rules/restricted-packages-import.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -64,7 +63,7 @@ export default [
 
     languageOptions: {
       globals: {
-        ...env,
+        ...globals.node,
         ...globals.browser,
       },
       parser: tsParser,
@@ -103,7 +102,7 @@ export default [
     },
   },
   overrides.allowRequireInConfigs,
-  overrides.noExplicitsInTests,
+  overrides.disableExplicitsInTests,
   overrides.noCastWithJestMock,
   overrides.noTSRulesWithJSON,
   {

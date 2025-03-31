@@ -1,5 +1,6 @@
 export default {
-  noExplicitsInTests: {
+  disableExplicitsInTests: {
+    name: 'not-explicit-any-in-tests',
     files: ['**/*.test.ts', '**/*mock?(s).ts'],
     // It's a bit annoying
     rules: {
@@ -10,15 +11,15 @@ export default {
     },
   },
   allowRequireInConfigs: {
+    name: 'shelf-allow-require-in-configs',
     files: [
       '*wallaby.config.js',
       'webpack.config.js',
       'babel.config.js',
       'next.config.js',
-      'draft.js',
+      '**/*.cjs',
     ],
     rules: {
-      '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-require-imports': 'off',
     },
   },

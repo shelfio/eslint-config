@@ -1,18 +1,19 @@
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import jestFormatting from 'eslint-plugin-jest-formatting';
 import prettier from 'eslint-plugin-prettier';
 import _import from 'eslint-plugin-import';
 import node from 'eslint-plugin-n';
 import {fixupPluginRules} from '@eslint/compat';
 import tsParser from '@typescript-eslint/parser';
-import path from 'node:path';
-import {fileURLToPath} from 'node:url';
 import js from '@eslint/js';
 import {FlatCompat} from '@eslint/eslintrc';
 import tsEslint from 'typescript-eslint';
 import jestPlugin from 'eslint-plugin-jest';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import shelfNoLodash from 'eslint-plugin-shelf-no-need-lodash-methods';
-import env from './common/env.js';
+import stylisticJs from '@stylistic/eslint-plugin-js';
+import globals from './common/globals.js';
 import jestRules from './rules/jest.js';
 import paddingLineBetweenStatements from './rules/padding-line-between-statements.js';
 import preferEs6 from './rules/prefer-es6.js';
@@ -24,7 +25,6 @@ import youDontNeedLodash from './rules/you-dont-need-lodash.js';
 import typescriptRules from './rules/typescript.js';
 import restrictedPackagesImport from './rules/restricted-packages-import.js';
 import overrides from './common/overrides.js';
-import stylisticJs from '@stylistic/eslint-plugin-js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -57,12 +57,8 @@ export default [
     },
 
     languageOptions: {
-      globals: {
-        ...env,
-      },
-
+      globals,
       parser: tsParser,
-
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
@@ -133,7 +129,7 @@ export default [
     },
   },
   overrides.allowRequireInConfigs,
-  overrides.noExplicitsInTests,
+  overrides.disableExplicitsInTests,
   overrides.noCastWithJestMock,
   overrides.noTSRulesWithJSON,
 ];
