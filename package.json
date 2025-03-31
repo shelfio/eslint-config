@@ -22,7 +22,6 @@
     "base.js",
     "frontend.js",
     "frontend-typescript.js",
-    "meteor.js",
     "typescript.js"
   ],
   "main": "base.js",
