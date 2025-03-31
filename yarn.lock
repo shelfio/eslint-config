@@ -180,6 +180,11 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.11.0.tgz#75dce8e972f90bba488e2b0cc677fb233aa357ab"
   integrity sha512-zxnHvoMQVqewTJr/W4pKjF0bMGiKJv1WX7bSrkl46Hg0QjESbzBROWK0Wg4RphzSOS5Jiy7eFimmM3UgMrMZbQ==
 
+"@shelf/tsconfig@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@shelf/tsconfig/-/tsconfig-0.1.0.tgz#4151c0d89f5ad8f3195d687120e0fabad9a98098"
+  integrity sha512-EGA8EdCdGU4EE/6XKBbnrJoBu1e/+zhoty/75bbpPRRpOegyjoocRNXYDD6LQ8aKRoughNorbyxGVCZ2R7uUTw==
+
 "@stylistic/eslint-plugin-js@4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@stylistic/eslint-plugin-js/-/eslint-plugin-js-4.2.0.tgz#30536fd35dd6aba08c1e234fe37bf66831c6e989"
