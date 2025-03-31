@@ -13,7 +13,8 @@
     "node": ">=8.10"
   },
   "scripts": {
-    "test": "echo ok"
+    "test": "echo ok",
+    "prepare": "husky"
   },
   "files": [
     "common",
@@ -53,7 +54,6 @@
     "eslint-plugin-json-format": "2.0.1",
     "eslint-plugin-jsx": "0.1.0",
     "eslint-plugin-n": "17.16.2",
-    "eslint-plugin-n": "14.0.0",
     "eslint-plugin-prettier": "5.2.3",
     "eslint-plugin-react": "7.37.4",
     "eslint-plugin-react-hooks": "5.2.0",
@@ -65,7 +65,7 @@
     "typescript-eslint": "8.26.0"
   },
   "devDependencies": {
-    "husky": "8.0.3",
+    "husky": "9.1.7",
     "lint-staged": "15.5.0",
     "prettier": "3.5.3"
   },
