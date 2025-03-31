@@ -22,28 +22,6 @@ export default [...tsConfig];
 
 ### Frontend
 
-#### JavaScript with React `eslint.config.js`
-
-```js
-import feConfig from '@shelf/eslint-config/frontend';
-
-export default [
-  ...feConfig,
-  {
-    settings: {
-      react: {
-        version: '16.7.0',
-      },
-    },
-    rules: {
-      "react/prop-types": "warn"
-    }
-  }
-];
-```
-
-#### TypeScript or TypeScript + Next `eslint.config.js`
-
 ```js
 import feTsConfig from '@shelf/eslint-config/frontend-typescript';
 
@@ -52,13 +30,10 @@ export default [
   {
     settings: {
       react: {
-        version: '16.7.0',
+        version: 'detect',
       },
     },
-    rules: {
-      "react/prop-types": "warn"
-    }
-  }
+  },
 ];
 ```
 

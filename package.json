@@ -20,7 +20,6 @@
     "common",
     "rules",
     "base.js",
-    "frontend.js",
     "frontend-typescript.js",
     "typescript.js"
   ],
