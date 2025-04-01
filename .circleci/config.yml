@@ -6,6 +6,7 @@ jobs:
       - image: cimg/node:22.14.0
     steps:
       - checkout
+      - run: yarn install
       - run:
           name: Publish to NPM
           command: |
@@ -20,4 +21,3 @@ workflows:
           filters:
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
-
