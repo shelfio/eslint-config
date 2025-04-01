@@ -6,6 +6,7 @@ export default [
   {
     name: 'shelf-import-order',
     rules: {
+      'import/no-deprecated': 'error',
       'import/order': [
         'error',
         {
