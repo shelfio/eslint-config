@@ -119,7 +119,7 @@ export default [
         'warn',
         {
           min: 1,
-          max: 14
+          max: 22
         },
       ],
       'no-unreachable': 'error',
