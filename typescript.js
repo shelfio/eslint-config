@@ -115,6 +115,13 @@ export default [
           requireReturnForObjectLiteral: true,
         },
       ],
+      'id-length': [
+        'warn',
+        {
+          min: 1,
+          max: 14
+        },
+      ],
       'no-unreachable': 'error',
       'require-await': 'error',
       ...youDontNeedLodash,
