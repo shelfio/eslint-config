@@ -6,7 +6,7 @@ Read our [style guide](./docs/style-guide.md)
 
 ## Install
 
-```
+```bash
 $ yarn add @shelf/eslint-config --dev
 ```
 
