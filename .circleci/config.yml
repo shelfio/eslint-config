@@ -1,12 +1,39 @@
+orbs:
+  node: circleci/node@5.2.0
 version: 2.1
-
+parameters:
+  node_version:
+    type: string
+    default: '22.16.0'
+commands:
+  install_deps:
+    steps:
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-version: v1-all
+          cache-only-lockfile: true
+          app-dir: ~/repo
+          override-ci-command: yarn install --pure-lockfile --no-progress
 jobs:
-  publish:
-    docker:
-      - image: cimg/node:22.16.0
+  build:
+    executor:
+      name: node/default
+      tag: << pipeline.parameters.node_version >>
+    resource_class: large
+    working_directory: ~/repo
     steps:
       - checkout
-      - run: yarn install
+      - install_deps
+      - run: yarn lint
+
+  publish:
+    executor:
+      name: node/default
+      tag: << pipeline.parameters.node_version >>
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - install_deps
       - run:
           name: Publish to NPM
           command: |
@@ -14,6 +41,10 @@ jobs:
             npm publish
 
 workflows:
+  build:
+    jobs:
+      - build
+
   tagged-build:
     jobs:
       - publish:
