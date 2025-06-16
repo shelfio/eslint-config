@@ -35,22 +35,34 @@ jobs:
       - checkout
       - install_deps
       - run:
-          name: Publish to NPM
+          name: Conditional NPM Publish
           command: |
-            npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
-            npm publish
+            # Get current package version
+            CURRENT_VERSION=$(node -p "require('./package.json').version")
+            echo "Current package.json version: $CURRENT_VERSION"
+
+            # Get published version from npm (will be empty if never published)
+            PUBLISHED_VERSION=$(npm view @shelf/eslint-config version 2>/dev/null || echo "")
+            echo "Published version on npm: ${PUBLISHED_VERSION:-'(not published)'}"
+
+            # Compare versions - publish if different
+            if [ "$CURRENT_VERSION" != "$PUBLISHED_VERSION" ]; then
+              echo "Publishing version $CURRENT_VERSION to npm..."
+              npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+              npm publish
+              echo "✅ Published version $CURRENT_VERSION successfully"
+            else
+              echo "⏭️  Skipping publish - version $CURRENT_VERSION already published"
+            fi
 
 workflows:
-  build:
+  build-and-publish:
     jobs:
       - build
-
-  tagged-build:
-    jobs:
       - publish:
           context: npm-write
+          requires:
+            - build
           filters:
-            tags:
-              only: /v[0-9]+(\.[0-9]+)*/
             branches:
-              ignore: /.*/
+              only: master
