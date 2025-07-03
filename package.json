@@ -30,7 +30,8 @@
     "eslintconfig"
   ],
   "resolutions": {
-    "strip-ansi": "6.0.1"
+    "strip-ansi": "6.0.1",
+    "brace-expansion": "1.1.11"
   },
   "type": "module",
   "dependencies": {
