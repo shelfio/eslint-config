@@ -1,36 +1,36 @@
 export default {
-  "jest/consistent-test-it": [
-    "error",
+  'jest/consistent-test-it': [
+    'error',
     {
-      "fn": "it",
-      "withinDescribe": "it"
-    }
+      fn: 'it',
+      withinDescribe: 'it',
+    },
   ],
-  "jest/expect-expect": [
-    "warn",
+  'jest/expect-expect': [
+    'warn',
     {
-      "assertFunctionNames": ["expect"]
-    }
+      assertFunctionNames: ['expect'],
+    },
   ],
-  "jest/prefer-lowercase-title": "error",
-  "jest/no-commented-out-tests": "error",
-  "jest/no-duplicate-hooks": "error",
-  "jest/no-export": "error",
-  "jest/no-large-snapshots": "warn",
-  "jest/no-conditional-in-test": "warn",
-  "jest/no-mocks-import": "warn",
-  "jest/no-standalone-expect": "warn",
-  "jest/no-done-callback": "error",
-  "jest/no-test-return-statement": "warn",
-  "jest/no-truthy-falsy": "off",
-  "jest/no-try-expect": "off",
-  "jest/prefer-called-with": "warn",
-  "jest/prefer-inline-snapshots": "off",
-  "jest/prefer-spy-on": "warn",
-  "jest/prefer-strict-equal": "off",
-  "jest/prefer-todo": "warn",
-  "jest/require-to-throw-message": "warn",
-  "jest/valid-title": "error",
-  "jest/no-conditional-expect": "off",
-  "jest/prefer-to-be": "off"
-}
+  'jest/prefer-lowercase-title': 'error',
+  'jest/no-commented-out-tests': 'error',
+  'jest/no-duplicate-hooks': 'error',
+  'jest/no-export': 'error',
+  'jest/no-large-snapshots': 'warn',
+  'jest/no-conditional-in-test': 'warn',
+  'jest/no-mocks-import': 'warn',
+  'jest/no-standalone-expect': 'warn',
+  'jest/no-done-callback': 'error',
+  'jest/no-test-return-statement': 'warn',
+  'jest/no-truthy-falsy': 'off',
+  'jest/no-try-expect': 'off',
+  'jest/prefer-called-with': 'warn',
+  'jest/prefer-inline-snapshots': 'off',
+  'jest/prefer-spy-on': 'warn',
+  'jest/prefer-strict-equal': 'off',
+  'jest/prefer-todo': 'warn',
+  'jest/require-to-throw-message': 'warn',
+  'jest/valid-title': 'error',
+  'jest/no-conditional-expect': 'off',
+  'jest/prefer-to-be': 'off',
+};

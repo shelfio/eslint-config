@@ -1,17 +1,15 @@
 import jestFormatting from 'eslint-plugin-jest-formatting';
-import jsonFormat from 'eslint-plugin-json-format';
 import prettier from 'eslint-plugin-prettier';
 import jestPlugin from 'eslint-plugin-jest';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import stylisticJs from '@stylistic/eslint-plugin-js';
 import env from './common/env.js';
 import paddingLineBetweenStatements from './rules/padding-line-between-statements.js';
 import jestRules from './rules/jest.js';
 import preferEs6 from './rules/prefer-es6.js';
 import importOrder from './rules/import-order.js';
 import sortImports from './rules/sort-imports.js';
-import stylisticJs from '@stylistic/eslint-plugin-js';
 import comments from './rules/comments.js';
-import overrides from './common/overrides.js';
 
 export default [
   {
@@ -26,7 +24,6 @@ export default [
   eslintPluginPrettierRecommended,
   {
     plugins: {
-      'json-format': jsonFormat,
       prettier,
       '@stylistic/js': stylisticJs,
     },
