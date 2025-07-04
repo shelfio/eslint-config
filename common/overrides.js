@@ -23,7 +23,7 @@ export default {
     },
   },
   noTSRulesWithJSON: {
-    files: ['*.json'],
+    files: ['**/*.json'],
     rules: {
       '@typescript-eslint/no-unused-expressions': 'off',
     },
