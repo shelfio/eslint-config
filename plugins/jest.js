@@ -1,6 +1,6 @@
 import jestPlugin from 'eslint-plugin-jest';
 
-const files = ['**/*.test.*'];
+export const files = ['**/*.test.*', '**/*.spec.*'];
 
 export default [
   {name: 'jest-recommended', files, ...jestPlugin.configs['flat/recommended']},
