@@ -14,7 +14,8 @@
   },
   "scripts": {
     "test": "echo ok",
-    "prepare": "husky"
+    "prepare": "husky",
+    "inspect-config": "npx @eslint/config-inspector@latest"
   },
   "files": [
     "common",
