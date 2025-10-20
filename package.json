@@ -68,11 +68,6 @@
     "eslint": "9.x",
     "prettier": "3.x"
   },
-  "lint-staged": {
-    "*.{html,md,yml}": "prettier --write",
-    "*.{ts,js,json}": "eslint --fix",
-    ".circleci/config.yml": ".husky/validate-circleci-config.sh"
-  },
   "publishConfig": {
     "access": "public"
   }
