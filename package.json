@@ -30,7 +30,7 @@
     "eslintconfig"
   ],
   "resolutions": {
-    "strip-ansi": "7.1.0"
+    "strip-ansi": "7.1.2"
   },
   "type": "module",
   "dependencies": {
