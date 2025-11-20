@@ -1,5 +1,5 @@
 export default {
-  '@stylistic/js/padding-line-between-statements': [
+  '@stylistic/padding-line-between-statements': [
     'error',
     {
       blankLine: 'always',

@@ -12,7 +12,7 @@ import tsEslint from 'typescript-eslint';
 import jestPlugin from 'eslint-plugin-jest';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import shelfNoLodash from 'eslint-plugin-shelf-no-need-lodash-methods';
-import stylisticJs from '@stylistic/eslint-plugin-js';
+import stylistic from '@stylistic/eslint-plugin';
 import env from './common/env.js';
 import jestRules from './rules/jest.js';
 import paddingLineBetweenStatements from './rules/padding-line-between-statements.js';
@@ -53,7 +53,7 @@ export default [
       prettier,
       import: fixupPluginRules(_import),
       node,
-      '@stylistic/js': stylisticJs,
+      '@stylistic': stylistic,
     },
 
     languageOptions: {
@@ -107,7 +107,7 @@ export default [
       'no-extend-native': 'error',
       'no-use-before-define': 'off',
       ...consistentTypeImports,
-      '@stylistic/js/multiline-comment-style': ['error', 'separate-lines'],
+      '@stylistic/multiline-comment-style': ['error', 'separate-lines'],
       'arrow-body-style': [
         'error',
         'as-needed',
