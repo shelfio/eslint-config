@@ -46,7 +46,7 @@ export default [
       'no-console': 'error',
       'react-hooks/exhaustive-deps': 'error',
       'sonarjs/cognitive-complexity': ['error', 18],
-      '@stylistic/js/multiline-comment-style': 'off',
+      '@stylistic/multiline-comment-style': 'off',
       'no-unreachable': 'error',
       'react/react-in-jsx-scope': 'off',
     },

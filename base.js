@@ -2,7 +2,7 @@ import jestFormatting from 'eslint-plugin-jest-formatting';
 import prettier from 'eslint-plugin-prettier';
 import jestPlugin from 'eslint-plugin-jest';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import stylisticJs from '@stylistic/eslint-plugin-js';
+import stylistic from '@stylistic/eslint-plugin';
 import env from './common/env.js';
 import paddingLineBetweenStatements from './rules/padding-line-between-statements.js';
 import jestRules from './rules/jest.js';
@@ -25,7 +25,7 @@ export default [
   {
     plugins: {
       prettier,
-      '@stylistic/js': stylisticJs,
+      '@stylistic': stylistic,
     },
 
     languageOptions: {
@@ -54,7 +54,7 @@ export default [
       'new-cap': 'error',
       'no-extend-native': 'error',
       'no-use-before-define': ['error', 'nofunc'],
-      '@stylistic/js/multiline-comment-style': ['error', 'separate-lines'],
+      '@stylistic/multiline-comment-style': ['error', 'separate-lines'],
       'require-await': 'error',
     },
   },
