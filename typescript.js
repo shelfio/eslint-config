@@ -28,7 +28,6 @@ import overrides from './common/overrides.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const tsFiles = ['**/*.ts', '**/*.tsx', '**/*.mts', '**/*.cts'];
 const compat = new FlatCompat({
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended,
@@ -107,6 +106,7 @@ export default [
       'new-cap': 'error',
       'no-extend-native': 'error',
       'no-use-before-define': 'off',
+      ...consistentTypeImports,
       '@stylistic/multiline-comment-style': ['error', 'separate-lines'],
       'arrow-body-style': [
         'error',
@@ -137,18 +137,6 @@ export default [
           message: "Danger, this can overwrite 'accountId'. Rearrange the order.",
         },
       ],
-    },
-  },
-  {
-    files: tsFiles,
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: process.cwd(),
-      },
-    },
-    rules: {
-      ...consistentTypeImports,
     },
   },
   overrides.allowRequireInConfigs,
