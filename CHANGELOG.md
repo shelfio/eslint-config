@@ -1,3 +1,7 @@
+## 5.3.3
+
+- Scope `@typescript-eslint/consistent-type-imports` to TS files and enable parserServices via `projectService` to avoid consumer configs needing local overrides.
+
 ## 3.0.0
 
 Override recommended no explicit type any in tests
