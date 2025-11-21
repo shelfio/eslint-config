@@ -29,9 +29,6 @@
     "eslint",
     "eslintconfig"
   ],
-  "resolutions": {
-    "strip-ansi": "7.1.0"
-  },
   "type": "module",
   "dependencies": {
     "@eslint/compat": "2.0.0",
