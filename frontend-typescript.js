@@ -19,7 +19,7 @@ import typescriptRules from './rules/typescript.js';
 import consistentTypeImports from './rules/consistent-type-imports.js';
 import baseConfig from './base.js';
 import env from './common/env.js';
-import restrictedPackagesImport from './rules/restricted-packages-import.js';
+import restrictedPackages from './rules/restricted-packages-import.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -42,7 +42,7 @@ export default [
   ...baseConfig,
   {
     rules: {
-      ...restrictedPackagesImport,
+      ...restrictedPackages,
       'no-console': 'error',
       'react-hooks/exhaustive-deps': 'error',
       'sonarjs/cognitive-complexity': ['error', 18],

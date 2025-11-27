@@ -10,20 +10,20 @@ import js from '@eslint/js';
 import {FlatCompat} from '@eslint/eslintrc';
 import tsEslint from 'typescript-eslint';
 import jestPlugin from 'eslint-plugin-jest';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import shelfNoLodash from 'eslint-plugin-shelf-no-need-lodash-methods';
 import stylistic from '@stylistic/eslint-plugin';
 import env from './common/env.js';
 import jestRules from './rules/jest.js';
-import paddingLineBetweenStatements from './rules/padding-line-between-statements.js';
+import paddingLineRules from './rules/padding-line-between-statements.js';
 import preferEs6 from './rules/prefer-es6.js';
 import importOrder from './rules/import-order.js';
 import sortImports from './rules/sort-imports.js';
-import consistentTypeAssertions from './rules/consistent-type-assertions.js';
+import typeAssertionRules from './rules/consistent-type-assertions.js';
 import consistentTypeImports from './rules/consistent-type-imports.js';
 import youDontNeedLodash from './rules/you-dont-need-lodash.js';
 import typescriptRules from './rules/typescript.js';
-import restrictedPackagesImport from './rules/restricted-packages-import.js';
+import restrictedPackages from './rules/restricted-packages-import.js';
 import overrides from './common/overrides.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -45,7 +45,7 @@ export default [
   },
   jestPlugin.configs['flat/recommended'],
   jestPlugin.configs['flat/style'],
-  eslintPluginPrettierRecommended,
+  prettierRecommended,
   shelfNoLodash.configs.all,
   {
     plugins: {
@@ -87,13 +87,13 @@ export default [
       'no-nested-ternary': 'error',
       'prettier/prettier': 'error',
 
-      ...paddingLineBetweenStatements,
+      ...paddingLineRules,
       ...jestRules,
       ...preferEs6,
       ...importOrder,
       ...sortImports,
       'comma-dangle': 'off',
-      ...consistentTypeAssertions,
+      ...typeAssertionRules,
       camelcase: [
         'error',
         {
@@ -120,6 +120,7 @@ export default [
         {
           min: 1,
           max: 22,
+          properties: 'never',
         },
       ],
       'no-unreachable': 'error',
@@ -128,7 +129,7 @@ export default [
       '@typescript-eslint/ban-ts-comment': 'warn',
       '@typescript-eslint/no-non-null-assertion': 'off',
       ...typescriptRules,
-      ...restrictedPackagesImport,
+      ...restrictedPackages,
       '@typescript-eslint/no-explicit-any': 'warn',
       'no-restricted-syntax': [
         'error',

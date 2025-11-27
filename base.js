@@ -1,10 +1,10 @@
 import jestFormatting from 'eslint-plugin-jest-formatting';
 import prettier from 'eslint-plugin-prettier';
 import jestPlugin from 'eslint-plugin-jest';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import stylistic from '@stylistic/eslint-plugin';
 import env from './common/env.js';
-import paddingLineBetweenStatements from './rules/padding-line-between-statements.js';
+import paddingLineRules from './rules/padding-line-between-statements.js';
 import jestRules from './rules/jest.js';
 import preferEs6 from './rules/prefer-es6.js';
 import importOrder from './rules/import-order.js';
@@ -21,7 +21,7 @@ export default [
   },
   jestPlugin.configs['flat/recommended'],
   jestPlugin.configs['flat/style'],
-  eslintPluginPrettierRecommended,
+  prettierRecommended,
   {
     plugins: {
       prettier,
@@ -36,7 +36,7 @@ export default [
 
     rules: {
       'prettier/prettier': 'error',
-      ...paddingLineBetweenStatements,
+      ...paddingLineRules,
       ...jestRules,
       ...preferEs6,
       'no-empty': [
