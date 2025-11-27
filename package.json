@@ -1,6 +1,6 @@
 {
   "name": "@shelf/eslint-config",
-  "version": "5.3.4",
+  "version": "5.4.0",
   "description": "ESLint Config for Shelf Projects",
   "license": "MIT",
   "repository": "shelfio/eslint-config",
