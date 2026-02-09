@@ -40,7 +40,7 @@ export default [
 ## Publish
 
 ```sh
-$ pnpm version
+$ pnpm version patch
 $ git push --tags
 ```
 
