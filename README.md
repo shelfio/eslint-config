@@ -7,7 +7,7 @@ Read our [style guide](./docs/style-guide.md)
 ## Install
 
 ```bash
-$ yarn add @shelf/eslint-config --dev
+$ pnpm add --save-dev --save-exact @shelf/eslint-config
 ```
 
 ## Usage
@@ -40,7 +40,7 @@ export default [
 ## Publish
 
 ```sh
-$ yarn version
+$ pnpm version
 $ git push --tags
 ```
 

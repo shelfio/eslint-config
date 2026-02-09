@@ -10,7 +10,7 @@
     "url": "shelf.io"
   },
   "engines": {
-    "node": ">=8.10"
+    "node": "^20.19.0 || ^22.13.0 || >=24.0.0"
   },
   "scripts": {
     "test": "echo ok",
