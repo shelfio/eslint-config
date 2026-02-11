@@ -3,6 +3,7 @@ import prettier from 'eslint-plugin-prettier';
 import jestPlugin from 'eslint-plugin-jest';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import stylistic from '@stylistic/eslint-plugin';
+import {fixupPluginRules} from '@eslint/compat';
 import env from './common/env.js';
 import paddingLineRules from './rules/padding-line-between-statements.js';
 import jestRules from './rules/jest.js';
@@ -11,12 +12,14 @@ import importOrder from './rules/import-order.js';
 import sortImports from './rules/sort-imports.js';
 import comments from './rules/comments.js';
 
+const jestFormattingCompat = fixupPluginRules(jestFormatting);
+
 export default [
   {
-    files: jestFormatting.configs.strict.overrides[0].files,
-    rules: jestFormatting.configs.strict.overrides[0].rules,
+    files: jestFormattingCompat.configs.strict.overrides[0].files,
+    rules: jestFormattingCompat.configs.strict.overrides[0].rules,
     plugins: {
-      'jest-formatting': jestFormatting,
+      'jest-formatting': jestFormattingCompat,
     },
   },
   jestPlugin.configs['flat/recommended'],
