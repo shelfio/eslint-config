@@ -32,15 +32,16 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended,
 });
+const jestFormattingCompat = fixupPluginRules(jestFormatting);
 
 export default [
   ...compat.extends('plugin:you-dont-need-lodash-underscore/compatible'),
   ...tsEslint.configs.recommended,
   {
-    files: jestFormatting.configs.strict.overrides[0].files,
-    rules: jestFormatting.configs.strict.overrides[0].rules,
+    files: jestFormattingCompat.configs.strict.overrides[0].files,
+    rules: jestFormattingCompat.configs.strict.overrides[0].rules,
     plugins: {
-      'jest-formatting': jestFormatting,
+      'jest-formatting': jestFormattingCompat,
     },
   },
   jestPlugin.configs['flat/recommended'],
@@ -49,7 +50,7 @@ export default [
   shelfNoLodash.configs.all,
   {
     plugins: {
-      'jest-formatting': jestFormatting,
+      'jest-formatting': jestFormattingCompat,
       prettier,
       import: fixupPluginRules(_import),
       node,
