@@ -38,6 +38,11 @@ export default {
           message: "Please use import {randomUUID} from 'crypto' instead!",
         },
         {
+          name: 'chalk',
+          message:
+            "Please use import {styleText} from 'node:util' instead! See https://nodejs.org/en/blog/migrations/chalk-to-styletext",
+        },
+        {
           name: 'react-outside-click-handler',
           message:
             'Please use [@shelf/react-outside-click](https://www.npmjs.com/package/@shelf/react-outside-click)',
