@@ -41,7 +41,7 @@ export default [
 
 ```sh
 $ pnpm version patch
-$ git push --tags
+$ git push --follow-tags
 ```
 
 ## License
