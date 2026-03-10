@@ -11,6 +11,10 @@ import preferEs6 from './rules/prefer-es6.js';
 import importOrder from './rules/import-order.js';
 import sortImports from './rules/sort-imports.js';
 import comments from './rules/comments.js';
+import defaultBarrelExports, {
+  barrelPagesOverride,
+  barrelPlugin,
+} from './rules/default-barrel-exports.js';
 
 const jestFormattingCompat = fixupPluginRules(jestFormatting);
 
@@ -29,6 +33,7 @@ export default [
     plugins: {
       prettier,
       '@stylistic': stylistic,
+      ...barrelPlugin,
     },
 
     languageOptions: {
@@ -51,6 +56,7 @@ export default [
       ...importOrder,
       ...sortImports,
       ...comments,
+      ...defaultBarrelExports,
       'comma-dangle': 'off',
       camelcase: 'error',
       eqeqeq: ['error', 'smart'],
@@ -61,4 +67,5 @@ export default [
       'require-await': 'error',
     },
   },
+  barrelPagesOverride,
 ];
