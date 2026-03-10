@@ -11,7 +11,10 @@ import preferEs6 from './rules/prefer-es6.js';
 import importOrder from './rules/import-order.js';
 import sortImports from './rules/sort-imports.js';
 import comments from './rules/comments.js';
-import defaultBarrelExports from './rules/default-barrel-exports.js';
+import defaultBarrelExports, {
+  barrelPagesOverride,
+  barrelPlugin,
+} from './rules/default-barrel-exports.js';
 
 const jestFormattingCompat = fixupPluginRules(jestFormatting);
 
@@ -30,6 +33,7 @@ export default [
     plugins: {
       prettier,
       '@stylistic': stylistic,
+      ...barrelPlugin,
     },
 
     languageOptions: {
@@ -63,4 +67,5 @@ export default [
       'require-await': 'error',
     },
   },
+  barrelPagesOverride,
 ];
