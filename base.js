@@ -11,6 +11,7 @@ import preferEs6 from './rules/prefer-es6.js';
 import importOrder from './rules/import-order.js';
 import sortImports from './rules/sort-imports.js';
 import comments from './rules/comments.js';
+import barrelAndDefaultExports from './rules/default-barrel-exports.js';
 
 const jestFormattingCompat = fixupPluginRules(jestFormatting);
 
@@ -51,6 +52,7 @@ export default [
       ...importOrder,
       ...sortImports,
       ...comments,
+      ...barrelAndDefaultExports,
       'comma-dangle': 'off',
       camelcase: 'error',
       eqeqeq: ['error', 'smart'],
