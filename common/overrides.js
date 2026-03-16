@@ -9,6 +9,12 @@ export default {
       '@typescript-eslint/no-explicit-any': 'off',
     },
   },
+  noUnusedVarsInTypes: {
+    files: ['**/types.ts', '**/types/**/*.ts'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+    },
+  },
   allowRequireInConfigs: {
     files: [
       '*wallaby.config.js',

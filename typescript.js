@@ -143,6 +143,7 @@ export default [
   },
   overrides.allowRequireInConfigs,
   overrides.noExplicitsInTests,
+  overrides.noUnusedVarsInTypes,
   overrides.noCastWithJestMock,
   overrides.noTSRulesWithJSON,
 ];
