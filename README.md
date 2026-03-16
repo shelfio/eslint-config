@@ -40,8 +40,7 @@ export default [
 ## Publish
 
 ```sh
-$ pnpm version patch
-$ git push --follow-tags
+$ pnpx np
 ```
 
 ## License
