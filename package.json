@@ -21,8 +21,11 @@
     "common",
     "rules",
     "base.js",
+    "base-no-prettier.js",
     "frontend-typescript.js",
-    "typescript.js"
+    "frontend-typescript-no-prettier.js",
+    "typescript.js",
+    "typescript-no-prettier.js"
   ],
   "main": "base.js",
   "keywords": [
@@ -65,6 +68,11 @@
   "peerDependencies": {
     "eslint": "10.x",
     "prettier": "3.x"
+  },
+  "peerDependenciesMeta": {
+    "prettier": {
+      "optional": true
+    }
   },
   "pnpm": {
     "overrides": {

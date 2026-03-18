@@ -1,0 +1,68 @@
+import jestFormatting from 'eslint-plugin-jest-formatting';
+import jestPlugin from 'eslint-plugin-jest';
+import stylistic from '@stylistic/eslint-plugin';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import {fixupPluginRules} from '@eslint/compat';
+import env from './common/env.js';
+import paddingLineRules from './rules/padding-line-between-statements.js';
+import jestRules from './rules/jest.js';
+import preferEs6 from './rules/prefer-es6.js';
+import importOrder from './rules/import-order.js';
+import sortImports from './rules/sort-imports.js';
+import comments from './rules/comments.js';
+import defaultBarrelExports, {
+  barrelPagesOverride,
+  barrelPlugin,
+} from './rules/default-barrel-exports.js';
+
+const jestFormattingCompat = fixupPluginRules(jestFormatting);
+
+export default [
+  {
+    files: jestFormattingCompat.configs.strict.overrides[0].files,
+    rules: jestFormattingCompat.configs.strict.overrides[0].rules,
+    plugins: {
+      'jest-formatting': jestFormattingCompat,
+    },
+  },
+  jestPlugin.configs['flat/recommended'],
+  jestPlugin.configs['flat/style'],
+  {
+    plugins: {
+      '@stylistic': stylistic,
+      ...barrelPlugin,
+    },
+
+    languageOptions: {
+      globals: {
+        ...env,
+      },
+    },
+
+    rules: {
+      ...paddingLineRules,
+      ...jestRules,
+      ...preferEs6,
+      'no-empty': [
+        'error',
+        {
+          allowEmptyCatch: true,
+        },
+      ],
+      ...importOrder,
+      ...sortImports,
+      ...comments,
+      ...defaultBarrelExports,
+      'comma-dangle': 'off',
+      camelcase: 'error',
+      eqeqeq: ['error', 'smart'],
+      'new-cap': 'error',
+      'no-extend-native': 'error',
+      'no-use-before-define': ['error', 'nofunc'],
+      '@stylistic/multiline-comment-style': ['error', 'separate-lines'],
+      'require-await': 'error',
+    },
+  },
+  barrelPagesOverride,
+  eslintConfigPrettier,
+];
