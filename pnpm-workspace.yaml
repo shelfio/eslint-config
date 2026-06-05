@@ -1,0 +1,12 @@
+trustPolicyExclude:
+  - '@oxc-resolver/binding-darwin-arm64@1.12.0'
+  - '@oxc-resolver/binding-darwin-x64@1.12.0'
+  - '@oxc-resolver/binding-freebsd-x64@1.12.0'
+  - '@oxc-resolver/binding-linux-arm-gnueabihf@1.12.0'
+  - '@oxc-resolver/binding-linux-arm64-gnu@1.12.0'
+  - '@oxc-resolver/binding-linux-arm64-musl@1.12.0'
+  - '@oxc-resolver/binding-linux-x64-gnu@1.12.0'
+  - '@oxc-resolver/binding-linux-x64-musl@1.12.0'
+  - '@oxc-resolver/binding-wasm32-wasi@1.12.0'
+  - '@oxc-resolver/binding-win32-arm64-msvc@1.12.0'
+  - '@oxc-resolver/binding-win32-x64-msvc@1.12.0'
