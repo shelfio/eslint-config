@@ -12,6 +12,7 @@
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24.0.0"
   },
+  "packageManager": "pnpm@11.4.0",
   "scripts": {
     "test": "echo ok",
     "prepare": "husky",
@@ -69,11 +70,6 @@
   "peerDependenciesMeta": {
     "prettier": {
       "optional": true
-    }
-  },
-  "pnpm": {
-    "overrides": {
-      "eslint-plugin-jest>@typescript-eslint/utils": "8.57.2"
     }
   },
   "publishConfig": {
