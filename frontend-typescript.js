@@ -20,6 +20,7 @@ import consistentTypeImports from './rules/consistent-type-imports.js';
 import baseConfig from './base.js';
 import env from './common/env.js';
 import restrictedPackages from './rules/restricted-packages-import.js';
+import preferSWRMutation, {swrMutationPlugin} from './rules/prefer-swr-mutation.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -60,6 +61,7 @@ export default [
       '@typescript-eslint': tsEslint.plugin,
       node,
       'testing-library': fixupPluginRules(testingLibrary),
+      shelf: swrMutationPlugin,
     },
 
     languageOptions: {
@@ -100,6 +102,7 @@ export default [
       ...typescriptRules,
       '@typescript-eslint/no-unused-vars': ['error', {ignoreRestSiblings: true}],
       ...youDontNeedLodash,
+      ...preferSWRMutation,
     },
   },
   overrides.allowRequireInConfigs,
