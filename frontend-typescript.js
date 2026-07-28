@@ -21,6 +21,7 @@ import baseConfig from './base.js';
 import env from './common/env.js';
 import restrictedPackages from './rules/restricted-packages-import.js';
 import preferSWRMutation, {swrMutationPlugin} from './rules/prefer-swr-mutation.js';
+import noTestidOnlyTests, {testidOnlyTestsPlugin} from './rules/no-testid-only-tests.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,6 +32,11 @@ const compat = new FlatCompat({
 
 const testingLibraryReact = {
   rules: compat.extends('plugin:testing-library/react')[0].rules,
+  files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+};
+
+const testidOnlyTests = {
+  rules: noTestidOnlyTests,
   files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
 };
 
@@ -53,6 +59,7 @@ export default [
     },
   },
   testingLibraryReact,
+  testidOnlyTests,
   {
     plugins: {
       react: fixupPluginRules(react),
@@ -61,7 +68,7 @@ export default [
       '@typescript-eslint': tsEslint.plugin,
       node,
       'testing-library': fixupPluginRules(testingLibrary),
-      shelf: swrMutationPlugin,
+      shelf: {rules: {...swrMutationPlugin.rules, ...testidOnlyTestsPlugin.rules}},
     },
 
     languageOptions: {
