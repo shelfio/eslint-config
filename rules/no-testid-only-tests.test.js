@@ -81,6 +81,20 @@ ruleTester.run('no-testid-only-tests', noTestidOnlyTestsRule, {
         expect(screen.getByTestId('widget')).toBeInTheDocument();
       };
     `,
+    // A nested helper's testid variable must not poison a same-named outer
+    // variable that came from a role query.
+    `
+      it('renders the primary action', () => {
+        render(<Widget />);
+        const readHook = () => {
+          const button = screen.getByTestId('widget-primary');
+          return button;
+        };
+        readHook();
+        const button = screen.getByRole('button');
+        expect(button).toBeInTheDocument();
+      });
+    `,
   ],
   invalid: [
     {
@@ -138,6 +152,19 @@ ruleTester.run('no-testid-only-tests', noTestidOnlyTestsRule, {
         it.each([['a'], ['b']])('renders %s', (id) => {
           render(<Widget />);
           expect(screen.getByTestId(id)).toBeInTheDocument();
+        });
+      `,
+      errors: testidOnly,
+    },
+    // Block-scoped testid variables are still resolved to their declaration.
+    {
+      code: `
+        it('exposes the trigger per row', () => {
+          render(<Widget />);
+          for (const row of rows) {
+            const trigger = within(row).getByTestId('row-trigger');
+            expect(trigger).toBeInTheDocument();
+          }
         });
       `,
       errors: testidOnly,
