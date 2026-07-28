@@ -117,20 +117,36 @@ const matcherAssertion = (node) => {
   return {argument: unwrapAwait(base.arguments[0]), matcherName, negated};
 };
 
-const collectTestidVariables = (callback, visitorKeys) => {
-  const names = new Set();
+// Maps every resolved identifier reference to its variable so `expect(x)`
+// honors the scope that actually declared `x`, not any same-named variable
+// elsewhere in the test.
+const buildReferenceMap = (scopeManager) => {
+  const map = new Map();
 
-  walk(callback, visitorKeys, (node) => {
-    if (
-      node.type === 'VariableDeclarator' &&
-      node.id.type === 'Identifier' &&
-      isTestidQueryCall(node.init)
-    ) {
-      names.add(node.id.name);
-    }
-  });
+  const collect = (scope) => {
+    scope.references.forEach((reference) => {
+      if (reference.resolved) {
+        map.set(reference.identifier, reference.resolved);
+      }
+    });
+    scope.childScopes.forEach(collect);
+  };
 
-  return names;
+  collect(scopeManager.globalScope);
+
+  return map;
+};
+
+const isTestidVariable = (variable) => {
+  if (!variable) {
+    return false;
+  }
+
+  const writes = variable.references
+    .map((reference) => reference.writeExpr)
+    .filter(Boolean);
+
+  return writes.length > 0 && writes.every(isTestidQueryCall);
 };
 
 export const noTestidOnlyTestsRule = {
@@ -147,7 +163,14 @@ export const noTestidOnlyTestsRule = {
   },
 
   create(context) {
-    const {visitorKeys} = context.sourceCode;
+    const {scopeManager, visitorKeys} = context.sourceCode;
+    let referenceMap = null;
+
+    const resolveVariable = (identifier) => {
+      referenceMap ??= buildReferenceMap(scopeManager);
+
+      return referenceMap.get(identifier);
+    };
 
     return {
       CallExpression(node) {
@@ -165,7 +188,6 @@ export const noTestidOnlyTestsRule = {
           return;
         }
 
-        const testidVariables = collectTestidVariables(callback, visitorKeys);
         let total = 0;
         let presence = 0;
 
@@ -180,7 +202,7 @@ export const noTestidOnlyTestsRule = {
           const targetsTestid =
             isTestidQueryCall(assertion.argument) ||
             (assertion.argument.type === 'Identifier' &&
-              testidVariables.has(assertion.argument.name));
+              isTestidVariable(resolveVariable(assertion.argument)));
 
           if (
             targetsTestid &&
