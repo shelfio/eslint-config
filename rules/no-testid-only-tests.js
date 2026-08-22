@@ -16,12 +16,7 @@ const functionTypes = new Set([
 
 const testNames = new Set(['it', 'test']);
 const chainModifiers = new Set(['not', 'resolves', 'rejects']);
-const presenceMatchers = new Set([
-  'toBeInTheDocument',
-  'toBeVisible',
-  'toBeTruthy',
-  'toBeDefined',
-]);
+const presenceMatchers = new Set(['toBeInTheDocument', 'toBeVisible', 'toBeTruthy', 'toBeDefined']);
 const testidQuery = /^(?:get|getAll|query|queryAll|find|findAll)ByTestId$/;
 
 const isNode = (node) => Boolean(node && typeof node.type === 'string');
@@ -142,9 +137,7 @@ const isTestidVariable = (variable) => {
     return false;
   }
 
-  const writes = variable.references
-    .map((reference) => reference.writeExpr)
-    .filter(Boolean);
+  const writes = variable.references.map((reference) => reference.writeExpr).filter(Boolean);
 
   return writes.length > 0 && writes.every(isTestidQueryCall);
 };
@@ -180,9 +173,7 @@ export const noTestidOnlyTestsRule = {
           return;
         }
 
-        const callback = node.arguments.findLast((argument) =>
-          functionTypes.has(argument.type),
-        );
+        const callback = node.arguments.findLast((argument) => functionTypes.has(argument.type));
 
         if (!callback) {
           return;
@@ -204,11 +195,7 @@ export const noTestidOnlyTestsRule = {
             (assertion.argument.type === 'Identifier' &&
               isTestidVariable(resolveVariable(assertion.argument)));
 
-          if (
-            targetsTestid &&
-            !assertion.negated &&
-            presenceMatchers.has(assertion.matcherName)
-          ) {
+          if (targetsTestid && !assertion.negated && presenceMatchers.has(assertion.matcherName)) {
             presence += 1;
           }
         });
