@@ -1,5 +1,5 @@
 overrides:
-  'eslint-plugin-jest>@typescript-eslint/utils': 8.57.2
+  'eslint-plugin-jest>@typescript-eslint/utils': 8.66.0
 trustPolicyExclude:
   - '@oxc-resolver/binding-darwin-arm64@1.12.0'
   - '@oxc-resolver/binding-darwin-x64@1.12.0'
