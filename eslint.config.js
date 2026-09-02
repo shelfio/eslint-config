@@ -1,6 +1,6 @@
-import typescriptConfig from './typescript.js';
+import typescriptConfig from './typescript-no-prettier.js';
 
-const config = typescriptConfig.map((conf) => {
+const config = typescriptConfig.map(conf => {
   return {
     ...conf,
     rules: {
