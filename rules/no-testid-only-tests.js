@@ -19,10 +19,10 @@ const chainModifiers = new Set(['not', 'resolves', 'rejects']);
 const presenceMatchers = new Set(['toBeInTheDocument', 'toBeVisible', 'toBeTruthy', 'toBeDefined']);
 const testidQuery = /^(?:get|getAll|query|queryAll|find|findAll)ByTestId$/;
 
-const isNode = (node) => Boolean(node && typeof node.type === 'string');
-const toArray = (value) => (Array.isArray(value) ? value : [value]);
+const isNode = node => Boolean(node && typeof node.type === 'string');
+const toArray = value => (Array.isArray(value) ? value : [value]);
 const getChildren = (node, visitorKeys) =>
-  (visitorKeys[node.type] ?? []).flatMap((key) => toArray(node[key])).filter(isNode);
+  (visitorKeys[node.type] ?? []).flatMap(key => toArray(node[key])).filter(isNode);
 
 const walk = (node, visitorKeys, visit) => {
   if (!isNode(node)) {
@@ -30,12 +30,12 @@ const walk = (node, visitorKeys, visit) => {
   }
 
   visit(node);
-  getChildren(node, visitorKeys).forEach((child) => walk(child, visitorKeys, visit));
+  getChildren(node, visitorKeys).forEach(child => walk(child, visitorKeys, visit));
 };
 
-const unwrapAwait = (node) => (node?.type === 'AwaitExpression' ? node.argument : node);
+const unwrapAwait = node => (node?.type === 'AwaitExpression' ? node.argument : node);
 
-const isTestidQueryCall = (node) => {
+const isTestidQueryCall = node => {
   const call = unwrapAwait(node);
 
   if (call?.type !== 'CallExpression') {
@@ -58,7 +58,7 @@ const isTestidQueryCall = (node) => {
 
 // Resolves `it`, `test`, `it.only`, and the `it.each(table)(title, fn)`
 // invocation down to the base test identifier.
-const testCallName = (callee) => {
+const testCallName = callee => {
   if (callee.type === 'Identifier') {
     return callee.name;
   }
@@ -76,7 +76,7 @@ const testCallName = (callee) => {
 
 // Unwraps `expect(arg).not.resolves...matcher()` chains; returns the expect
 // argument, the matcher name, and whether the chain negates.
-const matcherAssertion = (node) => {
+const matcherAssertion = node => {
   if (
     node.type !== 'CallExpression' ||
     node.callee.type !== 'MemberExpression' ||
@@ -115,11 +115,11 @@ const matcherAssertion = (node) => {
 // Maps every resolved identifier reference to its variable so `expect(x)`
 // honors the scope that actually declared `x`, not any same-named variable
 // elsewhere in the test.
-const buildReferenceMap = (scopeManager) => {
+const buildReferenceMap = scopeManager => {
   const map = new Map();
 
-  const collect = (scope) => {
-    scope.references.forEach((reference) => {
+  const collect = scope => {
+    scope.references.forEach(reference => {
       if (reference.resolved) {
         map.set(reference.identifier, reference.resolved);
       }
@@ -132,12 +132,12 @@ const buildReferenceMap = (scopeManager) => {
   return map;
 };
 
-const isTestidVariable = (variable) => {
+const isTestidVariable = variable => {
   if (!variable) {
     return false;
   }
 
-  const writes = variable.references.map((reference) => reference.writeExpr).filter(Boolean);
+  const writes = variable.references.map(reference => reference.writeExpr).filter(Boolean);
 
   return writes.length > 0 && writes.every(isTestidQueryCall);
 };
@@ -159,7 +159,7 @@ export const noTestidOnlyTestsRule = {
     const {scopeManager, visitorKeys} = context.sourceCode;
     let referenceMap = null;
 
-    const resolveVariable = (identifier) => {
+    const resolveVariable = identifier => {
       referenceMap ??= buildReferenceMap(scopeManager);
 
       return referenceMap.get(identifier);
@@ -173,7 +173,7 @@ export const noTestidOnlyTestsRule = {
           return;
         }
 
-        const callback = node.arguments.findLast((argument) => functionTypes.has(argument.type));
+        const callback = node.arguments.findLast(argument => functionTypes.has(argument.type));
 
         if (!callback) {
           return;
@@ -182,7 +182,7 @@ export const noTestidOnlyTestsRule = {
         let total = 0;
         let presence = 0;
 
-        walk(callback.body, visitorKeys, (child) => {
+        walk(callback.body, visitorKeys, child => {
           const assertion = matcherAssertion(child);
 
           if (!assertion) {
