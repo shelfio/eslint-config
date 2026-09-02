@@ -90,7 +90,7 @@ Use the mutation lifecycle as the source of truth instead:
 
 ```tsx
 const {trigger: save, isMutating: isSaving} = useSWRMutation('save-content', () =>
-  ContentApi.save(),
+  ContentApi.save()
 );
 ```
 

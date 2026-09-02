@@ -6,11 +6,11 @@ const functionTypes = new Set([
 
 const remoteClientName = /(?:Api|API|Client|Service)$/;
 
-const isFunction = (node) => functionTypes.has(node.type);
-const isNode = (node) => Boolean(node && typeof node.type === 'string');
-const toArray = (value) => (Array.isArray(value) ? value : [value]);
+const isFunction = node => functionTypes.has(node.type);
+const isNode = node => Boolean(node && typeof node.type === 'string');
+const toArray = value => (Array.isArray(value) ? value : [value]);
 const getChildren = (node, visitorKeys) =>
-  (visitorKeys[node.type] ?? []).flatMap((key) => toArray(node[key])).filter(isNode);
+  (visitorKeys[node.type] ?? []).flatMap(key => toArray(node[key])).filter(isNode);
 
 const walk = (node, visitorKeys, visit) => {
   if (!isNode(node)) {
@@ -21,20 +21,20 @@ const walk = (node, visitorKeys, visit) => {
     return;
   }
 
-  getChildren(node, visitorKeys).forEach((child) => walk(child, visitorKeys, visit));
+  getChildren(node, visitorKeys).forEach(child => walk(child, visitorKeys, visit));
 };
 
-const isFalseLiteral = (node) => node?.type === 'Literal' && node.value === false;
-const isIdentifier = (node) => node?.type === 'Identifier';
+const isFalseLiteral = node => node?.type === 'Literal' && node.value === false;
+const isIdentifier = node => node?.type === 'Identifier';
 const isIdentifierNamed = (node, name) => isIdentifier(node) && node.name === name;
 
-const isReactUseState = (node) =>
+const isReactUseState = node =>
   node.type === 'MemberExpression' &&
   !node.computed &&
   isIdentifierNamed(node.object, 'React') &&
   isIdentifierNamed(node.property, 'useState');
 
-const isUseStateCall = (node) => {
+const isUseStateCall = node => {
   if (node?.type !== 'CallExpression' || !isFalseLiteral(node.arguments[0])) {
     return false;
   }
@@ -42,7 +42,7 @@ const isUseStateCall = (node) => {
   return isIdentifierNamed(node.callee, 'useState') || isReactUseState(node.callee);
 };
 
-const getRootIdentifier = (node) => {
+const getRootIdentifier = node => {
   switch (node?.type) {
     case 'Identifier':
       return node;
@@ -55,7 +55,7 @@ const getRootIdentifier = (node) => {
   }
 };
 
-const isRemoteCall = (node) => {
+const isRemoteCall = node => {
   if (node.type !== 'CallExpression') {
     return false;
   }
@@ -72,7 +72,7 @@ const isRemoteCall = (node) => {
 const containsRemoteCall = (node, visitorKeys) => {
   let found = false;
 
-  walk(node, visitorKeys, (child) => {
+  walk(node, visitorKeys, child => {
     if (child !== node && isFunction(child)) {
       return false;
     }
@@ -99,7 +99,7 @@ const isSetterCall = (node, setterName, value) => {
   return argument?.type === 'Literal' && argument.value === value;
 };
 
-const isSWRFetcher = (node) =>
+const isSWRFetcher = node =>
   node.parent?.type === 'CallExpression' &&
   node.parent.arguments[1] === node &&
   isIdentifierNamed(node.parent.callee, 'useSWRMutation');
@@ -107,7 +107,7 @@ const isSWRFetcher = (node) =>
 const collectFunctions = (owner, visitorKeys) => {
   const functions = [owner];
 
-  walk(owner.body, visitorKeys, (node) => {
+  walk(owner.body, visitorKeys, node => {
     if (isFunction(node)) {
       functions.push(node);
     }
@@ -128,7 +128,7 @@ const hasManualRemoteState = (node, setterName, visitorKeys) => {
   let stopsLoading = false;
   let awaitsRemoteCall = false;
 
-  walk(node.body, visitorKeys, (child) => {
+  walk(node.body, visitorKeys, child => {
     if (isFunction(child)) {
       return false;
     }
@@ -144,7 +144,7 @@ const hasManualRemoteState = (node, setterName, visitorKeys) => {
   return startsLoading && stopsLoading && awaitsRemoteCall;
 };
 
-const getStatePair = (node) => {
+const getStatePair = node => {
   if (node.id.type !== 'ArrayPattern') {
     return undefined;
   }
@@ -190,7 +190,7 @@ export const preferSWRMutationRule = {
     const functionStack = [];
     const {visitorKeys} = context.sourceCode;
 
-    const enterFunction = (node) => functionStack.push(node);
+    const enterFunction = node => functionStack.push(node);
     const exitFunction = () => functionStack.pop();
 
     return {
@@ -216,8 +216,8 @@ export const preferSWRMutationRule = {
       'Program:exit'() {
         for (const candidate of candidates) {
           const functions = collectFunctions(candidate.owner, visitorKeys);
-          const violatesRule = functions.some((node) =>
-            hasManualRemoteState(node, candidate.setterName, visitorKeys),
+          const violatesRule = functions.some(node =>
+            hasManualRemoteState(node, candidate.setterName, visitorKeys)
           );
 
           if (violatesRule) {

@@ -6,12 +6,12 @@ import frontendConfig from '../frontend-typescript.js';
 import noPrettierConfig from '../frontend-typescript-no-prettier.js';
 import {noTestidOnlyTestsRule} from './no-testid-only-tests.js';
 
-const enablesRule = (config) =>
+const enablesRule = config =>
   config.some(
-    (entry) =>
+    entry =>
       entry.files &&
       entry.rules?.['shelf/no-testid-only-tests'] === 'error' &&
-      config.some((other) => other.plugins?.shelf?.rules?.['no-testid-only-tests']),
+      config.some(other => other.plugins?.shelf?.rules?.['no-testid-only-tests'])
   );
 
 test('frontend configs enforce the rule for test files', () => {

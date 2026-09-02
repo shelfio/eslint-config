@@ -6,9 +6,9 @@ import frontendConfig from '../frontend-typescript.js';
 import noPrettierConfig from '../frontend-typescript-no-prettier.js';
 import {preferSWRMutationRule} from './prefer-swr-mutation.js';
 
-const enablesRule = (config) =>
+const enablesRule = config =>
   config.some(
-    (entry) => entry.plugins?.shelf && entry.rules?.['shelf/prefer-swr-mutation'] === 'error',
+    entry => entry.plugins?.shelf && entry.rules?.['shelf/prefer-swr-mutation'] === 'error'
   );
 
 test('frontend configs enforce the rule', () => {
