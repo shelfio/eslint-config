@@ -4,7 +4,6 @@ import test from 'node:test';
 import {ESLint} from 'eslint';
 import frontend from './frontend.js';
 import compiler, {compilerRules} from './react-compiler.js';
-import typescriptV2 from './typescript-v2.js';
 import {infrastructureRules, typeServiceRules} from './plugins/sonar.js';
 
 const createESLint = (config = frontend) =>
@@ -209,11 +208,7 @@ test('legacy frontend presets preserve consumer-enabled JSON handling', async ()
   }
 });
 
-test('typescript-v2 remains an alias of the canonical modular frontend preset', () => {
-  assert.equal(typescriptV2, frontend);
-});
-
-test('v2 policies execute and Lodash exceptions have one owner', async () => {
+test('frontend policies execute and Lodash exceptions have one owner', async () => {
   const sourceRules = await lint(
     `import {uniq} from 'lodash';
      export function View(a: string, b: string, c: string, d: string) {

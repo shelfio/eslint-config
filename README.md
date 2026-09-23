@@ -30,8 +30,8 @@ export default frontend;
 
 The preset is composed from named modules in `plugins/`: ESLint, TypeScript,
 Lodash, imports, Jest, React, Testing Library, Sonar, Shelf rules, and formatting
-compatibility. Each module owns its rules and file overrides. `typescript-v2.js`
-is an alias for this same preset.
+compatibility. Each module owns its rules and file overrides. `frontend.js` is
+the entrypoint for frontend projects using JavaScript or TypeScript.
 
 This ESLint 10 preset matches JavaScript and TypeScript source files, detects React,
 and keeps formatting separate. Run Oxfmt and the TypeScript checker as separate checks.
@@ -150,7 +150,7 @@ Local UI state and asynchronous work that does not call a remote API remain vali
 ## Rule audit and profiling
 
 See [the module review](./docs/frontend-modules.md) for rule ownership and the
-changes from the original v2 branch.
+changes from the original experimental branch.
 
 ```sh
 pnpm inspect-config
