@@ -60,12 +60,14 @@ test('test rules are scoped to tests, test directories and existing mock convent
     'sonarjs/no-interpolation-in-inline-snapshots',
   ]) {
     assert.equal(severity(source, rule), 0);
+    for (const file of ['src/useConnectionTest.tsx', 'src/DocumentSpec.ts']) {
+      assert.equal(severity(await eslint.calculateConfigForFile(file), rule), 0, file);
+    }
     for (const file of [
       'src/View.test.tsx',
       'src/View.spec.tsx',
       'src/__tests__/View.tsx',
       'src/View_test.ts',
-      'src/ViewTest.ts',
       'src/mocks.ts',
       'src/View.test.mts',
       'src/View.test.cts',
@@ -225,6 +227,9 @@ test('frontend policies execute and Lodash exceptions have one owner', async () 
      it('two', () => { expect(true).toBe(true); });`,
     'src/View.test.tsx'
   );
-  assert.ok(testRules.includes('jest/padding-around-all'));
+  assert.ok(!testRules.includes('jest/padding-around-all'));
+  const config = await createESLint().calculateConfigForFile('src/View.test.tsx');
+  assert.equal(config.plugins['@stylistic'], undefined);
+  assert.equal(severity(config, '@stylistic/padding-line-between-statements'), 0);
   assert.ok(!testRules.some(rule => rule?.startsWith('jest-formatting/')));
 });

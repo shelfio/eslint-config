@@ -49,9 +49,11 @@ export default [...frontend, reactCompiler];
 
 Add app-specific ignores and genuine policy exceptions after the preset. Consumer
 overrides win, so remove obsolete compiler-rule `off` overrides when enabling the compiler.
-Jest and test-specific analysis run in test/mock files. Production JSX retains the
-`consistent-data-testid` naming check. Custom test directory conventions can opt
-rules back in through a file-scoped override.
+Jest and test-specific analysis run in test/mock files. Test filename suffixes are
+`.test`, `.spec`, `_test`, and `_spec`; names such as `useConnectionTest.tsx` stay
+in production scope. Production JSX retains the `consistent-data-testid` naming
+check. Custom test directory conventions can opt rules back in through a file-scoped
+override.
 
 The preset excludes AWS/CDK infrastructure checks and 28 Sonar rules that do nothing
 without a TypeScript program. Use a separate appropriate configuration for infrastructure
@@ -165,8 +167,11 @@ type-aware TypeScript rules, and formatting conflicts. It fails on those problem
 Repeated declarations of the same ID merge into one rule; similar rules from
 different plugins need source/fixture review before removing either.
 The formatter compatibility check disables conflicting rules; it does not run
-Prettier or Oxfmt. Oxfmt owns formatting. Deliberate blank-line grouping rules
-remain in ESLint because Oxfmt does not enforce those policies.
+Prettier or Oxfmt. The frontend preset does not load `@stylistic` or enforce Jest
+blank-line padding. Oxfmt owns whitespace formatting; the former custom blank-line
+grouping requirements are intentionally removed. Import ordering remains an ESLint
+policy until consumers configure equivalent Oxfmt sorting. Legacy entrypoints keep
+their existing formatting behavior.
 
 From this repository checkout:
 
