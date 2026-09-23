@@ -29,9 +29,11 @@ deprecated in the installed typescript-eslint version.
   `rules` object. It now explicitly lists local import policies. Export-map checks,
   including `import/no-deprecated`, are excluded to avoid parsing imported files.
   This is a deliberate coverage tradeoff, not proof that another check is identical.
-- Native `jest/padding-around-all` replaces the separate Jest-formatting plugin in
-  the new preset. It is a valid rule in both the branch's Jest 29.0.1 and current
-  Jest 29.16.0. Legacy exports retain their original formatting plugin.
+- The new preset has no `@stylistic` plugin or Jest blank-line padding. Oxfmt owns
+  whitespace formatting; custom grouping around returns, conditionals, imports,
+  and test blocks is no longer enforced. Legacy exports retain their formatting rules.
+- Test suffixes require `.test`, `.spec`, `_test`, or `_spec`. Production names
+  such as `useConnectionTest.tsx` no longer match the test overrides.
 - Sonar's `prefer-native-lodash-alternative` is off. The Lodash module is the policy
   owner, including deliberate exceptions such as `uniq`; Sonar contradicted them.
 - The TypeScript `max-params` extension replaces core `max-params`. More generally,
@@ -68,7 +70,8 @@ analysis cost; the first enabled compiler rule absorbs much of its recorded time
 
 ## App trial results
 
-One fresh error-only lint process per app, no cache/fixes, one worker, preserving
+These baseline trials preceded the test-scope and blank-line cleanup. Each used
+one fresh error-only ESLint process, no cache or fixes, and one worker, preserving
 app overrides and installed ESLint. Candidate plugins use parser 8.66.0, Sonar
 4.2.0, React 7.37.5 and Jest 29.16.0. These samples are not a repeated-median
 benchmark or a CI speedup claim. Application files remained unchanged.

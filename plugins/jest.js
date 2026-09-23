@@ -15,7 +15,6 @@ export default [
       'jest/no-deprecated-functions': 'off',
       'jest/prefer-jest-mocked': 'error',
       'jest/prefer-hooks-on-top': 'error',
-      'jest/padding-around-all': 'error',
       'jest/prefer-called-with': 'error',
       'jest/consistent-test-it': ['error', {fn: 'it', withinDescribe: 'it'}],
       'jest/expect-expect': ['error', {assertFunctionNames: ['expect']}],
