@@ -8,5 +8,5 @@
     "target": "ESNext",
     "skipLibCheck": true
   },
-  "include": ["plugins/**/*.js", "typescript-v2.js", "frontend.js"]
+  "include": ["plugins/**/*.js", "frontend.js"]
 }

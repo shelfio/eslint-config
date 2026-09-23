@@ -2,7 +2,7 @@
 
 The `feature/simplfy-setup` branch established the right structure: a short
 composition entrypoint, one module per plugin, and overrides next to their rule
-owner. This update retains that structure and the `typescript-v2.js` import path.
+owner. This update retains that structure under the descriptive `frontend.js` entrypoint.
 `frontend.js` uses ESLint 10's native `defineConfig`; the TypeScript helper is
 deprecated in the installed typescript-eslint version.
 
@@ -21,7 +21,7 @@ deprecated in the installed typescript-eslint version.
 | Tests                    | Jest, Testing Library test analysis, Shelf test checks and Sonar test checks scoped to test/mock files. Test ID naming still applies to production JSX.                                        |
 | Legacy                   | The six published legacy entrypoints share factories and retain 7.2 rule settings. Adoption of the new frontend remains explicit.                                                              |
 
-## Original v2 corrections
+## Original branch corrections
 
 - `plugins/typescript.ts` became `.js`, matching the imported filename and the
   package's executable JavaScript exports.
@@ -81,7 +81,7 @@ benchmark or a CI speedup claim. Application files remained unchanged.
 
 The errors are adoption work, not a green migration. Cortex has 401 max-params
 findings, 326 strict-equality findings, and 146 unused-prop findings from explicit
-v2 policies. Their measured callback costs were only 55ms, 19ms, and 664ms.
+frontend policies. Their measured callback costs were only 55ms, 19ms, and 664ms.
 Review the policy impact separately from the module refactor. Legacy entrypoints
 retain their old rules, so existing consumers do not acquire these policies until
 they switch presets.

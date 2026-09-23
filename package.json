@@ -33,8 +33,7 @@
     "frontend-typescript-no-prettier.js",
     "typescript.js",
     "typescript-no-prettier.js",
-    "plugins",
-    "typescript-v2.js"
+    "plugins"
   ],
   "main": "base.js",
   "keywords": [
