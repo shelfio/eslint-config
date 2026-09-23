@@ -1,31 +1,27 @@
+import {fixupPluginRules} from '@eslint/compat';
 import importPlugin from 'eslint-plugin-import';
+import {sourceFiles} from '../common/files.js';
+import importOrder from '../rules/import-order.js';
+import sortImports from '../rules/sort-imports.js';
+import restrictedPackages from '../rules/restricted-packages-import.js';
+import defaultBarrelExports, {
+  barrelPagesOverride,
+  barrelPlugin,
+} from '../rules/default-barrel-exports.js';
 
-export default {
-  ...importPlugin.flatConfigs.recommended,
-  name: 'import-order',
-  rules: {
-    'import/no-deprecated': 'error',
-    'import/order': [
-      'error',
-      {
-        pathGroups: [
-          {
-            pattern: '*@shelf/types**',
-            group: 'internal',
-            position: 'before',
-          },
-        ],
-        groups: ['builtin', 'external', 'internal', 'type', 'parent', 'sibling', 'index'],
-      },
-    ],
-    'sort-imports': [
-      'error',
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: true,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
-      },
-    ],
+export default [
+  {
+    name: 'shelf/imports/policy',
+    files: sourceFiles,
+    plugins: {import: fixupPluginRules(importPlugin), ...barrelPlugin},
+    rules: {
+      ...importOrder,
+      ...sortImports,
+      ...restrictedPackages,
+      ...defaultBarrelExports,
+      // Export-map rules parse imported files again; keep the fast preset local.
+      'import/no-deprecated': 'off',
+    },
   },
-};
+  {name: 'shelf/imports/next-pages', ...barrelPagesOverride},
+];

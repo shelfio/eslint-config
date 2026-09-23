@@ -1,19 +1,10 @@
-import {fixupPluginRules} from '@eslint/compat';
 import youDontNeedLodash from 'eslint-plugin-you-dont-need-lodash-underscore';
+import {sourceFiles} from '../common/files.js';
+import rules from '../rules/you-dont-need-lodash.js';
 
 export default {
-  name: 'you-dont-need-lodash',
-  plugins: {
-    'you-dont-need-lodash-underscore': fixupPluginRules(youDontNeedLodash),
-  },
-  rules: {
-    ...youDontNeedLodash.configs['compatible'].rules,
-    'you-dont-need-lodash-underscore/omit': 'off',
-    'you-dont-need-lodash-underscore/get': 'error',
-    'you-dont-need-lodash-underscore/every': 'error',
-    'you-dont-need-lodash-underscore/map': 'error',
-    'you-dont-need-lodash-underscore/filter': 'error',
-    'you-dont-need-lodash-underscore/size': 'error',
-    'you-dont-need-lodash-underscore/includes': 'error',
-  },
+  name: 'shelf/lodash/native-alternatives',
+  files: sourceFiles,
+  plugins: {'you-dont-need-lodash-underscore': youDontNeedLodash},
+  rules: {...youDontNeedLodash.configs.compatible.rules, ...rules},
 };

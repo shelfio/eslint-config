@@ -1,6 +1,6 @@
 {
   "name": "@shelf/eslint-config",
-  "version": "5.0.2",
+  "version": "7.2.0",
   "description": "ESLint Config for Shelf Projects",
   "license": "MIT",
   "repository": "shelfio/eslint-config",
@@ -10,70 +10,86 @@
     "url": "shelf.io"
   },
   "engines": {
-    "node": ">=8.10"
+    "node": "^20.19.0 || ^22.13.0 || >=24.0.0"
   },
   "scripts": {
-    "test": "echo ok",
+    "test": "node --test config.test.js rules/*.test.js",
     "prepare": "husky",
-    "inspect-config": "npx @eslint/config-inspector@latest"
+    "lint": "oxfmt && eslint . --fix",
+    "lint:ci": "oxfmt --check && eslint .",
+    "lint:profile": "node scripts/profile-eslint.mjs",
+    "inspect-config": "eslint-config-inspector --config frontend.js",
+    "inspect-config:build": "eslint-config-inspector build --config frontend.js --outDir .eslint-config-inspector",
+    "audit:rules": "node scripts/audit-rules.mjs"
   },
   "files": [
     "common",
-    "plugins",
     "rules",
     "base.js",
+    "base-no-prettier.js",
+    "frontend.js",
+    "react-compiler.js",
     "frontend-typescript.js",
+    "frontend-typescript-no-prettier.js",
     "typescript.js",
+    "typescript-no-prettier.js",
+    "plugins",
     "typescript-v2.js"
   ],
+  "main": "base.js",
   "keywords": [
     "eslint",
     "eslintconfig"
   ],
-  "resolutions": {
-    "strip-ansi": "6.0.1"
-  },
   "type": "module",
   "dependencies": {
-    "@eslint/compat": "1.3.2",
-    "@eslint/eslintrc": "3.3.1",
-    "@eslint/js": "9.33.0",
-    "@stylistic/eslint-plugin-js": "4.4.1",
-    "eslint-config-next": "15.5.0",
+    "@eslint/compat": "2.1.0",
+    "@eslint/js": "10.0.1",
+    "@stylistic/eslint-plugin": "5.10.0",
     "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-barrel-files": "3.0.1",
     "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-jest": "29.0.1",
+    "eslint-plugin-jest": "29.16.0",
     "eslint-plugin-jest-formatting": "3.1.0",
-    "eslint-plugin-n": "17.21.3",
-    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-n": "18.2.2",
+    "eslint-plugin-prettier": "5.5.6",
     "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "5.2.0",
+    "eslint-plugin-react-hooks": "7.1.1",
     "eslint-plugin-shelf-no-need-lodash-methods": "2.0.8",
-    "eslint-plugin-sonarjs": "3.0.4",
-    "eslint-plugin-testing-library": "7.6.6",
+    "eslint-plugin-sonarjs": "4.2.0",
+    "eslint-plugin-testing-library": "7.16.2",
     "eslint-plugin-you-dont-need-lodash-underscore": "6.14.0",
-    "globals": "16.3.0",
-    "typescript-eslint": "8.40.0"
+    "globals": "17.9.0",
+    "typescript-eslint": "8.66.0"
   },
   "devDependencies": {
-    "@shelf/tsconfig": "0.1.0",
-    "@types/eslint__js": "9.14.0",
-    "eslint": "9.33.0",
+    "@eslint/config-inspector": "3.5.0",
+    "@shelf/prettier-config": "1.1.1",
+    "eslint": "10.8.1",
     "husky": "9.1.7",
-    "lint-staged": "16.1.5",
-    "prettier": "3.6.2",
-    "typescript": "5.9.2"
+    "lint-staged": "16.4.0",
+    "oxfmt": "0.64.0",
+    "prettier": "3.9.6",
+    "typescript": "6.0.3"
   },
   "peerDependencies": {
-    "eslint": "9.x",
+    "eslint": "10.x",
     "prettier": "3.x"
   },
-  "lint-staged": {
-    "*.{js,json,css,md,yml}": [
-      "prettier --write"
-    ]
+  "peerDependenciesMeta": {
+    "prettier": {
+      "optional": true
+    }
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "lint-staged": {
+    "*.{html,md,yml}": "oxfmt --no-error-on-unmatched-pattern",
+    "*.{ts,js,json}": [
+      "oxfmt --no-error-on-unmatched-pattern",
+      "eslint --fix"
+    ]
+  },
+  "packageManager": "pnpm@11.18.0"
 }

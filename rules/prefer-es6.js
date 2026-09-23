@@ -1,14 +1,14 @@
 export default {
-  "prefer-destructuring": [
-    "error",
+  'prefer-destructuring': [
+    'error',
     {
-      "array": false,
-      "object": true
+      array: false,
+      object: true,
     },
     {
-      "enforceForRenamedProperties": false
-    }
+      enforceForRenamedProperties: false,
+    },
   ],
-  "prefer-template": "error",
-  "prefer-object-spread": "error"
-}
+  'prefer-template': 'error',
+  'prefer-object-spread': 'error',
+};

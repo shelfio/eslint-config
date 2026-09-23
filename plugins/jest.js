@@ -1,21 +1,38 @@
 import jestPlugin from 'eslint-plugin-jest';
-
-export const files = ['**/*.test.*', '**/*.spec.*'];
+import {testFiles} from '../common/files.js';
+import jestRules from '../rules/jest.js';
 
 export default [
-  {name: 'jest-recommended', files, ...jestPlugin.configs['flat/recommended']},
-  {name: 'jest-style', files, ...jestPlugin.configs['flat/style']},
   {
-    name: 'shelf-jest-overrides',
-    files,
+    name: 'shelf/jest',
+    files: testFiles,
+    plugins: {jest: jestPlugin},
+    languageOptions: jestPlugin.configs['flat/recommended'].languageOptions,
     rules: {
-      'jest/no-deprecated-functions': 'off', // we are not using any of this, so disable to save extra ms to run
+      ...jestPlugin.configs['flat/recommended'].rules,
+      ...jestPlugin.configs['flat/style'].rules,
+      ...jestRules,
+      'jest/no-deprecated-functions': 'off',
       'jest/prefer-jest-mocked': 'error',
       'jest/prefer-hooks-on-top': 'error',
       'jest/padding-around-all': 'error',
       'jest/prefer-called-with': 'error',
       'jest/consistent-test-it': ['error', {fn: 'it', withinDescribe: 'it'}],
       'jest/expect-expect': ['error', {assertFunctionNames: ['expect']}],
+    },
+  },
+  {
+    name: 'shelf/jest/mock-types',
+    files: testFiles,
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector:
+            "TSAsExpression[typeAnnotation.typeName.left.name='jest'][typeAnnotation.typeName.right.name='Mock']",
+          message: 'Use jest.mocked instead of casting to jest.Mock.',
+        },
+      ],
     },
   },
 ];

@@ -1,6 +1,5 @@
 export default {
-  disableExplicitsInTests: {
-    name: 'not-explicit-any-in-tests',
+  noExplicitsInTests: {
     files: ['**/*.test.ts', '**/*mock?(s).ts'],
     // It's a bit annoying
     rules: {
@@ -10,21 +9,27 @@ export default {
       '@typescript-eslint/no-explicit-any': 'off',
     },
   },
+  noUnusedVarsInTypes: {
+    files: ['**/types.ts', '**/types/**/*.ts'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'off',
+    },
+  },
   allowRequireInConfigs: {
-    name: 'shelf-allow-require-in-configs',
     files: [
       '*wallaby.config.js',
       'webpack.config.js',
       'babel.config.js',
       'next.config.js',
-      '**/*.cjs',
+      'draft.js',
     ],
     rules: {
+      '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-require-imports': 'off',
     },
   },
   noTSRulesWithJSON: {
-    files: ['*.json'],
+    files: ['**/*.json'],
     rules: {
       '@typescript-eslint/no-unused-expressions': 'off',
     },

@@ -1,5 +1,12 @@
 {
-  "extends": "@shelf/tsconfig/backend.json",
-  "exclude": ["node_modules"],
-  "include": ["."]
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
+    "skipLibCheck": true
+  },
+  "include": ["plugins/**/*.js", "typescript-v2.js", "frontend.js"]
 }

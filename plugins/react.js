@@ -1,30 +1,23 @@
+import {fixupPluginRules} from '@eslint/compat';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
-import globals from 'globals';
+import {sourceFiles} from '../common/files.js';
 
-const files = ['**/*.{jsx,tsx}'];
-
-export default [
-  {files, name: 'react-recommended', ...react.configs.flat['recommended']},
-  {files, name: 'react-jsx-runtime', ...react.configs.flat['jsx-runtime']},
-  {...reactHooks.configs['recommended-latest']},
-  {
-    name: 'shelf-frontend-globals',
-    languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.browser,
-      },
-    },
+export default {
+  name: 'shelf/react',
+  files: sourceFiles,
+  plugins: {react: fixupPluginRules(react), 'react-hooks': reactHooks},
+  languageOptions: react.configs.flat.recommended.languageOptions,
+  settings: {react: {version: 'detect'}},
+  rules: {
+    ...react.configs.flat.recommended.rules,
+    ...react.configs.flat['jsx-runtime'].rules,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+    'react/display-name': 'off',
+    'react/prop-types': 'off',
+    'react/self-closing-comp': 'error',
+    'react/no-unused-prop-types': 'error',
+    'react/no-danger': 'error',
   },
-  {
-    name: 'shelf-react-overrides',
-    rules: {
-      'react/display-name': 'off',
-      'react/prop-types': 'off',
-      'react/self-closing-comp': 'error',
-      'react/no-unused-prop-types': 'error',
-      'react/no-danger': 'error',
-    },
-  },
-];
+};
