@@ -1,4 +1,7 @@
-import tsConfig from './typescript-v2.js';
+import typescriptConfig from './typescript-no-prettier.js';
 
-/** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile} */
-export default [...tsConfig];
+export default [
+  {ignores: ['tests/**', 'work/**', '.eslint-config-inspector/**']},
+  ...typescriptConfig,
+  {rules: {'jest/no-deprecated-functions': 'off'}},
+];

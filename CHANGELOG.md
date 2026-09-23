@@ -1,3 +1,7 @@
+## Unreleased
+
+- **Breaking:** Frontend configs now enforce `shelf/prefer-swr-mutation` for manually managed remote loading state.
+
 ## 3.0.0
 
 Override recommended no explicit type any in tests
