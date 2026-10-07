@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "base-no-prettier.js",
+    "frontend-typescript.js",
+    "frontend-typescript-no-prettier.js",
+    "typescript.js",
+    "typescript-no-prettier.js",
+    "common/*.js",
+    "rules/*.js"
+  ],
+  "ignoreDependencies": ["eslint-plugin-you-dont-need-lodash-underscore"]
+}
