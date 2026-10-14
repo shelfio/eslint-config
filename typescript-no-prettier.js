@@ -80,8 +80,6 @@ export default [
         },
       ],
 
-      'multiline-ternary': ['error', 'never'],
-      curly: 'error',
       'no-nested-ternary': 'error',
 
       ...paddingLineRules,
@@ -138,6 +136,12 @@ export default [
     },
   },
   eslintConfigPrettier,
+  // eslint-config-prettier turns `curly` off, but its `all` option does not conflict with a formatter.
+  {
+    rules: {
+      curly: ['error', 'all'],
+    },
+  },
   overrides.allowRequireInConfigs,
   overrides.noExplicitsInTests,
   overrides.noUnusedVarsInTypes,
