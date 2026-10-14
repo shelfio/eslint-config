@@ -1,5 +1,6 @@
 ## 8.0.0
 
+- `common/overrides.js` no longer lists `*wallaby.config.js` in `allowRequireInConfigs`. Shelf repositories do not use Wallaby anymore.
 - **Breaking:** `typescript-no-prettier.js` now enforces `curly` (`all`) again. `eslint-config-prettier` turned it off, so repos on Oxfmt accepted `if` statements without braces. Run `eslint --fix`, then Oxfmt, to add the braces.
 
 ## 7.0.0
