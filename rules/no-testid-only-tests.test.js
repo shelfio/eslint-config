@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import tsParser from '@typescript-eslint/parser';
 import {RuleTester} from 'eslint';
-import frontendConfig from '../frontend-typescript.js';
 import noPrettierConfig from '../frontend-typescript-no-prettier.js';
 import {noTestidOnlyTestsRule} from './no-testid-only-tests.js';
 
@@ -14,8 +13,7 @@ const enablesRule = config =>
       config.some(other => other.plugins?.shelf?.rules?.['no-testid-only-tests'])
   );
 
-test('frontend configs enforce the rule for test files', () => {
-  assert.equal(enablesRule(frontendConfig), true);
+test('the frontend config enforces the rule for test files', () => {
   assert.equal(enablesRule(noPrettierConfig), true);
 });
 

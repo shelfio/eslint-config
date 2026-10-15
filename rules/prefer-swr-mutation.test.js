@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import tsParser from '@typescript-eslint/parser';
 import {RuleTester} from 'eslint';
-import frontendConfig from '../frontend-typescript.js';
 import noPrettierConfig from '../frontend-typescript-no-prettier.js';
 import {preferSWRMutationRule} from './prefer-swr-mutation.js';
 
@@ -11,8 +10,7 @@ const enablesRule = config =>
     entry => entry.plugins?.shelf && entry.rules?.['shelf/prefer-swr-mutation'] === 'error'
   );
 
-test('frontend configs enforce the rule', () => {
-  assert.equal(enablesRule(frontendConfig), true);
+test('the frontend config enforces the rule', () => {
   assert.equal(enablesRule(noPrettierConfig), true);
 });
 

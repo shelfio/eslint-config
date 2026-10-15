@@ -1,7 +1,7 @@
 {
   "name": "@shelf/eslint-config",
-  "version": "8.0.0",
-  "description": "ESLint Config for Shelf Projects",
+  "version": "9.0.0",
+  "description": "ESLint and Oxfmt config for Shelf projects",
   "license": "MIT",
   "repository": "shelfio/eslint-config",
   "author": {
@@ -22,17 +22,17 @@
   "files": [
     "common",
     "rules",
-    "base.js",
     "base-no-prettier.js",
-    "frontend-typescript.js",
     "frontend-typescript-no-prettier.js",
-    "typescript.js",
-    "typescript-no-prettier.js"
+    "typescript-no-prettier.js",
+    "oxfmt.js",
+    "oxfmt.d.ts"
   ],
-  "main": "base.js",
+  "main": "typescript-no-prettier.js",
   "keywords": [
     "eslint",
-    "eslintconfig"
+    "eslintconfig",
+    "oxfmt"
   ],
   "type": "module",
   "dependencies": {
@@ -48,7 +48,6 @@
     "eslint-plugin-jest": "29.16.0",
     "eslint-plugin-jest-formatting": "3.1.0",
     "eslint-plugin-n": "18.2.2",
-    "eslint-plugin-prettier": "5.5.6",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.1.1",
     "eslint-plugin-shelf-no-need-lodash-methods": "2.0.8",
@@ -59,23 +58,15 @@
     "typescript-eslint": "8.66.0"
   },
   "devDependencies": {
-    "@shelf/prettier-config": "1.1.1",
     "eslint": "10.8.1",
     "husky": "9.1.7",
     "knip": "6.38.0",
     "lint-staged": "16.4.0",
     "oxfmt": "0.70.0",
-    "prettier": "3.9.6",
     "typescript": "6.0.3"
   },
   "peerDependencies": {
-    "eslint": "10.x",
-    "prettier": "3.x"
-  },
-  "peerDependenciesMeta": {
-    "prettier": {
-      "optional": true
-    }
+    "eslint": "10.x"
   },
   "publishConfig": {
     "access": "public"
