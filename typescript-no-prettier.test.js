@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {ESLint} from 'eslint';
-import typescriptConfig from './typescript.js';
 import noPrettierConfig from './typescript-no-prettier.js';
 
 const resolvedRule = async (config, rule) => {
@@ -11,7 +10,6 @@ const resolvedRule = async (config, rule) => {
   return resolved.rules[rule];
 };
 
-test('typescript configs require braces around every block', async () => {
-  assert.deepEqual(await resolvedRule(typescriptConfig, 'curly'), [2, 'all']);
+test('the typescript config requires braces around every block', async () => {
   assert.deepEqual(await resolvedRule(noPrettierConfig, 'curly'), [2, 'all']);
 });

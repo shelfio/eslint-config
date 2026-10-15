@@ -1,3 +1,9 @@
+## 9.0.0
+
+- Add the shared Oxfmt config as `@shelf/eslint-config/oxfmt.js`, with types in `oxfmt.d.ts`. It replaces `@shelf/prettier-config/oxfmt`: change the import in `oxfmt.config.ts` and remove `@shelf/prettier-config`.
+- **Breaking:** remove the Prettier entrypoints `base.js`, `typescript.js`, and `frontend-typescript.js`, and the `eslint-plugin-prettier` dependency. `prettier` is no longer a peer dependency. Use `typescript-no-prettier.js` or `frontend-typescript-no-prettier.js` with Oxfmt.
+- **Breaking:** the package `main` is now `typescript-no-prettier.js` instead of `base.js`.
+
 ## 8.0.0
 
 - `common/overrides.js` no longer lists `*wallaby.config.js` in `allowRequireInConfigs`. Shelf repositories do not use Wallaby anymore.
