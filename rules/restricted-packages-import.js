@@ -15,11 +15,7 @@ export default {
         },
         {
           name: 'javascript-natural-sort',
-          message: 'Please use @shelf/fast-natural-order-by instead!',
-        },
-        {
-          name: 'natural-orderby',
-          message: 'Please use @shelf/fast-natural-order-by instead!',
+          message: 'Please use natural-orderby instead!',
         },
         {
           name: 'uslug',

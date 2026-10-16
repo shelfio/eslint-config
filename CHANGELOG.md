@@ -1,3 +1,7 @@
+## 9.1.0
+
+- `no-restricted-imports` no longer blocks `natural-orderby`. `@shelf/fast-natural-order-by` 2.0.0 only re-exports it, so import `natural-orderby` directly. The `javascript-natural-sort` message now recommends `natural-orderby`.
+
 ## 9.0.0
 
 - Add the shared Oxfmt config as `@shelf/eslint-config/oxfmt.js`, with types in `oxfmt.d.ts`. It replaces `@shelf/prettier-config/oxfmt`: change the import in `oxfmt.config.ts` and remove `@shelf/prettier-config`.
