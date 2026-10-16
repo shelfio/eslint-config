@@ -23,6 +23,7 @@ import consistentTypeImports from './rules/consistent-type-imports.js';
 import youDontNeedLodash from './rules/you-dont-need-lodash.js';
 import typescriptRules from './rules/typescript.js';
 import restrictedPackages from './rules/restricted-packages-import.js';
+import maxParams from './rules/max-params.js';
 import overrides from './common/overrides.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -125,6 +126,7 @@ export default [
       '@typescript-eslint/no-non-null-assertion': 'off',
       ...typescriptRules,
       ...restrictedPackages,
+      ...maxParams,
       '@typescript-eslint/no-explicit-any': 'warn',
       'no-restricted-syntax': [
         'error',

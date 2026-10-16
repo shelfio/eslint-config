@@ -82,6 +82,32 @@ const {trigger: save, isMutating: isSaving} = useSWRMutation('save-content', () 
 
 Local UI state and asynchronous work that does not call a remote API remain valid.
 
+## Function Parameters
+
+Both TypeScript configs enforce `max-params` with `max: 3`. A function, method, or callback that declares four or more parameters fails lint:
+
+```ts
+// Incorrect
+async function request(identity, target, method, path, body = '', options = {}) {}
+
+await request(identity, target, 'POST', '/internal/batch-delete', body, options);
+```
+
+Take one params object instead, and an options object as the second parameter when the function needs one:
+
+```ts
+async function request(
+  {identity, target, method, path, body = ''}: RequestParams,
+  options: RequestOptions = {}
+) {}
+
+await request({identity, target, method: 'POST', path: '/internal/batch-delete', body}, options);
+```
+
+The rule checks declarations, not calls. Calling a third-party function with more arguments stays valid.
+
+To adopt the rule in a repository with existing violations, run `eslint . --suppress-rule max-params` and commit `eslint-suppressions.json`. ESLint then fails only on new violations. `recommendedIgnorePatterns` keeps Oxfmt from checking that file.
+
 ## Publish
 
 Set the new version in `package.json` and add it to `CHANGELOG.md`. When the change merges to `master`, CI publishes the version to npm.

@@ -1,3 +1,8 @@
+## 10.0.0
+
+- **Breaking:** `typescript-no-prettier.js` and `frontend-typescript-no-prettier.js` enforce `max-params` with `max: 3`. A function that declares four or more parameters fails lint. Fold the parameters into one object, with an options object as the second parameter when needed. To fix existing violations later, run `eslint . --suppress-rule max-params` and commit `eslint-suppressions.json`; ESLint then fails only on new violations.
+- `recommendedIgnorePatterns` in `oxfmt.js` also lists `eslint-suppressions.json`. ESLint writes that file without a trailing newline, so `oxfmt --check` would fail on it.
+
 ## 9.0.0
 
 - Add the shared Oxfmt config as `@shelf/eslint-config/oxfmt.js`, with types in `oxfmt.d.ts`. It replaces `@shelf/prettier-config/oxfmt`: change the import in `oxfmt.config.ts` and remove `@shelf/prettier-config`.

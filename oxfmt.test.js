@@ -13,6 +13,6 @@ test('the oxfmt config keeps the Shelf formatting options', () => {
   });
 });
 
-test('the oxfmt config ignores coverage output', () => {
-  assert.deepEqual(recommendedIgnorePatterns, ['coverage/**']);
+test('the oxfmt config ignores coverage output and ESLint suppressions', () => {
+  assert.deepEqual(recommendedIgnorePatterns, ['coverage/**', 'eslint-suppressions.json']);
 });

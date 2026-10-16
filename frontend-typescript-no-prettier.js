@@ -20,6 +20,7 @@ import consistentTypeImports from './rules/consistent-type-imports.js';
 import baseNoPrettierConfig from './base-no-prettier.js';
 import env from './common/env.js';
 import restrictedPackages from './rules/restricted-packages-import.js';
+import maxParams from './rules/max-params.js';
 import preferSWRMutation, {swrMutationPlugin} from './rules/prefer-swr-mutation.js';
 import noTestidOnlyTests, {testidOnlyTestsPlugin} from './rules/no-testid-only-tests.js';
 
@@ -109,6 +110,7 @@ export default [
       '@typescript-eslint/no-unused-vars': ['error', {ignoreRestSiblings: true}],
       ...youDontNeedLodash,
       ...preferSWRMutation,
+      ...maxParams,
     },
   },
   overrides.allowRequireInConfigs,

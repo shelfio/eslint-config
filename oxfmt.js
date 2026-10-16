@@ -1,4 +1,4 @@
-export const recommendedIgnorePatterns = ['coverage/**'];
+export const recommendedIgnorePatterns = ['coverage/**', 'eslint-suppressions.json'];
 
 const config = {
   printWidth: 100,
