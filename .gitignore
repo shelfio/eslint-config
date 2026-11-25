@@ -3,7 +3,6 @@ node_modules/
 
 .DS_Store
 *.log
-pnpm-lock.yaml
 !.husky/_/husky.sh
 
 work/
