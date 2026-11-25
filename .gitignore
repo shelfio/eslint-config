@@ -5,5 +5,4 @@ node_modules/
 *.log
 !.husky/_/husky.sh
 
-work/
 .eslint-config-inspector/
