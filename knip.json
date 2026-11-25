@@ -8,5 +8,6 @@
     "common/*.js",
     "rules/*.js",
     "scripts/*.mjs"
-  ]
+  ],
+  "ignore": ["tests/**"]
 }
