@@ -56,7 +56,6 @@ test('test rules are scoped to tests, test directories and existing mock convent
     'sonarjs/disabled-timeout',
     'sonarjs/no-forced-browser-interaction',
     'sonarjs/synchronous-suite-callback',
-    'sonarjs/no-mixed-completion-style',
     'sonarjs/no-interpolation-in-inline-snapshots',
   ]) {
     assert.equal(severity(source, rule), 0);

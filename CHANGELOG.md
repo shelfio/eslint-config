@@ -4,6 +4,7 @@
 - Add the opt-in `react-compiler.js` config for the React Compiler diagnostics.
 - `frontend.js` makes `import/no-default-export` and `barrel-files/avoid-barrel-files` errors. Framework entry points, Storybook files, and tool configs can keep their default exports.
 - typescript-eslint now runs on TypeScript 6 that this package installs (`@typescript/typescript6`). A project can use TypeScript 7 for its own checker. This works with pnpm, which resolves the `typescript` peer of the typescript-eslint packages from this package.
+- Update the dependencies. `eslint-plugin-sonarjs` 4.2.2 adds `sonarjs/no-debounce-throttle-in-render` to its recommended rules: it reports a debounced or throttled function that a component creates again on each render. The preset no longer enables `sonarjs/no-mixed-completion-style`, because Sonar removed it from its recommended rules.
 
 ## 9.1.0
 

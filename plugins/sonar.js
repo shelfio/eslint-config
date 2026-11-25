@@ -62,7 +62,6 @@ const testRules = [
   'disabled-timeout',
   'no-forced-browser-interaction',
   'synchronous-suite-callback',
-  'no-mixed-completion-style',
   'no-interpolation-in-inline-snapshots',
 ].map(rule => `sonarjs/${rule}`);
 // Omitted rules never run; an omission needs no `off` entry in the effective config.
