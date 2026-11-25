@@ -39,6 +39,12 @@ This ESLint 10 preset matches JavaScript and TypeScript source files, detects Re
 and keeps formatting separate. Run Oxfmt and the TypeScript checker as separate checks.
 It uses the TypeScript syntax parser without building a TypeScript type graph.
 
+typescript-eslint does not support TypeScript 7. This package installs TypeScript 6
+as `@typescript/typescript6` for typescript-eslint, so your project can use TypeScript 7
+for its own checker. With pnpm, typescript-eslint resolves its `typescript` peer from
+this package. Plugins that your project installs itself still resolve TypeScript from
+your project.
+
 The default keeps Rules of Hooks and exhaustive dependency checks. React Compiler
 diagnostics perform another parse and compiler analysis; enable them explicitly when needed:
 

@@ -1,3 +1,10 @@
+## 9.2.0
+
+- Add the `frontend.js` preset for ESLint 10. One module in `plugins/` owns the rules and file overrides of each plugin. The preset uses the TypeScript syntax parser without a type graph; run Oxfmt and the TypeScript checker as separate checks.
+- Add the opt-in `react-compiler.js` config for the React Compiler diagnostics.
+- `frontend.js` makes `import/no-default-export` and `barrel-files/avoid-barrel-files` errors. Framework entry points, Storybook files, and tool configs can keep their default exports.
+- typescript-eslint now runs on TypeScript 6 that this package installs (`@typescript/typescript6`). A project can use TypeScript 7 for its own checker. This works with pnpm, which resolves the `typescript` peer of the typescript-eslint packages from this package.
+
 ## 9.1.0
 
 - `no-restricted-imports` no longer blocks `natural-orderby`. `@shelf/fast-natural-order-by` 2.0.0 only re-exports it, so import `natural-orderby` directly. The `javascript-natural-sort` message now recommends `natural-orderby`.
