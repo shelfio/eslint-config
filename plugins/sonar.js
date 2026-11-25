@@ -65,18 +65,29 @@ const testRules = [
   'no-mixed-completion-style',
   'no-interpolation-in-inline-snapshots',
 ].map(rule => `sonarjs/${rule}`);
-const rules = {
-  ...sonarjs.configs.recommended.rules,
-  ...comments,
-  ...Object.fromEntries([...typeServiceRules, ...infrastructureRules].map(rule => [rule, 'off'])),
-  'sonarjs/cognitive-complexity': ['error', 18],
-  'sonarjs/no-dead-store': 'off',
-  'sonarjs/no-redundant-assignments': 'off',
-  'sonarjs/unused-import': 'off',
-  'sonarjs/block-scoped-var': 'off',
-  'sonarjs/no-unused-vars': 'off',
+// Omitted rules never run; an omission needs no `off` entry in the effective config.
+const omittedRules = new Set([
+  ...typeServiceRules,
+  ...infrastructureRules,
+  // Data-flow checks. The README lists the owners of these policies.
+  'sonarjs/no-dead-store',
+  'sonarjs/no-redundant-assignments',
+  'sonarjs/unused-import',
+  'sonarjs/block-scoped-var',
+  'sonarjs/no-unused-vars',
+  // Syntax-only, it reports nothing in Shelf frontends and is one of the slowest Sonar rules.
+  'sonarjs/no-floating-point-equality',
   // The Lodash module owns this policy, including its deliberate exceptions.
-  'sonarjs/prefer-native-lodash-alternative': 'off',
+  'sonarjs/prefer-native-lodash-alternative',
+]);
+const rules = {
+  ...Object.fromEntries(
+    Object.entries(sonarjs.configs.recommended.rules).filter(
+      ([rule, setting]) => setting !== 'off' && !omittedRules.has(rule)
+    )
+  ),
+  ...comments,
+  'sonarjs/cognitive-complexity': ['error', 18],
 };
 
 export default [

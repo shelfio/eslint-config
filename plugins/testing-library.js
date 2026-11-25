@@ -1,5 +1,5 @@
 import testingLibrary from 'eslint-plugin-testing-library';
-import {sourceFiles, testFiles} from '../common/files.js';
+import {sourceFiles, testFiles, testIdPattern} from '../common/files.js';
 
 export default [
   {
@@ -7,12 +7,14 @@ export default [
     files: sourceFiles,
     plugins: {'testing-library': testingLibrary},
     rules: {
-      'testing-library/consistent-data-testid': ['error', {testIdPattern: '^(([a-z])+(-)*)+$'}],
+      'testing-library/consistent-data-testid': ['error', {testIdPattern}],
     },
   },
   {
     name: 'shelf/testing-library/tests',
     files: testFiles,
+    // Playwright drives a browser through its own page and locator API.
+    ignores: ['**/playwright/**', '**/e2e/**'],
     rules: {
       ...testingLibrary.configs['flat/react'].rules,
       'testing-library/no-debugging-utils': 'error',

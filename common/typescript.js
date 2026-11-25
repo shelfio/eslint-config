@@ -11,14 +11,11 @@ import {commonPlugins, commonRules, jestConfig, lodashConfig} from './shared.js'
 import env from './env.js';
 import overrides from './overrides.js';
 
-export function createTypescriptConfig({prettierConfig} = {}) {
-  const prettier = Boolean(prettierConfig);
-
+export function createTypescriptConfig() {
   return [
     lodashConfig,
     ...tsEslint.configs.recommended,
     ...jestConfig,
-    ...(prettier ? [prettierConfig] : []),
     shelfNoLodash.configs.all,
     {
       plugins: {
@@ -51,8 +48,6 @@ export function createTypescriptConfig({prettierConfig} = {}) {
           },
         ],
 
-        'multiline-ternary': ['error', 'never'],
-        curly: 'error',
         'no-nested-ternary': 'error',
 
         ...typeAssertionRules,
@@ -97,7 +92,13 @@ export function createTypescriptConfig({prettierConfig} = {}) {
         ],
       },
     },
-    ...(!prettier ? [eslintConfigPrettier] : []),
+    eslintConfigPrettier,
+    // eslint-config-prettier turns `curly` off, but its `all` option does not conflict with a formatter.
+    {
+      rules: {
+        curly: ['error', 'all'],
+      },
+    },
     overrides.allowRequireInConfigs,
     overrides.noExplicitsInTests,
     overrides.noUnusedVarsInTypes,

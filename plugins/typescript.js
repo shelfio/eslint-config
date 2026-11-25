@@ -15,10 +15,9 @@ export default defineConfig(
       // These syntax-only replacements own the checks in JS and TS files alike.
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['error', {ignoreRestSiblings: true}],
-      'no-use-before-define': 'off',
-      '@typescript-eslint/no-use-before-define': 'off',
-      'max-params': 'off',
-      '@typescript-eslint/max-params': 'error',
+      '@typescript-eslint/max-params': ['error', {max: 4}],
+      // The TypeScript preset turns this off for TS files, but `tsc` reports it only as a suggestion.
+      'no-unreachable': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
@@ -29,13 +28,7 @@ export default defineConfig(
   },
   {
     name: 'shelf/typescript/commonjs-configs',
-    files: [
-      '**/*.cjs',
-      '**/*.cts',
-      '**/*wallaby.config.js',
-      '**/{webpack,babel,next}.config.js',
-      '**/draft.js',
-    ],
+    files: ['**/*.cjs', '**/*.cts', '**/*.config.js', '**/draft.js'],
     rules: {'@typescript-eslint/no-require-imports': 'off'},
   }
 );

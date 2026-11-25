@@ -1,8 +1,9 @@
-import eslintConfigPrettier from 'eslint-config-prettier';
 import {sourceFiles} from '../common/files.js';
 
+// Oxfmt owns layout. This is the only enabled rule that a formatter can contradict;
+// `pnpm audit:rules` fails when another one appears.
 export default {
   name: 'shelf/formatting/oxfmt-compatibility',
   files: sourceFiles,
-  rules: eslintConfigPrettier.rules,
+  rules: {'no-unexpected-multiline': 'off'},
 };

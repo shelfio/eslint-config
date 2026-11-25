@@ -67,15 +67,21 @@ for (const file of scopes) {
       url: meta?.docs?.url,
       requiresTypeChecking: meta?.docs?.requiresTypeChecking ?? false,
     };
-    if (meta?.deprecated) deprecated.push(id);
+    if (meta?.deprecated) {
+      deprecated.push(id);
+    }
 
     if (namespace === '@typescript-eslint') {
       const extension = meta?.docs?.extendsBaseRule;
       const base = typeof extension === 'string' ? extension : name;
 
-      if (extension && config.rules[base]?.[0] > 0) tsDuplicates.push([base, id]);
+      if (extension && config.rules[base]?.[0] > 0) {
+        tsDuplicates.push([base, id]);
+      }
 
-      if (meta?.docs?.requiresTypeChecking) typedRules.push(id);
+      if (meta?.docs?.requiresTypeChecking) {
+        typedRules.push(id);
+      }
     }
   }
   const {parserOptions} = config.languageOptions;
@@ -89,7 +95,9 @@ for (const file of scopes) {
     buildsTypeProgram,
   };
   problems += deprecated.length + tsDuplicates.length + typedRules.length;
-  if (buildsTypeProgram) problems++;
+  if (buildsTypeProgram) {
+    problems++;
+  }
   console.log(
     `${file}: ${Object.keys(enabled).length} enabled, ${disabled.length} disabled, ` +
       `${deprecated.length} deprecated, ${tsDuplicates.length} core/TS duplicates`
@@ -99,7 +107,9 @@ for (const file of scopes) {
 // Use the pinned helper against this preset, rather than silently auditing the
 // repository's different eslint.config.js. The CLI accepts file paths, not --config.
 report.formatting = processRules(formatterInput);
-if (report.formatting.code !== 0) problems++;
+if (report.formatting.code !== 0) {
+  problems++;
+}
 console.log(report.formatting.stdout ?? report.formatting.stderr);
 report.problems = problems;
 if (values.json) {

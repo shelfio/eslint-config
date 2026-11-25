@@ -15,12 +15,11 @@ import preferSWRMutation, {swrMutationPlugin} from '../rules/prefer-swr-mutation
 import noTestidOnlyTests, {testidOnlyTestsPlugin} from '../rules/no-testid-only-tests.js';
 import env from './env.js';
 import {createBaseConfig} from './base.js';
+import {testIdPattern} from './files.js';
 import {lodashConfig, testFiles} from './shared.js';
 import overrides from './overrides.js';
 
-export function createFrontendConfig({prettierConfig} = {}) {
-  const prettier = Boolean(prettierConfig);
-
+export function createFrontendConfig() {
   return [
     lodashConfig,
     ...tsEslint.configs.recommended,
@@ -28,8 +27,7 @@ export function createFrontendConfig({prettierConfig} = {}) {
     {...react.configs.flat.recommended, plugins: {react: fixupPluginRules(react)}},
     reactHooks.configs.flat.recommended,
     sonarjs.configs.recommended,
-    ...(prettier ? [eslintConfigPrettier] : []),
-    ...createBaseConfig({prettierConfig}),
+    ...createBaseConfig(),
     {
       rules: {
         ...restrictedPackages,
@@ -74,12 +72,7 @@ export function createFrontendConfig({prettierConfig} = {}) {
         // 'testing-library/no-wait-for-empty-callback': 'error',
         // It's enabled in overrides
         'testing-library/no-debugging-utils': 'off',
-        'testing-library/consistent-data-testid': [
-          2,
-          {
-            testIdPattern: '^(([a-z])+(-)*)+$',
-          },
-        ],
+        'testing-library/consistent-data-testid': [2, {testIdPattern}],
         ...consistentTypeImports,
         // it fail to compile TS on react static class properties (displayName | defaultProps | etc..)
         '@typescript-eslint/explicit-member-accessibility': 0,
@@ -111,6 +104,6 @@ export function createFrontendConfig({prettierConfig} = {}) {
         'sonarjs/no-nested-template-literals': 'off',
       },
     },
-    ...(!prettier ? [eslintConfigPrettier] : []),
+    eslintConfigPrettier,
   ];
 }

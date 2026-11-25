@@ -16,13 +16,7 @@ export default {
     },
   },
   allowRequireInConfigs: {
-    files: [
-      '*wallaby.config.js',
-      'webpack.config.js',
-      'babel.config.js',
-      'next.config.js',
-      'draft.js',
-    ],
+    files: ['webpack.config.js', 'babel.config.js', 'next.config.js', 'draft.js'],
     rules: {
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-require-imports': 'off',

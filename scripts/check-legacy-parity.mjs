@@ -25,14 +25,7 @@ const scopes = [
   'src/mock.js',
   'package.json',
 ];
-const presets = [
-  'base',
-  'base-no-prettier',
-  'typescript',
-  'typescript-no-prettier',
-  'frontend-typescript',
-  'frontend-typescript-no-prettier',
-];
+const presets = ['base-no-prettier', 'typescript-no-prettier', 'frontend-typescript-no-prettier'];
 const patches = [
   {files: ['**/*.{js,jsx,ts,tsx,json}']},
   {settings: {jest: {version: 29}, react: {version: '18.3'}}},
@@ -62,10 +55,10 @@ for (const preset of presets) {
     const oldConfig = await before.calculateConfigForFile(scope);
     const newConfig = await after.calculateConfigForFile(scope);
     const rules = new Set([...Object.keys(oldConfig.rules), ...Object.keys(newConfig.rules)]);
+    // A rule that is off and a rule that is absent behave the same.
+    const effective = setting => (setting?.[0] ? JSON.stringify(setting) : 'off');
     const changes = [...rules]
-      .filter(
-        rule => JSON.stringify(oldConfig.rules[rule]) !== JSON.stringify(newConfig.rules[rule])
-      )
+      .filter(rule => effective(oldConfig.rules[rule]) !== effective(newConfig.rules[rule]))
       .map(rule => {
         return {rule, before: oldConfig.rules[rule], after: newConfig.rules[rule]};
       });

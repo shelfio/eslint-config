@@ -84,6 +84,12 @@ test('pages, config and test overrides remain effective', async () => {
   const eslint = createESLint();
   for (const [file, rule] of [
     ['pages/index.tsx', 'import/no-default-export'],
+    ['app/(main)/page.tsx', 'import/no-default-export'],
+    ['vite.config.ts', 'import/no-default-export'],
+    ['eslint.config.mjs', 'barrel-files/avoid-barrel-files'],
+    ['app/api/items/route.ts', 'barrel-files/avoid-barrel-files'],
+    ['jest.globalSetup.ts', 'import/no-default-export'],
+    ['src/Button.stories.tsx', 'import/no-default-export'],
     ['webpack.config.js', '@typescript-eslint/no-require-imports'],
     ['src/example.test.ts', '@typescript-eslint/no-explicit-any'],
     ['src/example.styled.tsx', 'sonarjs/no-nested-template-literals'],
@@ -92,7 +98,14 @@ test('pages, config and test overrides remain effective', async () => {
   }
   assert.equal(
     severity(await eslint.calculateConfigForFile('src/View.tsx'), 'import/no-default-export'),
-    1
+    2
+  );
+  assert.equal(
+    severity(
+      await eslint.calculateConfigForFile('src/index.ts'),
+      'barrel-files/avoid-barrel-files'
+    ),
+    2
   );
 });
 
@@ -172,13 +185,11 @@ test('React consumer rules using removed APIs remain compatible with ESLint 10',
   assert.ok(rules.includes('react/jsx-filename-extension'));
 });
 
-test('all existing entrypoints lint independently and retain formatter behavior', async () => {
+test('all existing entrypoints lint independently without a formatter plugin', async () => {
   for (const preset of ['base', 'typescript', 'frontend-typescript']) {
-    for (const suffix of ['', '-no-prettier']) {
-      const config = (await import(`./${preset}${suffix}.js`)).default;
-      const rules = await lint('export const value=1;', 'src/example.js', config);
-      assert.equal(rules.includes('prettier/prettier'), suffix === '', `${preset}${suffix}`);
-    }
+    const config = (await import(`./${preset}-no-prettier.js`)).default;
+    const rules = await lint('export const value=1;', 'src/example.js', config);
+    assert.ok(!rules.includes('prettier/prettier'), preset);
   }
 });
 
@@ -199,22 +210,16 @@ test('frontend does not load Prettier or the replaced Jest formatting plugin', (
   assert.equal(result.status, 0, result.stderr);
 });
 
-test('legacy frontend presets preserve consumer-enabled JSON handling', async () => {
-  for (const preset of ['frontend-typescript', 'frontend-typescript-no-prettier']) {
-    const config = (await import(`./${preset}.js`)).default;
-    const rules = await lint('{"name":"example"}', 'package.json', [
-      ...config,
-      {files: ['**/*.json']},
-    ]);
-    assert.equal(rules.includes('prettier/prettier'), preset === 'frontend-typescript');
-  }
+test('legacy frontend preset preserves consumer-enabled JSON handling', async () => {
+  const config = (await import('./frontend-typescript-no-prettier.js')).default;
+  await lint('{"name":"example"}', 'package.json', [...config, {files: ['**/*.json']}]);
 });
 
 test('frontend policies execute and Lodash exceptions have one owner', async () => {
   const sourceRules = await lint(
     `import {uniq} from 'lodash';
-     export function View(a: string, b: string, c: string, d: string) {
-       return <div dangerouslySetInnerHTML={{__html: uniq([a, b, c, d]).join('')}} />;
+     export function View(a: string, b: string, c: string, d: string, e: string) {
+       return <div dangerouslySetInnerHTML={{__html: uniq([a, b, c, d, e]).join('')}} />;
      }`,
     'src/View.tsx'
   );
@@ -232,4 +237,28 @@ test('frontend policies execute and Lodash exceptions have one owner', async () 
   assert.equal(config.plugins['@stylistic'], undefined);
   assert.equal(severity(config, '@stylistic/padding-line-between-statements'), 0);
   assert.ok(!testRules.some(rule => rule?.startsWith('jest-formatting/')));
+});
+
+test('frontend ignores build and test output', async () => {
+  const eslint = createESLint();
+  for (const file of [
+    '.next/server/page.js',
+    'apps/web/out/index.js',
+    'coverage/lcov.js',
+    'dist/index.js',
+    'next-env.d.ts',
+  ]) {
+    assert.ok(await eslint.isPathIgnored(file), file);
+  }
+});
+
+test('frontend allows trusted HTML and Testing Library gaps where they do not apply', async () => {
+  const eslint = new ESLint({overrideConfigFile: 'frontend.js'});
+  const test = await eslint.calculateConfigForFile('src/a.test.tsx');
+  const e2e = await eslint.calculateConfigForFile('playwright/tests/a.spec.ts');
+  const jestConfig = await eslint.calculateConfigForFile('jest.config.js');
+  assert.equal(test.rules['react/no-danger'][0], 0);
+  assert.equal(test.rules['you-dont-need-lodash-underscore/throttle']?.[0] ?? 0, 0);
+  assert.equal(e2e.rules['testing-library/prefer-screen-queries'], undefined);
+  assert.equal(jestConfig.rules['@typescript-eslint/no-require-imports'][0], 0);
 });

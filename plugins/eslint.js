@@ -13,7 +13,7 @@ export default [
       ...preferEs6,
       'no-useless-return': 'error',
       'no-else-return': 'error',
-      eqeqeq: ['error', 'always'],
+      eqeqeq: ['error', 'always', {null: 'ignore'}],
       'no-console': 'error',
       'require-await': 'error',
       'no-var': 'error',

@@ -12,10 +12,12 @@ $ pnpm add --save-dev --save-exact @shelf/eslint-config
 
 ## Usage
 
+The ESLint configs leave formatting to Oxfmt. Use them together with the Oxfmt config below.
+
 ### Backend
 
 ```js
-import tsConfig from '@shelf/eslint-config/typescript.js';
+import tsConfig from '@shelf/eslint-config/typescript-no-prettier.js';
 
 export default [...tsConfig];
 ```
@@ -68,41 +70,11 @@ disabled. These checks cover type files and JavaScript configs too; the old blan
 unused-variable exemption for `types.ts` and `types/**` does not apply to this preset.
 Consumer overrides can still add deliberate exceptions.
 
-### Existing frontend entrypoints
+### Existing frontend entrypoint
 
-The existing `frontend-typescript.js` (Prettier) and
-`frontend-typescript-no-prettier.js` exports retain their effective rules, including
-compiler diagnostics, broad test analysis and infrastructure checks. They share the
-same implementation; adoption of `frontend.js` is explicit.
-
-```js
-import feTsConfig from '@shelf/eslint-config/frontend-typescript.js';
-
-export default [
-  ...feTsConfig,
-  {
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
-  },
-];
-```
-
-## Oxfmt Migrations
-
-Repos that move formatting out of ESLint and into Oxfmt should use the additive no-Prettier entrypoints:
-
-### Backend, no Prettier plugin
-
-```js
-import tsConfig from '@shelf/eslint-config/typescript-no-prettier.js';
-
-export default [...tsConfig];
-```
-
-### Frontend, no Prettier plugin
+`frontend-typescript-no-prettier.js` retains its effective rules, including compiler
+diagnostics, broad test analysis and infrastructure checks. Adoption of `frontend.js`
+is explicit.
 
 ```js
 import feTsConfig from '@shelf/eslint-config/frontend-typescript-no-prettier.js';
@@ -119,7 +91,20 @@ export default [
 ];
 ```
 
-The legacy `typescript.js` and `frontend-typescript.js` entrypoints stay supported for repos that still format through Prettier.
+## Oxfmt
+
+Install `oxfmt`, and add an `oxfmt.config.ts` that extends the shared config:
+
+```ts
+import baseConfig, {recommendedIgnorePatterns} from '@shelf/eslint-config/oxfmt.js';
+
+export default {
+  ...baseConfig,
+  ignorePatterns: [...recommendedIgnorePatterns],
+};
+```
+
+`oxfmt.d.ts` types the import, so `oxfmt.config.ts` can stay in the TypeScript project.
 
 ## Remote Mutations
 
@@ -196,9 +181,7 @@ The developer-only profiler and audit documents are not part of the published pa
 
 ## Publish
 
-```sh
-$ pnpx np
-```
+Set the new version in `package.json` and add it to `CHANGELOG.md`. When the change merges to `master`, CI publishes the version to npm.
 
 ## License
 

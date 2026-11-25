@@ -8,12 +8,9 @@ import defaultBarrelExports, {
 import {commonPlugins, commonRules, jestConfig} from './shared.js';
 import env from './env.js';
 
-export function createBaseConfig({prettierConfig} = {}) {
-  const prettier = Boolean(prettierConfig);
-
+export function createBaseConfig() {
   return [
     ...jestConfig,
-    ...(prettier ? [prettierConfig] : []),
     {
       plugins: {
         ...commonPlugins,
@@ -42,6 +39,6 @@ export function createBaseConfig({prettierConfig} = {}) {
       },
     },
     barrelPagesOverride,
-    ...(!prettier ? [eslintConfigPrettier] : []),
+    eslintConfigPrettier,
   ];
 }

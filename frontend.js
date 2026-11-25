@@ -1,4 +1,5 @@
 import {defineConfig} from 'eslint/config';
+import ignores from './plugins/ignores.js';
 import eslint from './plugins/eslint.js';
 import typescript from './plugins/typescript.js';
 import youDontNeedLodash from './plugins/you-dont-need-lodash.js';
@@ -11,6 +12,7 @@ import shelf from './plugins/shelf.js';
 import formatting from './plugins/formatting.js';
 
 export default defineConfig(
+  ignores,
   eslint,
   typescript,
   youDontNeedLodash,

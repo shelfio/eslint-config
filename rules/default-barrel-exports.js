@@ -4,7 +4,6 @@ export const barrelPlugin = {'barrel-files': barrelFiles};
 
 const defaultBarrelExports = {
   'import/no-default-export': 'warn',
-  'import/prefer-default-export': 'off',
   'barrel-files/avoid-barrel-files': [
     'warn',
     {

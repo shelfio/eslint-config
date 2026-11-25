@@ -63,7 +63,9 @@ if (option('consumer')) {
   const source = await fs.readFile(consumerPath, 'utf8');
   const specifier = source.match(/from ['"](@shelf\/eslint-config\/[^'"]+)['"]/)?.[1];
 
-  if (!specifier) throw new Error('Consumer must import one Shelf preset directly.');
+  if (!specifier) {
+    throw new Error('Consumer must import one Shelf preset directly.');
+  }
 
   // Repoint the single preset import in memory: do not load a second installed
   // version of every plugin, or write to the app being measured.
@@ -85,11 +87,15 @@ if (!jestVersion) {
   try {
     jestVersion = createRequire(path.join(cwd, 'package.json'))('jest/package.json').version;
   } catch (error) {
-    if (error.code !== 'MODULE_NOT_FOUND') throw error;
+    if (error.code !== 'MODULE_NOT_FOUND') {
+      throw error;
+    }
   }
 }
 
-if (jestVersion) defaults.jest = {version: jestVersion};
+if (jestVersion) {
+  defaults.jest = {version: jestVersion};
+}
 
 // Defaults precede the preset and consumer so explicit settings keep winning.
 const override = {files: ['**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}']};
@@ -110,8 +116,9 @@ if (values['no-aws']) {
   disabled.push(...Object.keys(representative.rules).filter(id => id.startsWith('sonarjs/aws-')));
 }
 
-if (disabled.length)
+if (disabled.length) {
   configuration = [...configuration, {rules: Object.fromEntries(disabled.map(id => [id, 'off']))}];
+}
 
 const instrumented = !values['no-stats'];
 const eslint = new ESLint({
@@ -171,15 +178,22 @@ for (const file of [
 ]) {
   const effective = await eslint.calculateConfigForFile(path.join(cwd, file));
 
-  if (!effective) continue;
+  if (!effective) {
+    continue;
+  }
   for (const [id, setting] of Object.entries(effective.rules)) {
-    if (setting[0] === 0) continue;
+    if (setting[0] === 0) {
+      continue;
+    }
 
     let rule;
     const slash = id.lastIndexOf('/');
 
-    if (slash > 0) rule = effective.plugins[id.slice(0, slash)]?.rules[id.slice(slash + 1)];
-    else rule = require('eslint/use-at-your-own-risk').builtinRules.get(id);
+    if (slash > 0) {
+      rule = effective.plugins[id.slice(0, slash)]?.rules[id.slice(slash + 1)];
+    } else {
+      rule = require('eslint/use-at-your-own-risk').builtinRules.get(id);
+    }
     inventory[id] ??= {
       description: rule?.meta?.docs?.description,
       url: rule?.meta?.docs?.url,
