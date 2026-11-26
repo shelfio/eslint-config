@@ -1,16 +1,16 @@
 import {fixupPluginRules} from '@eslint/compat';
 import importPlugin from 'eslint-plugin-import';
+import barrelFiles from 'eslint-plugin-barrel-files';
 import {sourceFiles} from '../common/files.js';
 import importOrder from '../rules/import-order.js';
 import sortImports from '../rules/sort-imports.js';
 import restrictedPackages from '../rules/restricted-packages-import.js';
-import {barrelPlugin} from '../rules/default-barrel-exports.js';
 
 export default [
   {
     name: 'shelf/imports/policy',
     files: sourceFiles,
-    plugins: {import: fixupPluginRules(importPlugin), ...barrelPlugin},
+    plugins: {import: fixupPluginRules(importPlugin), 'barrel-files': barrelFiles},
     rules: {
       ...importOrder,
       ...sortImports,
