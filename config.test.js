@@ -184,9 +184,9 @@ test('React consumer rules using removed APIs remain compatible with ESLint 10',
   assert.ok(rules.includes('react/jsx-filename-extension'));
 });
 
-test('all existing entrypoints lint independently without a formatter plugin', async () => {
-  for (const preset of ['base', 'typescript', 'frontend-typescript']) {
-    const config = (await import(`./${preset}-no-prettier.js`)).default;
+test('every entrypoint lints independently without a formatter plugin', async () => {
+  for (const preset of ['typescript', 'frontend']) {
+    const config = (await import(`./${preset}.js`)).default;
     const rules = await lint('export const value=1;', 'src/example.js', config);
     assert.ok(!rules.includes('prettier/prettier'), preset);
   }
@@ -207,11 +207,6 @@ test('frontend does not load Prettier or the replaced Jest formatting plugin', (
     {cwd: import.meta.dirname, encoding: 'utf8'}
   );
   assert.equal(result.status, 0, result.stderr);
-});
-
-test('legacy frontend preset preserves consumer-enabled JSON handling', async () => {
-  const config = (await import('./frontend-typescript-no-prettier.js')).default;
-  await lint('{"name":"example"}', 'package.json', [...config, {files: ['**/*.json']}]);
 });
 
 test('frontend policies execute and Lodash exceptions have one owner', async () => {

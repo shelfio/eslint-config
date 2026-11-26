@@ -1,4 +1,8 @@
-## 9.2.0
+## 10.0.0
+
+- **Breaking:** remove `frontend-typescript-no-prettier.js` and `base-no-prettier.js`. Use `frontend.js`. To keep the React Compiler diagnostics, add `reactCompiler`.
+- **Breaking:** rename `typescript-no-prettier.js` to `typescript.js`. The package `main` is now `typescript.js`. The rules do not change.
+- **Breaking:** remove the `eslint-config-prettier` dependency. Oxfmt owns formatting, and the configs do not enable rules that conflict with it.
 
 - Add the `frontend.js` preset for ESLint 10. One module in `plugins/` owns the rules and file overrides of each plugin. The preset uses the TypeScript syntax parser without a type graph; run Oxfmt and the TypeScript checker as separate checks.
 - Add the opt-in `reactCompiler` config for the React Compiler diagnostics. Import it from `frontend.js`.

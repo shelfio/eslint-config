@@ -1,6 +1,6 @@
 {
   "name": "@shelf/eslint-config",
-  "version": "9.2.0",
+  "version": "10.0.0",
   "description": "ESLint and Oxfmt config for Shelf projects",
   "license": "MIT",
   "repository": "shelfio/eslint-config",
@@ -26,15 +26,13 @@
   "files": [
     "common",
     "rules",
-    "base-no-prettier.js",
     "frontend.js",
-    "frontend-typescript-no-prettier.js",
-    "typescript-no-prettier.js",
+    "typescript.js",
     "plugins",
     "oxfmt.js",
     "oxfmt.d.ts"
   ],
-  "main": "typescript-no-prettier.js",
+  "main": "typescript.js",
   "keywords": [
     "eslint",
     "eslintconfig",
@@ -47,7 +45,6 @@
     "@stylistic/eslint-plugin": "5.10.0",
     "@typescript-eslint/eslint-plugin": "8.72.2",
     "@typescript-eslint/parser": "8.72.2",
-    "eslint-config-prettier": "10.1.8",
     "eslint-plugin-barrel-files": "3.0.1",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jest": "29.17.0",
@@ -66,6 +63,7 @@
   "devDependencies": {
     "@eslint/config-inspector": "3.5.0",
     "eslint": "10.14.0",
+    "eslint-config-prettier": "^10.1.8",
     "husky": "9.1.7",
     "knip": "6.45.1",
     "lint-staged": "17.6.0",

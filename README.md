@@ -17,7 +17,7 @@ The ESLint configs leave formatting to Oxfmt. Use them together with the Oxfmt c
 ### Backend
 
 ```js
-import tsConfig from '@shelf/eslint-config/typescript-no-prettier.js';
+import tsConfig from '@shelf/eslint-config/typescript.js';
 
 export default [...tsConfig];
 ```
@@ -75,26 +75,11 @@ disabled. These checks cover type files and JavaScript configs too; the old blan
 unused-variable exemption for `types.ts` and `types/**` does not apply to this preset.
 Consumer overrides can still add deliberate exceptions.
 
-### Existing frontend entrypoint
+### Migrate from 9.x
 
-`frontend-typescript-no-prettier.js` retains its effective rules, including compiler
-diagnostics, broad test analysis and infrastructure checks. Adoption of `frontend.js`
-is explicit.
-
-```js
-import feTsConfig from '@shelf/eslint-config/frontend-typescript-no-prettier.js';
-
-export default [
-  ...feTsConfig,
-  {
-    settings: {
-      react: {
-        version: 'detect',
-      },
-    },
-  },
-];
-```
+- `typescript-no-prettier.js` is now `typescript.js`. The rules do not change.
+- `frontend-typescript-no-prettier.js` and `base-no-prettier.js` are removed. Use
+  `frontend.js`. To keep the React Compiler diagnostics, add `reactCompiler`.
 
 ## Oxfmt
 
@@ -160,8 +145,7 @@ The formatter compatibility check disables conflicting rules; it does not run
 Prettier or Oxfmt. The frontend preset does not load `@stylistic` or enforce Jest
 blank-line padding. Oxfmt owns whitespace formatting; the former custom blank-line
 grouping requirements are intentionally removed. Import ordering remains an ESLint
-policy until consumers configure equivalent Oxfmt sorting. Legacy entrypoints keep
-their existing formatting behavior.
+policy until consumers configure equivalent Oxfmt sorting.
 
 From this repository checkout:
 

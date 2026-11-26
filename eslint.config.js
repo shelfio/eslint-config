@@ -1,4 +1,4 @@
-import typescriptConfig from './typescript-no-prettier.js';
+import typescriptConfig from './typescript.js';
 
 export default [
   {ignores: ['.eslint-config-inspector/**']},

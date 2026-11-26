@@ -1,7 +1,6 @@
 import node from 'eslint-plugin-n';
 import tsEslint from 'typescript-eslint';
 import shelfNoLodash from 'eslint-plugin-shelf-no-need-lodash-methods';
-import eslintConfigPrettier from 'eslint-config-prettier';
 import typeAssertionRules from './rules/consistent-type-assertions.js';
 import consistentTypeImports from './rules/consistent-type-imports.js';
 import youDontNeedLodash from './rules/you-dont-need-lodash.js';
@@ -48,6 +47,7 @@ export default [
       ],
 
       'no-nested-ternary': 'error',
+      curly: ['error', 'all'],
 
       ...typeAssertionRules,
       camelcase: [
@@ -89,13 +89,6 @@ export default [
           message: "Danger, this can overwrite 'accountId'. Rearrange the order.",
         },
       ],
-    },
-  },
-  eslintConfigPrettier,
-  // eslint-config-prettier turns `curly` off, but its `all` option does not conflict with a formatter.
-  {
-    rules: {
-      curly: ['error', 'all'],
     },
   },
   overrides.allowRequireInConfigs,

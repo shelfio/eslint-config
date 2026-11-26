@@ -10,8 +10,6 @@ import preferEs6 from '../rules/prefer-es6.js';
 import importOrder from '../rules/import-order.js';
 import sortImports from '../rules/sort-imports.js';
 
-export const testFiles = ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'];
-
 // jest-formatting 3 still uses context.getSourceCode(), removed in ESLint 10.
 const jestFormattingCompat = fixupPluginRules(jestFormatting);
 

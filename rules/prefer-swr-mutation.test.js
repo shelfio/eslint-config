@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import tsEslint from 'typescript-eslint';
 import {RuleTester} from 'eslint';
-import noPrettierConfig from '../frontend-typescript-no-prettier.js';
+import frontend from '../frontend.js';
 import {preferSWRMutationRule} from './prefer-swr-mutation.js';
 
 const enablesRule = config =>
@@ -11,7 +11,7 @@ const enablesRule = config =>
   );
 
 test('the frontend config enforces the rule', () => {
-  assert.equal(enablesRule(noPrettierConfig), true);
+  assert.equal(enablesRule(frontend), true);
 });
 
 const ruleTester = new RuleTester({
