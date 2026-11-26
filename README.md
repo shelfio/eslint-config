@@ -54,9 +54,25 @@ import frontend, {reactCompiler} from '@shelf/eslint-config/frontend.js';
 export default [...frontend, reactCompiler];
 ```
 
+#### Jest or Vitest
+
+`frontend.js` runs the Vitest rules (`@vitest/eslint-plugin`) when the
+`package.json` in the current directory has `vitest` in `dependencies` or
+`devDependencies`. Otherwise, it runs the Jest rules. `typescript.js` always runs
+the Jest rules.
+
+When ESLint runs from another directory, such as the root of a monorepo, set the
+test framework explicitly:
+
+```js
+import {defineFrontendConfig} from '@shelf/eslint-config/frontend.js';
+
+export default defineFrontendConfig({testFramework: 'vitest'});
+```
+
 Add app-specific ignores and genuine policy exceptions after the preset. Consumer
 overrides win, so remove obsolete compiler-rule `off` overrides when enabling the compiler.
-Jest and test-specific analysis run in test/mock files. Test filename suffixes are
+Test-specific analysis runs in test/mock files. Test filename suffixes are
 `.test`, `.spec`, `_test`, and `_spec`; names such as `useConnectionTest.tsx` stay
 in production scope. Production JSX retains the `consistent-data-testid` naming
 check. Custom test directory conventions can opt rules back in through a file-scoped
@@ -125,9 +141,6 @@ const {trigger: save, isMutating: isSaving} = useSWRMutation('save-content', () 
 Local UI state and asynchronous work that does not call a remote API remain valid.
 
 ## Rule audit and profiling
-
-See [the module review](./docs/frontend-modules.md) for rule ownership and the
-changes from the original experimental branch.
 
 ```sh
 pnpm inspect-config

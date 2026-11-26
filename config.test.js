@@ -1,8 +1,11 @@
 import assert from 'node:assert/strict';
 import {spawnSync} from 'node:child_process';
 import test from 'node:test';
+import {mkdtempSync, rmSync, writeFileSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
 import {ESLint} from 'eslint';
-import frontend from './frontend.js';
+import frontend, {defaultTestFramework, defineFrontendConfig} from './frontend.js';
 import compiler, {compilerRules} from './plugins/react-compiler.js';
 import {infrastructureRules, typeServiceRules} from './plugins/sonar.js';
 
@@ -255,4 +258,53 @@ test('frontend allows trusted HTML and Testing Library gaps where they do not ap
   assert.equal(test.rules['you-dont-need-lodash-underscore/throttle']?.[0] ?? 0, 0);
   assert.equal(e2e.rules['testing-library/prefer-screen-queries'], undefined);
   assert.equal(jestConfig.rules['@typescript-eslint/no-require-imports'][0], 0);
+});
+
+test('defaultTestFramework picks Vitest only when the project depends on it', () => {
+  const cwd = mkdtempSync(join(tmpdir(), 'test-framework-'));
+  try {
+    assert.equal(defaultTestFramework(cwd), 'jest');
+    writeFileSync(join(cwd, 'package.json'), JSON.stringify({devDependencies: {jest: '30'}}));
+    assert.equal(defaultTestFramework(cwd), 'jest');
+    writeFileSync(join(cwd, 'package.json'), JSON.stringify({devDependencies: {vitest: '5'}}));
+    assert.equal(defaultTestFramework(cwd), 'vitest');
+  } finally {
+    rmSync(cwd, {recursive: true});
+  }
+});
+
+test('defineFrontendConfig runs the rules of one test framework', async () => {
+  const jestConfig = await createESLint(
+    defineFrontendConfig({testFramework: 'jest'})
+  ).calculateConfigForFile('src/View.test.tsx');
+  const vitestConfig = await createESLint(
+    defineFrontendConfig({testFramework: 'vitest'})
+  ).calculateConfigForFile('src/View.test.tsx');
+
+  assert.equal(severity(jestConfig, 'jest/no-focused-tests'), 2);
+  assert.equal(severity(jestConfig, 'vitest/no-focused-tests'), 0);
+  assert.equal(severity(vitestConfig, 'vitest/no-focused-tests'), 2);
+  assert.equal(severity(vitestConfig, 'jest/no-focused-tests'), 0);
+  assert.ok('vi' in vitestConfig.languageOptions.globals);
+  assert.ok(!('jest' in vitestConfig.languageOptions.globals));
+  assert.throws(() => defineFrontendConfig({testFramework: 'mocha'}), /Unknown testFramework/);
+});
+
+test('the Vitest rules check tests that import from vitest', async () => {
+  const source = `import {describe, expect, test} from 'vitest';
+
+describe('Suite', () => {
+  test('Title', () => {
+    expect(1).toEqual(1);
+  });
+});
+`;
+  const rules = await lint(
+    source,
+    'src/View.test.ts',
+    defineFrontendConfig({testFramework: 'vitest'})
+  );
+
+  assert.ok(rules.includes('vitest/prefer-lowercase-title'));
+  assert.ok(rules.includes('vitest/consistent-test-it'));
 });

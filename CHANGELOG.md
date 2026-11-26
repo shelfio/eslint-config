@@ -1,5 +1,6 @@
 ## 10.0.0
 
+- `frontend.js` runs the Vitest rules when the project depends on `vitest`, and the Jest rules otherwise. `defineFrontendConfig({testFramework})` sets the test framework explicitly.
 - **Breaking:** remove `frontend-typescript-no-prettier.js` and `base-no-prettier.js`. Use `frontend.js`. To keep the React Compiler diagnostics, add `reactCompiler`.
 - **Breaking:** rename `typescript-no-prettier.js` to `typescript.js`. The package `main` is now `typescript.js`. The rules do not change.
 - **Breaking:** remove the `eslint-config-prettier` dependency. Oxfmt owns formatting, and the configs do not enable rules that conflict with it.
