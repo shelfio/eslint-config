@@ -31,8 +31,7 @@ export default frontend;
 ```
 
 The preset is composed from named modules in `plugins/`: ESLint, TypeScript,
-Lodash, imports, Jest, React, Testing Library, Sonar, Shelf rules, and formatting
-compatibility. Each module owns its rules and file overrides. `frontend.js` is
+Lodash, imports, Jest or Vitest, React, Testing Library, Sonar, and Shelf rules. Each module owns its rules and file overrides. `frontend.js` is
 the entrypoint for frontend projects using JavaScript or TypeScript.
 
 This ESLint 10 preset matches JavaScript and TypeScript source files, detects React,
@@ -154,8 +153,8 @@ for enabled/deprecated rules, core/TypeScript extension duplicates, accidental
 type-aware TypeScript rules, and formatting conflicts. It fails on those problems.
 Repeated declarations of the same ID merge into one rule; similar rules from
 different plugins need source/fixture review before removing either.
-The formatter compatibility check disables conflicting rules; it does not run
-Prettier or Oxfmt. The frontend preset does not load `@stylistic` or enforce Jest
+The formatting check uses `eslint-config-prettier` to find rules that conflict with
+a formatter; it does not run a formatter. The frontend preset does not load `@stylistic` or enforce Jest
 blank-line padding. Oxfmt owns whitespace formatting; the former custom blank-line
 grouping requirements are intentionally removed. Import ordering remains an ESLint
 policy until consumers configure equivalent Oxfmt sorting.

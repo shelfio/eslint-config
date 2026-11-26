@@ -11,7 +11,6 @@ import react from './plugins/react.js';
 import testingLibrary from './plugins/testing-library.js';
 import sonar from './plugins/sonar.js';
 import shelf from './plugins/shelf.js';
-import formatting from './plugins/formatting.js';
 
 export {default as reactCompiler} from './plugins/react-compiler.js';
 export {defaultTestFramework} from './common/test-framework.js';
@@ -35,8 +34,7 @@ export const defineFrontendConfig = ({testFramework = defaultTestFramework()} = 
     react,
     testingLibrary,
     sonar,
-    shelf,
-    formatting
+    shelf
   );
 };
 
