@@ -8,6 +8,5 @@ export default {
     'docs/style-guide.md',
     'tests/**',
     '.eslint-config-inspector/**',
-    'work/**',
   ],
 };
