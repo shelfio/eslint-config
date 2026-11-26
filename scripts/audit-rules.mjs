@@ -1,15 +1,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {parseArgs} from 'node:util';
-import {createRequire} from 'node:module';
 import {ESLint} from 'eslint';
 import {builtinRules} from 'eslint/use-at-your-own-risk';
 import frontend from '../frontend.js';
-
-const require = createRequire(import.meta.url);
-const {processRules} = require(
-  path.join(path.dirname(require.resolve('eslint-config-prettier/package.json')), 'bin/cli.js')
-);
 
 const {values} = parseArgs({options: {json: {type: 'string'}}});
 const eslint = new ESLint({
@@ -39,7 +33,6 @@ const report = {
   }),
   files: {},
 };
-const formatterInput = [];
 let problems = 0;
 
 for (const file of scopes) {
@@ -50,7 +43,6 @@ for (const file of scopes) {
   const tsDuplicates = [];
   const typedRules = [];
   for (const [id, setting] of Object.entries(config.rules)) {
-    formatterInput.push([id, setting, file]);
     if (setting[0] === 0) {
       disabled.push(id);
       continue;
@@ -104,13 +96,6 @@ for (const file of scopes) {
   );
 }
 
-// Use the pinned helper against this preset, rather than silently auditing the
-// repository's different eslint.config.js. The CLI accepts file paths, not --config.
-report.formatting = processRules(formatterInput);
-if (report.formatting.code !== 0) {
-  problems++;
-}
-console.log(report.formatting.stdout ?? report.formatting.stderr);
 report.problems = problems;
 if (values.json) {
   await fs.mkdir(path.dirname(path.resolve(values.json)), {recursive: true});

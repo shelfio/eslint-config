@@ -149,12 +149,11 @@ pnpm audit:rules --json /tmp/frontend-rule-audit.json
 
 The pinned ESLint inspector shows which named module enables or overrides each
 rule. The audit checks representative source, test, type, page and config paths
-for enabled/deprecated rules, core/TypeScript extension duplicates, accidental
-type-aware TypeScript rules, and formatting conflicts. It fails on those problems.
+for enabled/deprecated rules, core/TypeScript extension duplicates, and accidental
+type-aware TypeScript rules. It fails on those problems.
 Repeated declarations of the same ID merge into one rule; similar rules from
 different plugins need source/fixture review before removing either.
-The formatting check uses `eslint-config-prettier` to find rules that conflict with
-a formatter; it does not run a formatter. The frontend preset does not load `@stylistic` or enforce Jest
+The frontend preset does not load `@stylistic` or enforce Jest
 blank-line padding. Oxfmt owns whitespace formatting; the former custom blank-line
 grouping requirements are intentionally removed. Import ordering remains an ESLint
 policy until consumers configure equivalent Oxfmt sorting.

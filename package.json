@@ -64,7 +64,6 @@
   "devDependencies": {
     "@eslint/config-inspector": "3.5.0",
     "eslint": "10.14.0",
-    "eslint-config-prettier": "^10.1.8",
     "husky": "9.1.7",
     "knip": "6.45.1",
     "lint-staged": "17.6.0",
