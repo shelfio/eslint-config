@@ -1,3 +1,16 @@
+## 10.0.0
+
+- `frontend.js` runs the Vitest rules when the project depends on `vitest`, and the Jest rules otherwise. `defineFrontendConfig({testFramework})` sets the test framework explicitly.
+- **Breaking:** remove `frontend-typescript-no-prettier.js` and `base-no-prettier.js`. Use `frontend.js`. To keep the React Compiler diagnostics, add `reactCompiler`.
+- **Breaking:** rename `typescript-no-prettier.js` to `typescript.js`. The package `main` is now `typescript.js`. The rules do not change.
+- **Breaking:** remove the `eslint-config-prettier` dependency. Oxfmt owns formatting, and the configs do not enable rules that conflict with it.
+
+- Add the `frontend.js` preset for ESLint 10. One module in `plugins/` owns the rules and file overrides of each plugin. The preset uses the TypeScript syntax parser without a type graph; run Oxfmt and the TypeScript checker as separate checks.
+- Add the opt-in `reactCompiler` config for the React Compiler diagnostics. Import it from `frontend.js`.
+- `frontend.js` makes `import/no-default-export` and `barrel-files/avoid-barrel-files` errors. Framework entry points, Storybook files, and tool configs can keep their default exports.
+- typescript-eslint now runs on TypeScript 6 that this package installs (`@typescript/typescript6`). A project can use TypeScript 7 for its own checker. This works with pnpm, which resolves the `typescript` peer of the typescript-eslint packages from this package.
+- Update the dependencies. `eslint-plugin-sonarjs` 4.2.2 adds `sonarjs/no-debounce-throttle-in-render` to its recommended rules: it reports a debounced or throttled function that a component creates again on each render. The preset no longer enables `sonarjs/no-mixed-completion-style`, because Sonar removed it from its recommended rules.
+
 ## 9.1.0
 
 - `no-restricted-imports` no longer blocks `natural-orderby`. `@shelf/fast-natural-order-by` 2.0.0 only re-exports it, so import `natural-orderby` directly. The `javascript-natural-sort` message now recommends `natural-orderby`.

@@ -1,65 +1,30 @@
-import path from 'node:path';
-import {fileURLToPath} from 'node:url';
-import jestFormatting from 'eslint-plugin-jest-formatting';
-import _import from 'eslint-plugin-import';
 import node from 'eslint-plugin-n';
-import {fixupPluginRules} from '@eslint/compat';
-import tsParser from '@typescript-eslint/parser';
-import js from '@eslint/js';
-import {FlatCompat} from '@eslint/eslintrc';
 import tsEslint from 'typescript-eslint';
-import jestPlugin from 'eslint-plugin-jest';
 import shelfNoLodash from 'eslint-plugin-shelf-no-need-lodash-methods';
-import stylistic from '@stylistic/eslint-plugin';
-import eslintConfigPrettier from 'eslint-config-prettier';
-import env from './common/env.js';
-import jestRules from './rules/jest.js';
-import paddingLineRules from './rules/padding-line-between-statements.js';
-import preferEs6 from './rules/prefer-es6.js';
-import importOrder from './rules/import-order.js';
-import sortImports from './rules/sort-imports.js';
 import typeAssertionRules from './rules/consistent-type-assertions.js';
 import consistentTypeImports from './rules/consistent-type-imports.js';
 import youDontNeedLodash from './rules/you-dont-need-lodash.js';
 import typescriptRules from './rules/typescript.js';
 import restrictedPackages from './rules/restricted-packages-import.js';
+import {commonPlugins, commonRules, jestConfig, lodashConfig} from './common/shared.js';
+import env from './common/env.js';
 import overrides from './common/overrides.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-});
-const jestFormattingCompat = fixupPluginRules(jestFormatting);
-
 export default [
-  ...compat.extends('plugin:you-dont-need-lodash-underscore/compatible'),
+  lodashConfig,
   ...tsEslint.configs.recommended,
-  {
-    files: jestFormattingCompat.configs.strict.overrides[0].files,
-    rules: jestFormattingCompat.configs.strict.overrides[0].rules,
-    plugins: {
-      'jest-formatting': jestFormattingCompat,
-    },
-  },
-  jestPlugin.configs['flat/recommended'],
-  jestPlugin.configs['flat/style'],
+  ...jestConfig,
   shelfNoLodash.configs.all,
   {
     plugins: {
-      'jest-formatting': jestFormattingCompat,
-      import: fixupPluginRules(_import),
+      ...commonPlugins,
       node,
-      '@stylistic': stylistic,
     },
 
     languageOptions: {
       globals: {
         ...env,
       },
-
-      parser: tsParser,
 
       parserOptions: {
         ecmaFeatures: {
@@ -73,6 +38,7 @@ export default [
     },
 
     rules: {
+      ...commonRules,
       complexity: [
         'warn',
         {
@@ -81,13 +47,8 @@ export default [
       ],
 
       'no-nested-ternary': 'error',
+      curly: ['error', 'all'],
 
-      ...paddingLineRules,
-      ...jestRules,
-      ...preferEs6,
-      ...importOrder,
-      ...sortImports,
-      'comma-dangle': 'off',
       ...typeAssertionRules,
       camelcase: [
         'error',
@@ -97,12 +58,8 @@ export default [
           allow: ['hash_key', 'range_key'],
         },
       ],
-      eqeqeq: ['error', 'smart'],
-      'new-cap': 'error',
-      'no-extend-native': 'error',
       'no-use-before-define': 'off',
       ...consistentTypeImports,
-      '@stylistic/multiline-comment-style': ['error', 'separate-lines'],
       'arrow-body-style': [
         'error',
         'as-needed',
@@ -119,7 +76,6 @@ export default [
         },
       ],
       'no-unreachable': 'error',
-      'require-await': 'error',
       ...youDontNeedLodash,
       '@typescript-eslint/ban-ts-comment': 'warn',
       '@typescript-eslint/no-non-null-assertion': 'off',
@@ -133,13 +89,6 @@ export default [
           message: "Danger, this can overwrite 'accountId'. Rearrange the order.",
         },
       ],
-    },
-  },
-  eslintConfigPrettier,
-  // eslint-config-prettier turns `curly` off, but its `all` option does not conflict with a formatter.
-  {
-    rules: {
-      curly: ['error', 'all'],
     },
   },
   overrides.allowRequireInConfigs,

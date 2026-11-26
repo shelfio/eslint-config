@@ -5,6 +5,8 @@ export default {
   'you-dont-need-lodash-underscore/trim': 'off',
   'you-dont-need-lodash-underscore/is-string': 'off',
   'you-dont-need-lodash-underscore/is-function': 'off',
+  // The suggested replacement is a hand-written timer helper, not a native API.
+  'you-dont-need-lodash-underscore/throttle': 'off',
   'you-dont-need-lodash-underscore/get': 'error',
   'you-dont-need-lodash-underscore/every': 'error',
   'you-dont-need-lodash-underscore/map': 'error',
