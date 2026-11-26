@@ -3,7 +3,7 @@ import {spawnSync} from 'node:child_process';
 import test from 'node:test';
 import {ESLint} from 'eslint';
 import frontend from './frontend.js';
-import compiler, {compilerRules} from './react-compiler.js';
+import compiler, {compilerRules} from './plugins/react-compiler.js';
 import {infrastructureRules, typeServiceRules} from './plugins/sonar.js';
 
 const createESLint = (config = frontend) =>

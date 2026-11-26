@@ -11,6 +11,8 @@ import sonar from './plugins/sonar.js';
 import shelf from './plugins/shelf.js';
 import formatting from './plugins/formatting.js';
 
+export {default as reactCompiler} from './plugins/react-compiler.js';
+
 export default defineConfig(
   ignores,
   eslint,

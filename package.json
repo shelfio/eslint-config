@@ -28,7 +28,6 @@
     "rules",
     "base-no-prettier.js",
     "frontend.js",
-    "react-compiler.js",
     "frontend-typescript-no-prettier.js",
     "typescript-no-prettier.js",
     "plugins",

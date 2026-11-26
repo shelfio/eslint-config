@@ -1,5 +1,5 @@
 import reactHooks from 'eslint-plugin-react-hooks';
-import {sourceFiles} from './common/files.js';
+import {sourceFiles} from '../common/files.js';
 
 export const compilerRules = Object.fromEntries(
   Object.entries(reactHooks.configs.flat.recommended.rules).filter(

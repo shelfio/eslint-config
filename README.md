@@ -49,8 +49,7 @@ The default keeps Rules of Hooks and exhaustive dependency checks. React Compile
 diagnostics perform another parse and compiler analysis; enable them explicitly when needed:
 
 ```js
-import frontend from '@shelf/eslint-config/frontend.js';
-import reactCompiler from '@shelf/eslint-config/react-compiler.js';
+import frontend, {reactCompiler} from '@shelf/eslint-config/frontend.js';
 
 export default [...frontend, reactCompiler];
 ```
